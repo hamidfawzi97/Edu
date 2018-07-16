@@ -34,7 +34,3 @@ Route::get('/price', function () {
 Route::get('/sidebar-right', function () {
     return view('sidebar-right');
 });
-
-Route::get('/videos', function () {
-    return view('videos');
-});
