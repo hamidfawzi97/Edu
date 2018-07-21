@@ -182,10 +182,11 @@ label {
 .btn-action:hover, .btn-primary:hover {
 	background: #04a0b7;
 }
+/*
 .btn:hover, .btn:active {
     background-color: #d8d8d8;
 	color: white;
-}
+}*/
 ul, .list.custom-list ul {
 	margin: 0 0 11px;
 	list-style-type: none;
@@ -810,11 +811,11 @@ nav#filter a.current {
 }
 .flat .plan.featured:hover li.plan-name, .flat .plan:hover li.plan-name, .flat .plan.featured.plan-name {
 	background: #3d84e6 !important;
-}
+}/*
 .btn {
 	background-color:#3d84e6;
 	color: white;
-}
+}*/
 .footer2 a {
 	padding: 4px 8px;
 }
@@ -1011,7 +1012,7 @@ list-style: none;
 		margin: 8px 0 0;
 	}
 }
-<<<<<<< HEAD
+HEAD
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
@@ -1248,3 +1249,18 @@ list-style: none;
   background-repeat: no-repeat;
   height: 121px;
   width: 36px;
+}
+
+.courseVideoAside{
+	background-color: #333;
+	color: white;
+}
+
+.commentsDiv{
+	border: 1px solid black;
+}
+
+.courseQuizAside{
+	background-color: #3d84e6;
+	color: black;
+}

@@ -31,6 +31,10 @@ Route::get('/course', function () {
     return view('course');
 });
 
+Route::get('/courseList/{course_id}' , function($course_id){
+    return view('courseList');
+});
+
 Route::get('/price', function () {
     return view('price');
 });
