@@ -11,13 +11,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="free-educational-responsive-web-template-webEdu">
 	<meta name="author" content="webThemez.com">
-	<title>Courses</title>
+	<title>Course_Name</title>
 	<link rel="favicon" href={{ asset('images/favicon.png') }}>
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
 	<link rel="stylesheet" href={{ asset('css/font-awesome.min.css') }}> 
 	<link rel="stylesheet" href={{ asset('css/bootstrap-theme.css') }} media="screen"> 
 	<link rel="stylesheet" href={{ asset('css/style.css') }}>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.js"></script>
@@ -59,69 +60,51 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!-- /.navbar -->
 
-		<header id="head" class="secondary">
-            <div class="container">
-                    <h1>Courses</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing eliras scele!</p>
-                </div>
+	<header id="head" class="secondary">
+        <div class="container">
+            <h3>Course_Name</h3>
+			<p>
+			    Course Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+        </div>
     </header>
 
     
-    <div class="container">
-<h3>Courses</h3>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-</p>
-<br/>
-        <div>
-            <ul>
-                <li><button class="btn">Information Technology</button></li>
-                <li><button>Project Management</button></li>
-                <li><button>Management</button></li>
-                <li><button>Human Resources</button></li>
-                <a href={{ url('/course') }}>Course</a>
-            </ul>
-        </div>
-<!--
-<ul class="list-unstyled video-list-thumbs row">
-	<li class="col-lg-3 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="play-button"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li>
-	<li class="col-lg-3 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="play-button"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li>
-	<li class="col-lg-3 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="play-button"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li>
-	<li class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="play-button"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li> 
-</ul>
--->
+	<div class="container">
+		<br>
+		<br>	
 
-</div>
-<!--
-	<div id="courses">
+        <div class="row text-center">
+		  <div class="col-xs-6 col-md-4">
+		  	<button type="button" class="btn btn-primary btn-lg">Enroll Now !!</button>
+		  </div>
+		  <div class="col-xs-6 col-md-4">
+		  	<p >Price: <span>Course_Price</span></p>
+		  </div>
+		  <div class="col-xs-6 col-md-4">
+		  	<p>Rate: 
+		  		<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+			</p>
+		  </div>
+		</div>
+
+		<br>
+		<br>	
+		
+		<div align="center" class="embed-responsive embed-responsive-16by9">
+		    <video class="embed-responsive-item" controls>
+		        <source src="small.mp4" type="video/mp4">
+		    </video>
+		</div>
+		
+		<br>
+		<br>
+
+			<div id="courses">
 		<section class="container">
 			<h3>Development Courses</h3>
 			<div class="row">
@@ -179,7 +162,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		</section>
 	</div>
--->
+	</div>
+
+
+
+
+
+
     
 	<!-- container -->
 <!--
