@@ -76,7 +76,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <div class="row text-center">
 		  <div class="col-xs-6 col-md-4">
-		  	<button type="button" class="btn btn-primary btn-lg">Enroll Now !!</button>
+		  	<button type="button" class="btn">Enroll Now !!</button>
 		  </div>
 		  <div class="col-xs-6 col-md-4">
 		  	<p >Price: <span>Course_Price</span></p>
