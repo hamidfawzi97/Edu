@@ -27,6 +27,10 @@ Route::get('/courses', function () {
     return view('courses');
 });
 
+Route::get('/course', function () {
+    return view('course');
+});
+
 Route::get('/price', function () {
     return view('price');
 });

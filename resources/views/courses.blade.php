@@ -35,6 +35,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a class="navbar-brand" href={{ url('/') }}>
                         <img src={{ asset('images/logo.png') }} alt="Techro HTML5 template"></a>
                 </div>
+<<<<<<< HEAD
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav pull-right mainNav">
                         <li><a href={{ url('/') }}>Home</a></li>
@@ -56,6 +57,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <!--/.nav-collapse -->
             </div>
+=======
+    </header>
+
+    
+    <div class="container">
+<h3>Courses</h3>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</p>
+<br/>
+        <div>
+            <ul>
+                <li><button class="btn">Information Technology</button></li>
+                <li><button>Project Management</button></li>
+                <li><button>Management</button></li>
+                <li><button>Human Resources</button></li>
+                <a href={{ url('/course') }}>Course</a>
+            </ul>
+>>>>>>> 7d08d46927021005142d65f01d1faf81998599ad
         </div>
         <!-- /.navbar -->
 

@@ -1011,6 +1011,7 @@ list-style: none;
 		margin: 8px 0 0;
 	}
 }
+<<<<<<< HEAD
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
@@ -1193,4 +1194,9 @@ list-style: none;
   background-repeat: no-repeat;
   height: 121px;
   width: 36px;
+=======
+
+.checked {
+    color: orange;
+>>>>>>> 7d08d46927021005142d65f01d1faf81998599ad
 }
