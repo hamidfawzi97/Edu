@@ -73,6 +73,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 </p>
 <br/>
+        <div>
+            <ul>
+                <li><button class="btn">Information Technology</button></li>
+                <li><button>Project Management</button></li>
+                <li><button>Management</button></li>
+                <li><button>Human Resources</button></li>
+            </ul>
+        </div>
+<!--
 <ul class="list-unstyled video-list-thumbs row">
 	<li class="col-lg-3 col-sm-4 col-xs-6">
 		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
@@ -107,8 +116,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</a>
 	</li> 
 </ul>
+-->
 
 </div>
+<!--
 	<div id="courses">
 		<section class="container">
 			<h3>Development Courses</h3>
@@ -167,11 +178,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		</section>
 	</div>
+-->
     
 	<!-- container -->
+<!--
 	<div class="container">
 		<div class="row">
-			<!-- Article content -->
+			// Article content 
 			<section class="col-sm-12 maincontent">
 				<h3>Responsive Website</h3>
 				<p>
@@ -182,6 +195,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</section>
 		</div>
 	</div>
+-->
 	<!-- /container -->
  <footer id="footer">
  
