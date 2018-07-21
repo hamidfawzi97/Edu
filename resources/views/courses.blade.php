@@ -82,7 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
             <div class="col-md-9">
                 
-            <div class="col-md-3">
+            <div class="col-md-4">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
@@ -103,7 +103,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 
                 
-                <div class="col-md-3">
+                <div class="col-md-4">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
@@ -123,7 +123,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   </div>
                 </div>
                 
-                 <div class="col-md-3">
+                 <div class="col-md-4">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
@@ -143,7 +143,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   </div>
                 </div>
                 
-                 <div class="col-md-3">
+                 <div class="col-md-4">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
@@ -164,7 +164,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 
                 
-                 <div class="col-md-3">
+                 <div class="col-md-4">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
