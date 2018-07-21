@@ -66,9 +66,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
         <div class="container">
-            <div class="col-md-6 col-md-offset-6" style="margin-top:10px;">
+            <div class="col-md-6 col-md-offset-6" style="margin-bottom:30px; margin-top:30px">
             <label>Search</label>
-            <input type="search" class="form-control" style="width:50%">
+            <input type="search">
             </div>
             <br/>   
             <div class="col-md-3">
