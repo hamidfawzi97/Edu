@@ -1194,6 +1194,7 @@ list-style: none;
 .coursesContainer{
     box-shadow:0 0 5px 1px rgba(0,0,0,.07);
     background-color: #f7f8fa;    
+    
 }
 .singCourse_title a{
   -webkit-transition: all 0.5s;
