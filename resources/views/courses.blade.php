@@ -67,8 +67,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <div class="container">
             <div class="col-md-6 col-md-offset-6" style="margin-bottom:30px; margin-top:30px">
-            <label>Search</label>
-            <input type="search">
+            <input type="text" name="search_text" id="search_text" placeholder="Search" />
+            <input type="button" name="search_button" id="search_button">
             </div>
             <br/>   
             <div class="col-md-3">
@@ -80,7 +80,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </ul>
             </div>
             
-            <div class="col-md-9">
+            <div class="col-md-9 coursesContainer">
                 
             <div class="col-md-4">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
@@ -97,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <div class="singCourse_author">
                       <img src="{{ asset('images/photo-3.jpg')}}" alt="img">
-                      <p>Richard Remus, Teacher</p>
+                      <p>Richard Teacher</p>
                     </div>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <div class="singCourse_author">
                       <img src="{{ asset('images/photo-3.jpg')}}" alt="img">
-                      <p>Richard Remus, Teacher</p>
+                      <p>Richard Teacher</p>
                     </div>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <div class="singCourse_author">
                       <img src="{{ asset('images/photo-3.jpg')}}" alt="img">
-                      <p>Richard Remus, Teacher</p>
+                      <p>Richard Teacher</p>
                     </div>
                   </div>
                 </div>
@@ -158,7 +158,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <div class="singCourse_author">
                       <img src="{{ asset('images/photo-3.jpg')}}" alt="img">
-                      <p>Richard Remus, Teacher</p>
+                      <p>Richard Teacher</p>
                     </div>
                   </div>
                 </div>
@@ -179,7 +179,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                     <div class="singCourse_author">
                       <img src="{{ asset('images/photo-3.jpg')}}" alt="img">
-                      <p>Richard Remus, Teacher</p>
+                      <p>Richard Teacher</p>
                     </div>
                   </div>
                 </div>
