@@ -76,9 +76,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div>
             <ul>
                 <li><button class="btn">Information Technology</button></li>
-                <li><button>Project Management</button></li>
-                <li><button>Management</button></li>
-                <li><button>Human Resources</button></li>
+                <li><button class="btn">Project Management</button></li>
+                <li><button class="btn">Management</button></li>
+                <li><button class="btn">Human Resources</button></li>
             </ul>
         </div>
 <!--

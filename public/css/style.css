@@ -183,7 +183,8 @@ label {
 	background: #04a0b7;
 }
 .btn:hover, .btn:active {
-	color: #c0c0c0;
+    background-color: #3d84e6;
+	color: white;
 }
 ul, .list.custom-list ul {
 	margin: 0 0 11px;
@@ -811,8 +812,8 @@ nav#filter a.current {
 	background: #3d84e6 !important;
 }
 .btn {
-	background: #3d84e6;
-	color: #fff;
+	background-color: white;
+	color: #3d84e6;
 }
 .footer2 a {
 	padding: 4px 8px;
