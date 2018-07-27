@@ -124,8 +124,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-7">
+
+            <div class="col-md-9 col-md-offset-2">
                 <div class="commentsDiv" style="padding:10px;">
                     <a href="#">
                         <img src="{{ asset('images/1.jpg') }}" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
@@ -133,8 +133,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </a>
                     <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">Comments is here</div>
                 </div>
-                <textarea style="width:890px; resize:none; display:inline; margin-top:20px;" class="form-control" placeholder="Write your comment"></textarea>
-                <input type="submit" name="submit" value="Send" class="btn btn-primary" style="float:right;"/>
+                <textarea  style="margin-top: 20px;" class="form-control col-md-6" placeholder="Write your comment"></textarea>
+                <input type="submit" name="submit" value="Send" class="btn btn-primary col-md-2" style="margin: 20px; float: right;"/>
             </div>
         </div>
 

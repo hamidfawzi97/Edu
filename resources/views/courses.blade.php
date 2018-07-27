@@ -84,16 +84,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
             <div class="col-md-9 coursesContainer">
                 
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-6">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
                       <div class="mask">                         
-                        <a href="course-single.html" class="course_more">View Course</a>
+                        <a href="{{ url('/course')}}" class="course_more">View Course</a>
                       </div>
                     </div>
                     <div class="singCourse_content">
-                    <h3 class="singCourse_title"><a href="course-single.html">Introduction To Matrix</a></h3>
+                    <h3 class="singCourse_title"><a href="{{ url('/course')}}">Introduction To Matrix</a></h3>
                     <p class="singCourse_price"><span>$20</span> Per One Month</p>
                     <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                     </div>
@@ -105,16 +105,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 
                 
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-6">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
                       <div class="mask">                         
-                        <a href="course-single.html" class="course_more">View Course</a>
+                        <a href="{{ url('/course')}}" class="course_more">View Course</a>
                       </div>
                     </div>
                     <div class="singCourse_content">
-                    <h3 class="singCourse_title"><a href="course-single.html">Introduction To Matrix</a></h3>
+                    <h3 class="singCourse_title"><a href="{{ url('/course')}}">Introduction To Matrix</a></h3>
                     <p class="singCourse_price"><span>$20</span> Per One Month</p>
                     <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                     </div>
@@ -125,16 +125,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   </div>
                 </div>
                 
-                 <div class="col-md-4">
+                 <div class="col-md-4 col-xs-6">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
                       <div class="mask">                         
-                        <a href="course-single.html" class="course_more">View Course</a>
+                        <a href="{{ url('/course')}}" class="course_more">View Course</a>
                       </div>
                     </div>
                     <div class="singCourse_content">
-                    <h3 class="singCourse_title"><a href="course-single.html">Introduction To Matrix</a></h3>
+                    <h3 class="singCourse_title"><a href="{{ url('/course')}}">Introduction To Matrix</a></h3>
                     <p class="singCourse_price"><span>$20</span> Per One Month</p>
                     <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                     </div>
@@ -145,16 +145,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   </div>
                 </div>
                 
-                 <div class="col-md-4">
+                 <div class="col-md-4 col-xs-6">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
                       <div class="mask">                         
-                        <a href="course-single.html" class="course_more">View Course</a>
+                        <a href="{{ url('/course')}}" class="course_more">View Course</a>
                       </div>
                     </div>
                     <div class="singCourse_content">
-                    <h3 class="singCourse_title"><a href="course-single.html">Introduction To Matrix</a></h3>
+                    <h3 class="singCourse_title"><a href="{{ url('/course')}}">Introduction To Matrix</a></h3>
                     <p class="singCourse_price"><span>$20</span> Per One Month</p>
                     <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                     </div>
@@ -166,16 +166,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 
                 
-                 <div class="col-md-4">
+                 <div class="col-md-4 col-xs-6">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
                       <div class="mask">                         
-                        <a href="course-single.html" class="course_more">View Course</a>
+                        <a href="{{ url('/course')}}" class="course_more">View Course</a>
                       </div>
                     </div>
                     <div class="singCourse_content">
-                    <h3 class="singCourse_title"><a href="course-single.html">Introduction To Matrix</a></h3>
+                    <h3 class="singCourse_title"><a href="{{ url('/course')}}">Introduction To Matrix</a></h3>
                     <p class="singCourse_price"><span>$20</span> Per One Month</p>
                     <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                     </div>
