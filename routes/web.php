@@ -47,6 +47,10 @@ Route::get('/videos', function () {
     return view('videos');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/admi', function () {
+    return view('/admin/admin');
+});
+
+Route::get('/admin-course', function () {
+    return view('/admin/course');
 });
