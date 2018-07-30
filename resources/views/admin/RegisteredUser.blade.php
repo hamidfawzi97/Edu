@@ -64,12 +64,14 @@
                             <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
                         </ul> -->
                     </li>
-                    <li class="menu-item-has-children active dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="{{ url('/admin-user')}}"> <i class="menu-icon fa fa-table"></i>Users</a>
+<!--
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
                         </ul>
+-->
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
@@ -283,7 +285,8 @@
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Data Table</strong>
-                            
+                            <label><input type="checkbox" class="check" id="checkAll"> Check All</label>
+                            <button class="btn btn-primary col-md-2 col-md-offset-10">Delete</button>
                         </div>
                         <div class="card-body">
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -295,127 +298,127 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td scope="row"><input type="checkbox" /></td>
+                        <td scope="row"><input type="checkbox" class="check" /></td>
                         <td>Tiger Nixon</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Garrett Winters</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Ashton Cox</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Cedric Kelly</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Airi Satou</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Brielle Williamson</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Herrod Chandler</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Rhona Davidson</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Colleen Hurst</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Sonya Frost</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Jena Gaines</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Quinn Flynn</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Charde Marshall</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Haley Kennedy</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Tatyana Fitzpatrick</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Michael Silva</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Paul Byrd</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Gloria Little</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Bradley Greer</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Dai Rios</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Jenette Caldwell</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Yuri Berry</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Caesar Vance</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Doris Wilder</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Angelica Ramos</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Gavin Joyce</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Jennifer Chang</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Brenden Wagner</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Fiona Green</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Shou Itou</td>
                       </tr>
                       <tr>
-                        <td><input type="checkbox" /></td>
+                        <td><input type="checkbox" class="check" /></td>
                         <td>Michelle House</td>
                       </tr>
                      
@@ -458,6 +461,11 @@
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();
         } );
+
+        $("#checkAll").click(function () {
+            $(".check").prop('checked', $(this).prop('checked'));
+        });
+
     </script>
 
 

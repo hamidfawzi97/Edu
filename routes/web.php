@@ -59,12 +59,11 @@ Route::get('/admin-user', function () {
     return view('/admin/user');
 });
 
-<<<<<<< HEAD
+
 Route::get('/Reg-User', function () {
     return view('/admin/RegisteredUser');
 });
-=======
+
 Route::get('/admin-adduser', function () {
     return view('/admin/adduser');
 });
->>>>>>> 8aea5ccc76f0def847e8212830186b0fa062c4eb
