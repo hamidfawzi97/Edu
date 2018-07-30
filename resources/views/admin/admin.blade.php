@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="{{ asset('css/admin/normalize.css')}}"> 
+    <link rel="stylesheet" href="{{ asset('admin/css/normalize.css')}}"> 
     <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{ asset('admin/css/themify-icons.css')}}">
@@ -50,10 +50,10 @@
                     <li class="active">
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <a href="{{ url('/admin-course')}}"> <i class="menu-icon fa fa-laptop"></i>Courses</a>
+                        <!-- <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
                             <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
                             <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
@@ -65,7 +65,7 @@
                             <li><i class="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
                             <li><i class="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
                             <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
@@ -202,7 +202,7 @@
                                 </span>
                             </a>
                             <a class="dropdown-item media bg-flat-color-3" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="{{ asset('images/avatar/4.jpg'}}"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{ asset('images/avatar/4.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Rachel Santos</span>
                                     <span class="time float-right">15 minutes ago</span>
@@ -662,7 +662,7 @@
     <!-- Right Panel -->
 
     <script src="{{ asset('admin/js/vendor/jquery-2.1.4.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>{{ asset('')}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="{{ asset('admin/js/plugins.js')}}"></script>
     <script src="{{ asset('admin/js/main.js')}}"></script>
 
