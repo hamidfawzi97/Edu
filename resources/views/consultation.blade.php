@@ -86,7 +86,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
             
         </div>
-
+    <button class="btn col-md-2">Add Question</button>
+    <button class="btn col-md-2" style="float:right;">Previous Questios</button>
     </div>
         <footer id="footer">
 
