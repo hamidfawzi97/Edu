@@ -54,3 +54,7 @@ Route::get('/admi', function () {
 Route::get('/admin-course', function () {
     return view('/admin/course');
 });
+
+Route::get('/admin-user', function () {
+    return view('/admin/user');
+});
