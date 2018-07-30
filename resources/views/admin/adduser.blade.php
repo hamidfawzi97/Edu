@@ -279,7 +279,7 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="card">
-                      <div class="card-header">Example Form</div>
+                      <div class="card-header">ِAdd User</div>
                       <div class="card-body card-block">
                         <form action="" method="post" class="">
                           <div class="form-group">
@@ -300,7 +300,7 @@
                               <input type="password" id="password" name="password" placeholder="Password" class="form-control">
                             </div>
                           </div>
-                          <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
+                          <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Add</button></div>
                         </form>
                       </div>
                     </div>
