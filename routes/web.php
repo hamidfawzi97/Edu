@@ -64,14 +64,11 @@ Route::get('/Reg-User', function () {
     return view('/admin/RegisteredUser');
 });
 
-<<<<<<< HEAD
-Route::get('/admin-adduser', function () {
-    return view('/admin/adduser');
-});
-=======
 
 Route::get('/admin-adduser', function () {
     return view('/admin/adduser');
 });
 
->>>>>>> 97d4e416d2717e7e8f479c300a19e56b5457422f
+Route::get('/admin-adduser', function () {
+    return view('/admin/adduser');
+});
