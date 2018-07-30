@@ -59,6 +59,10 @@ Route::get('/admin-user', function () {
     return view('/admin/user');
 });
 
+Route::get('/admin-it-fields', function () {
+    return view('/admin/it_fields');
+});
+
 
 Route::get('/Reg-User', function () {
     return view('/admin/RegisteredUser');
@@ -69,6 +73,10 @@ Route::get('/admin-adduser', function () {
     return view('/admin/adduser');
 });
 
-Route::get('/admin-adduser', function () {
-    return view('/admin/adduser');
+Route::get('/admin-addfield', function () {
+    return view('/admin/addfield');
+});
+
+Route::get('/admin-consultant', function(){
+    return view('/admin/consultant');
 });

@@ -6,21 +6,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Add Field</title>
+    <title>IT Fields</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="{{ asset('admin/css/normalize.css')}}"> 
-    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/lib/datatable/dataTables.bootstrap.min.css')}}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="{{ asset('admin/scss/style.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/scss/style.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -63,14 +64,14 @@
                             <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown">
+                    <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children active dropdown">
+                    <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
@@ -266,8 +267,8 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Forms</a></li>
-                            <li class="active">Basic</li>
+                            <li><a href="#">Table</a></li>
+                            <li class="active">Data table</li>
                         </ol>
                     </div>
                 </div>
@@ -277,38 +278,47 @@
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-                  <div class="col-lg-6">
+                    
+                <div class="col-md-12">
                     <div class="card">
-                      <div class="card-header">ِAdd User</div>
-                      <div class="card-body card-block">
-                        <form action="" method="post" class="">
-                          <div class="form-group">
-                            <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                              <input type="text" id="username" name="username" placeholder="Username" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                              <input type="email" id="email" name="email" placeholder="Email" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                              <input type="password" id="password" name="password" placeholder="Password" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Add</button></div>
-                        </form>
-                      </div>
+                        <div class="card-header">
+                            <strong class="card-title">Data Table</strong>
+                        </div>
+                        <div class="card-body">
+                        
+                  <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                      <label>Check All</label><input type="checkbox">
+                      <button class="btn btn-primary col-md-2 col-md-offset-10"> Delete</button>
+                    <thead>
+                      <tr>
+                        <th scope="col-md-1">#</th>
+                        <th>Consultant Name</th>
+                        <th>Question</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="checkbox" ></td>
+                        <td>Ahmed</td>
+                        <td>System Architect</td>
+                        <td><span class="ti-menu-alt"></span></td>
+                      </tr>
+                      <tr>
+                        <td><input type="checkbox" ></td>
+                        <td>Abdo</td>
+                        <td>Accountant</td>
+                        <td><span class="ti-menu-alt"></span></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                        </div>
                     </div>
-                  </div>
-
                 </div>
 
 
+                </div>
             </div><!-- .animated -->
         </div><!-- .content -->
 
@@ -318,10 +328,30 @@
     <!-- Right Panel -->
 
 
-    <script src="{{ asset('admin/js/vendor/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{ asset('admin/js/vendor/jquery-2.1.4.min.js')}}"></script> 
     <script src="{{ asset('admin/js/popper.min.js')}}"></script>
     <script src="{{ asset('admin/js/plugins.js')}}"></script>
     <script src="{{ asset('admin/js/main.js')}}"></script>
+
+
+    <script src="{{ asset('admin/js/lib/data-table/datatables.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/jszip.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/pdfmake.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/vfs_fonts.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/buttons.html5.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/buttons.print.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/buttons.colVis.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/datatables-init.js')}}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
 
 
 </body>

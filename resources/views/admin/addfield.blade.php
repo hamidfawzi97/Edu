@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Add Field</title>
+    <title>Sufee Admin - HTML5 Admin Template</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -279,25 +279,19 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="card">
-                      <div class="card-header">ِAdd User</div>
+                      <div class="card-header">Add Field</div>
                       <div class="card-body card-block">
                         <form action="" method="post" class="">
                           <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                              <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+                              <input type="text" id="fieldname" name="fieldname" placeholder="Fieldname" class="form-control">
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                              <input type="email" id="email" name="email" placeholder="Email" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                              <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                              <textarea id="features" name="features" placeholder="Features" class="form-control"></textarea>
                             </div>
                           </div>
                           <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Add</button></div>
