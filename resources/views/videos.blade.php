@@ -25,36 +25,7 @@
 
 <body>
 	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<!-- Button for smallest screens -->
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-				<a class="navbar-brand" href={{ url('/') }}>
-					<img src={{ asset('images/logo.png') }} alt="Techro HTML5 template"></a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav pull-right mainNav">
-					<li><a href={{ url('/') }}>Home</a></li>
-					<li><a href={{ url('/about') }}>About</a></li>
-					<li><a href={{ url('/courses') }}>Courses</a></li>
-					<li><a href={{ url('/price') }}>Price</a></li>
-					<li class="active"><a href={{ url('/videos') }}>Videos</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="sidebar-right.html">Right Sidebar</a></li>
-							<li><a href="#">Dummy Link1</a></li>
-							<li><a href="#">Dummy Link2</a></li>
-							<li><a href="#">Dummy Link3</a></li>
-						</ul>
-					</li>
-					<li><a href={{ url('/contact') }}>Videos</a></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-	</div>
+	   @include('nav-bar')
 	<!-- /.navbar -->
 
 		<header id="head" class="secondary">
@@ -366,6 +337,10 @@
 
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script>
+        var node = document.getElementById("Videos");
+        node.setAttribute("class", "active");
+    </script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="assets/js/jquery.cslider.js"></script>

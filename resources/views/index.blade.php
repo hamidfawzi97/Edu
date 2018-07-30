@@ -27,37 +27,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<!-- Button for smallest screens -->
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-				<a class="navbar-brand" href={{ url('/') }}>
-					<img src={{ asset('images/logo.png') }} alt="Techro HTML5 template"></a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href={{ url('/') }}>Home</a></li>
-					<li><a href={{ url('/about') }}>About</a></li>
-					<li><a href={{ url('/courses') }}>Courses</a></li>
-					<li><a href={{ url('/price') }}>Price</a></li>
-					<li><a href={{ url('/videos') }}>Videos</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="sidebar-right.blade.php">Right Sidebar</a></li>
-							<li><a href="#">Dummy Link1</a></li>
-							<li><a href="#">Dummy Link2</a></li>
-							<li><a href="#">Dummy Link3</a></li>
-						</ul>
-					</li>
-					<li><a href={{ url('/contact') }}>Contact</a></li>
-
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-	</div>
+	
+        @include('nav-bar')
+    
 	<!-- /.navbar -->
 
 	<!-- Header -->
@@ -353,6 +325,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</footer>
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script>
+        var node = document.getElementById("Home");
+        node.setAttribute("class", "active");
+    </script>
 	<script src={{ asset('js/modernizr-latest.js') }}></script> 
 	<script type="text/javascript" src={{ asset('js/jquery.min.js') }}></script>
     <script type="text/javascript" src={{ asset('js/fancybox/jquery.fancybox.pack.js') }}></script>
@@ -382,8 +358,5 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     });
       
   </script>
-      
-	</script>
-    
 </body>
 </html>
