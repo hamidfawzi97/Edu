@@ -9,4 +9,5 @@ class consultation extends Model
     //
 
     protected $table = 'consultation';
+    public $timestamps = false;
 }

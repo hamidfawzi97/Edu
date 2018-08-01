@@ -46,7 +46,7 @@ class coursesController extends Controller
      */
     public function show(courses $courses)
     {
-        //
+        
     }
 
     /**
@@ -83,7 +83,8 @@ class coursesController extends Controller
         //
     }
 
-    public function addCourse(){
+    public function addCourse(Request $request){
+
         $c_name = $request->input('c_name');
         $c_desc = $request->input('c_description');
         $inst_name = $request->input('inst_name');
@@ -91,40 +92,43 @@ class coursesController extends Controller
         $certificate = $request->file('certificate');
         $c_pdf = $request->file('c_pdf');
 
-        if($request->filled('c_name') && $request->filled('c_description') && $request->filled('inst_name') && $request->hasFile('c_demoVideo') && $request->hasFile('certificate')){
 
-            $video_extension = $request->c_demoVideo->extension();
-            $pdf_extension = $request->c_pdf->extension();
-            $certificate_extension = $request->certificate->extension();
+        if($request->filled('c_name') && $request->filled('c_description') && $request->filled('inst_name') && $c_video && $certificate && $c_pdf){
 
-            if( ($video_extension == 'mp4' || $video_extension == 'mkv') && $certificate_extension == 'pdf'){
+            if($c_video->isValid() && $certificate->isValid() && $c_pdf->isValid()){
 
-                if($request->hasFile('c_pdf')){
-                    if($pdf_extension == 'pdf'){
-                        $course = new courses;
-                        $course->CourseName = $c_name;
-                        $course->Description = $c_desc;
-                        $course->InstructorName = $inst_name;
-                        $course->VideoInduction = $c_video;
-                        $course->Certificate = $certificate;
-                        $course->Pdf = $c_pdf;
+                $video_name = $c_video->getClientOriginalName();
+                $cert = $certificate->getClientOriginalName();
+                $pdf_name = $c_pdf->getClientOriginalName();
 
-                        $course->save();
-                    }
-                }else{
+                $video_extension = $request->c_demoVideo->extension();
+                $pdf_extension = $request->c_pdf->extension();
+                $certificate_extension = $request->certificate->extension();
+
+                if( ($video_extension == 'mp4' || $video_extension == 'mkv') && $certificate_extension == 'pdf' && $pdf_extension == 'pdf'){
 
 
                     $course = new courses;
                     $course->CourseName = $c_name;
                     $course->Description = $c_desc;
                     $course->InstructorName = $inst_name;
-                    $course->VideoInduction = $c_video;
-                    $course->Certificate = $certificate;
+
+                    $course->VideoInduction = $video_name;
+                    $c_video->move('video', $video_name);
+
+                    $course->Certificate = $cert;
+                    $certificate->move('pdf', $cert);
+
+                    $course->Pdf = $pdf_name;
+                    $c_pdf->move('pdf', $pdf_name);
+
 
                     $course->save();
+
+                    
                 }
             }
         }
-
+         return view('/admin/course');
     }
 }

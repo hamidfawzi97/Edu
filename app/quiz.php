@@ -9,4 +9,5 @@ class quiz extends Model
     //
 
     protected $table = 'quiz';
+    public $timestamps = false;
 }

@@ -9,4 +9,5 @@ class answer extends Model
     //
 
     protected $table = 'answer';
+    public $timestamps = false;
 }
