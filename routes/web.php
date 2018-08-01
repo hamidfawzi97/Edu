@@ -55,6 +55,8 @@ Route::get('/admin-course', function () {
     return view('/admin/course');
 });
 
+Route::post('/admin-course', 'coursesController@addCourse');
+
 Route::get('/admin-user', function () {
     return view('/admin/user');
 });
@@ -86,5 +88,6 @@ Route::get('/mycourses','userCoursesController@usercourse');
 Route::get('/admin-addcourse', function(){
     return view('/admin/addcourse');
 });
+
 
 

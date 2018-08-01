@@ -297,6 +297,8 @@
                         <th>Descreption</th>
                         <th>Rate</th>
                         <th>Demo video</th>
+                        <th>Certificate</th>
+                        <th>Instructor Name</th>
                         <th>PDF</th>
                         <th>Action</th>
                       </tr>
@@ -307,6 +309,8 @@
                         <td><a href="{{ url('/Reg-User')}}">Tiger Nixon</a></td>
                         <td>System Architect</td>
                         <td>Edinburgh</td>
+                        <td>$320,800</td>
+                        <td>$320,800</td>
                         <td>$320,800</td>
                         <td>$320,800</td>
                         <td><span class="ti-trash" title="Delete"></span> <span class="ti-pencil" title="Edit"></span></td>
