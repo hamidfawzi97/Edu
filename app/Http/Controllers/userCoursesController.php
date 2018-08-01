@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\user_courses;
+use App\courses;
 use Illuminate\Http\Request;
 
 class userCoursesController extends Controller
@@ -14,7 +15,7 @@ class userCoursesController extends Controller
      */
     public function index()
     {
-        //
+         return view('usercourses');
     }
 
     /**
@@ -85,11 +86,13 @@ class userCoursesController extends Controller
 
      public function userCourse($userid)
     {
-         $user = App\user_courses::where('User_id' , $userid);
-         
-         return print_r($user);
-
-    }
-
+      
+        $user = user_courses::where('User_id', $userid)->get();
+        foreach ($user as $value) {
+        $courses[] = courses::where('ID',$value['Courses_id'])->get();             
+       }
+       return $courses[0][0][""];
+        //return view('userCourses')->with('courses', $courses);
+        }
 
 }

@@ -81,7 +81,7 @@ Route::get('/admin-consultant', function(){
     return view('/admin/consultant');
 });
 
-Route::get('/mycourses','userCoursesController@usercourse');
+Route::get('/mycourses/{id}','userCoursesController@usercourse');
 
 Route::get('/admin-addcourse', function(){
     return view('/admin/addcourse');
