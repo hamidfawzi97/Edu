@@ -82,4 +82,14 @@ class userCoursesController extends Controller
     {
         //
     }
+
+     public function userCourse($userid)
+    {
+         $user = App\user_courses::where('User_id' , $userid);
+         
+         return print_r($user);
+
+    }
+
+
 }
