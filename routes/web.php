@@ -87,4 +87,4 @@ Route::get('/admin-addcourse', function(){
     return view('/admin/addcourse');
 });
 
-Route::get('/mycourses','user_courses@usercourse');
+
