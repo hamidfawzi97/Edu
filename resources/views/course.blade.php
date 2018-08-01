@@ -47,7 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <div class="row text-center">
 		  <div class="col-xs-6 col-md-4">
-		  	<button type="button" class="btn">Enroll Now !!</button>
+		  	<a href="{{ url('')}}" class="btn btn-primary">Enroll Now !!</a>
 		  </div>
 		  <div class="col-xs-6 col-md-4">
 		  	<p >Price: <span>Course_Price</span></p>

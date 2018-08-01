@@ -87,5 +87,8 @@ Route::get('/admin-addcourse', function(){
     return view('/admin/addcourse');
 });
 
+Route::get('/enroll', function(){
+    return view('enrollment');
+});
 
 

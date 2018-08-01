@@ -27,6 +27,8 @@
                 <a class="navbar-brand" href={{ url('/') }}>
                     <img src={{ asset('images/logo.png') }} alt="Techro HTML5 template"></a>
             </div>
+
+            
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-nav pull-right mainNav">
                     <li id="Home"><a href={{ url('/') }}>Home</a></li>

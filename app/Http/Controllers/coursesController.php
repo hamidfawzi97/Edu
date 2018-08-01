@@ -84,9 +84,14 @@ class coursesController extends Controller
     }
 
 
+public function searchCourse($course)
+    {
+       $courses =  courses::where('CourseName','LIKE','%'.$course.'%')->get();
+       return view('courses')->with('courses',$courses);
+    }
+
     
-
-
+        
     public function allCourses()
     {
         $courses = courses::all();
