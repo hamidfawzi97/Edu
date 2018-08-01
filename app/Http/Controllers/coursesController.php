@@ -83,10 +83,10 @@ class coursesController extends Controller
         //
     }
 
-<<<<<<< HEAD
-    public function addCourse(Request $request){
 
-=======
+    
+
+
     public function allCourses()
     {
         $courses = courses::all();
@@ -95,8 +95,8 @@ class coursesController extends Controller
     }
     
 
-    public function addCourse(){
->>>>>>> 113ae53d4f2d9a56f4336652f5d4a7da29f26cda
+    public function addCourse(Request $request){
+        
         $c_name = $request->input('c_name');
         $c_desc = $request->input('c_description');
         $inst_name = $request->input('inst_name');
