@@ -80,3 +80,5 @@ Route::get('/admin-addfield', function () {
 Route::get('/admin-consultant', function(){
     return view('/admin/consultant');
 });
+
+Route::get('/mycourses','user_courses@usercourse');
