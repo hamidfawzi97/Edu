@@ -81,6 +81,10 @@ Route::get('/admin-consultant', function(){
     return view('/admin/consultant');
 });
 
+<<<<<<< HEAD
 Route::get('/admin-addcourse', function(){
     return view('/admin/addcourse');
 });
+=======
+Route::get('/mycourses','user_courses@usercourse');
+>>>>>>> a09312473232fe5740f7efb3262f002b0e4f8aa9
