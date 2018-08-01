@@ -83,6 +83,14 @@ class coursesController extends Controller
         //
     }
 
+    public function allCourses()
+    {
+        $courses = courses::all();
+
+        return view('courses')->with('courses',$courses);
+    }
+    
+
     public function addCourse(){
         $c_name = $request->input('c_name');
         $c_desc = $request->input('c_description');

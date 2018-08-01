@@ -23,9 +23,7 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/courses', function () {
-    return view('courses');
-});
+Route::get('/courses',"coursesController@allCourses");
 
 Route::get('/course', function () {
     return view('course');
