@@ -286,11 +286,14 @@
                             <strong class="card-title">Add Course</strong>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="">
-                                <input type="text" name="c_name" placeholder="Name" class="form-control col-md-4"/><br>
-                                <textarea rows="4" name="c_description" placeholder="Description" class="form-control col-md-4" style="resize:none;"></textarea><br>
+                            <form method="POST" action="{{ url('/admin-course') }}">
+                                <input type="text" name="c_name" placeholder="Course Name" class="form-control col-md-4" required="" /><br>
+                                <textarea rows="4" name="c_description" placeholder="Description" class="form-control col-md-4" style="resize:none;" required=""></textarea><br>
+                                <input type="text" name="inst_name" placeholder="Instructor Name" class="form-control col-md-4" required="" /><br>
                                 <label for="c_demoVideo">Demo Video</label>
-                                <input type="file" name="c_demoVideo" placeholder="Demo Video" class="form-control col-md-4"/><br>
+                                <input type="file" name="c_demoVideo" placeholder="Demo Video" class="form-control col-md-4" required="" /><br>
+                                <label for="certificate">Certificate</label>
+                                <input type="file" name="certificate" placeholder="Certificate" class="form-control col-md-4" required="" /><br>
                                 <label for="c_pdf">PDF</label>
                                 <input type="file" name="c_pdf" placeholder="Pdf" class="form-control col-md-4"/><br>
                                 <input type="submit" name="submit" value="Add" class="col-md-1 btn btn-success"/>
