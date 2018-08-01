@@ -80,3 +80,7 @@ Route::get('/admin-addfield', function () {
 Route::get('/admin-consultant', function(){
     return view('/admin/consultant');
 });
+
+Route::get('/admin-addcourse', function(){
+    return view('/admin/addcourse');
+});

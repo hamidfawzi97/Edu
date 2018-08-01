@@ -26,7 +26,6 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
 </head>
 <body>
         <!-- Left Panel -->
@@ -284,36 +283,18 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Courses Table</strong>
-                            <label><input type="checkbox" class="check" id="checkAll"> Check All </label> |
-                            <a href="{{ url('/admin-addcourse') }}" class="col-md-2 col-md-offset-10">Add Course</a>
+                            <strong class="card-title">Add Course</strong>
                         </div>
                         <div class="card-body">
-                  <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                    <thead>
-                      <tr>
-                        <th scope="col-md-1">#</th>
-                        <th>Name</th>
-                        <th>Descreption</th>
-                        <th>Rate</th>
-                        <th>Demo video</th>
-                        <th>PDF</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr> 
-                        <td scope="row"><input type="checkbox" class="check" /></td>
-                        <td><a href="{{ url('/Reg-User')}}">Tiger Nixon</a></td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>$320,800</td>
-                        <td>$320,800</td>
-                        <td><span class="ti-trash" title="Delete"></span> <span class="ti-pencil" title="Edit"></span></td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
+                            <form method="POST" action="">
+                                <input type="text" name="c_name" placeholder="Name" class="form-control col-md-4"/><br>
+                                <textarea rows="4" name="c_description" placeholder="Description" class="form-control col-md-4" style="resize:none;"></textarea><br>
+                                <label for="c_demoVideo">Demo Video</label>
+                                <input type="file" name="c_demoVideo" placeholder="Demo Video" class="form-control col-md-4"/><br>
+                                <label for="c_pdf">PDF</label>
+                                <input type="file" name="c_pdf" placeholder="Pdf" class="form-control col-md-4"/><br>
+                                <input type="submit" name="submit" value="Add" class="col-md-1 btn btn-success"/>
+                            </form>
                         </div>
                     </div>
                 </div>
