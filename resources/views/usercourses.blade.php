@@ -59,8 +59,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
             <div class="col-md-9 coursesContainer">
                 
-        @for ($i = 0; $i < sizeof($courses); $i++)
-        <div class="col-md-4 col-xs-6">
+        @foreach ($courses as $course)
+    
+            <div class="col-md-4 col-xs-6">
                   <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                     <div class="singCourse_imgarea">
                       <img src={{ asset('images/course-1.jpg') }}>
@@ -69,21 +70,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                       </div>
                     </div>
                     <div class="singCourse_content">
-                    <h3 class="singCourse_title"><a href="{{ url('/course')}}">{{ $courses[$i]["CourseName"]}}</a></h3>
-                    <p class="singCourse_price"><span>$20</span> Per One Month</p>
-                    <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                    <h3 class="singCourse_title"><a href="{{ url('/course')}}">{{ $course["CourseName"]}}</a></h3>
+                    <p class="singCourse_price"><span>${{ $course["Price"]}}</span></p>
+                    <p>{{ $course["Description"]}}</p>
                     </div>
                     <div class="singCourse_author">
                       <img src="{{ asset('images/photo-3.jpg')}}" alt="img">
-                      <p>Richard Teacher</p>
+                      <p>{{ $course["InstructorName"]}}</p>
                     </div>
                   </div>
                 </div>
-        @endfor
-
-    
-            
-        
+        @endforeach
 
             
             </div>

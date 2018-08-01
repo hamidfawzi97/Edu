@@ -89,10 +89,10 @@ class userCoursesController extends Controller
       
         $user = user_courses::where('User_id', $userid)->get();
         foreach ($user as $value) {
-        $courses[] = courses::where('ID',$value['Courses_id'])->get();             
+        $courses[] = courses::where('ID',$value['Courses_id'])->first();            
        }
-       return $courses[0][0][""];
-        //return view('userCourses')->with('courses', $courses);
+      
+        return view('userCourses')->with('courses', $courses);
         }
 
 }
