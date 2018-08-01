@@ -55,6 +55,10 @@ Route::get('/admin-course', function () {
 
 Route::post('/admin-course', 'coursesController@addCourse');
 
+Route::get('/admin-course', 'coursesController@allCoursesAdmin');
+
+Route::get('/courses/deleteCourse', 'coursesController@deleteCourse')->name('courses.deleteCourse');
+
 Route::get('/admin-user', function () {
     return view('/admin/user');
 });

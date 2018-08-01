@@ -289,7 +289,7 @@
                             <a href="{{ url('/admin-addcourse') }}" class="col-md-2 col-md-offset-10">Add Course</a>
                         </div>
                         <div class="card-body">
-                  <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                  <table id="bootstrap-data-table" class="table table-striped table-bordered coursesTable">
                     <thead>
                       <tr>
                         <th scope="col-md-1">#</th>
@@ -304,18 +304,23 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr> 
+                    @foreach($courses as $cour)
+                      <tr id="course-{{ $cour['c_id'] }}"> 
                         <td scope="row"><input type="checkbox" class="check" /></td>
-                        <td><a href="{{ url('/Reg-User')}}">Tiger Nixon</a></td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>$320,800</td>
-                        <td>$320,800</td>
-                        <td>$320,800</td>
-                        <td>$320,800</td>
-                        <td><span class="ti-trash" title="Delete"></span> <span class="ti-pencil" title="Edit"></span></td>
+                        <td><a href="{{ url('/Reg-User')}}">{{ $cour['CourseName'] }}</a></td>
+                        <td>{{ $cour['Description'] }}</td>
+                        <td>{{ $cour['Rate'] }}</td>
+                        <td>{{ $cour['VideoInduction'] }}</td>
+                        <td>{{ $cour['Certificate'] }}</td>
+                        <td>{{ $cour['InstructorName'] }}</td>
+                        <td>{{ $cour['Pdf'] }}</td>
+                        <td>
+                            <a href = "javascript:DeleteCourse({{ $cour['ID'] }})" class="ti-trash" title="Delete"></a>
+                            <a class="ti-pencil" title="Edit"></a>
+                        </td>
                       </tr>
-                      
+                    @endforeach
+
                     </tbody>
                   </table>
                         </div>
@@ -359,6 +364,21 @@
         $("#checkAll").click(function () {
             $(".check").prop('checked', $(this).prop('checked'));
         });
+
+        function DeleteCourse(id) {
+            var check = confirm("Are You sure You want to permanently delete this course?");
+            if (check === true) {
+                $.ajax({
+                    url: "{{ route('courses.deleteCourse') }}",
+                    method: "get",
+                    data:{id: id},
+                    success: function () {
+                        //$("#course-" + id).remove();
+                        $('.coursesTable').DataTable().ajax.reload();
+                    }
+                });
+            }
+        }
 
     </script>
 
