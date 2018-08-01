@@ -100,8 +100,20 @@ public function searchCourse($course)
     }
     
 
+    public function allCoursesAdmin()
+    {
+        $courses = courses::all();
+
+        return view('/admin/course')->with('courses',$courses);
+    }
+
+    public function deleteCourse(Request $request){
+
+        courses::destroy($request->input('id'));
+    }
+
     public function addCourse(Request $request){
-        
+
         $c_name = $request->input('c_name');
         $c_desc = $request->input('c_description');
         $inst_name = $request->input('inst_name');
