@@ -82,4 +82,18 @@ class consultationController extends Controller
     {
         //
     }
+
+    public function allConsultation()
+    {
+        $consultation = consultation::all();
+
+        return view('consultation')->with('consult',$consultation);
+    }
+
+    // public function allMyConsultation()
+    // {
+    //     $mycons = consultation::all();
+
+    //     return view('consultation')->with('consultation',$consultation);
+    // }
 }

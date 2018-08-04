@@ -33,9 +33,13 @@ Route::get('/courseList/{course_id}' , function($course_id){
     return view('courseList');
 });
 
-Route::get('/consultation', function () {
-    return view('consultation');
-});
+
+Route::get('/consultation',"consultationController@allConsultation");
+
+
+// Route::get('/myconsultation', function () {
+//     return view('myconsultation');
+// });
 
 Route::get('/sidebar-right', function () {
     return view('sidebar-right');

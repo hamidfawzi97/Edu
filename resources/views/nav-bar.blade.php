@@ -35,7 +35,8 @@
                     <li id="About"><a href={{ url('/about') }}>About</a></li>
                     <li id="Courses"><a href={{ url('/courses') }}>Courses</a></li>
                     <li id="Consultations"><a href={{ url('/consultation') }}>Consultations</a></li>
-                    <li id="mycourses"><a href={{ url('/mycourses') }}>MyCourses</a></li>
+                    <li id="MyConsultations"><a href={{ url('/myconsultation') }}>My Consultations</a></li>
+                    <li id="mycourses"><a href={{ url('/mycourses') }}>My Courses</a></li>
                     <li id="Contact"><a href={{ url('/contact') }}>Contact</a></li>
 <!--
                     <li class="dropdown">

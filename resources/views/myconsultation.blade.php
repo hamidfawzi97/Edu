@@ -43,18 +43,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="conatainer">   
                 
             <div class="consultations col-md-12">
-
-            @foreach ($consult as $cons)
                 <div class="row">
                     <div class="consultation col-md-10 col-md-offset-1">   
                         <div class="cons_picture col-md-3">
                             <img class="cons_img" src="{{ asset('images/photo-3.jpg')}}"></div>
-                        <div class="question col-md-10">
-                            <p>{{$cons['Question']}}</p>
-                        </div>
+                        <div class="question col-md-10"><p> i need help could you please help me i cant get off the bed aaa iam so stuck in this shit</p></div>
                     </div>
                 </div>
-            @endforeach
+                <div class="row">
+                    <div class="consultation col-md-10 col-md-offset-1">   
+                        <div class="cons_picture col-md-3">
+                            <img class="cons_img" src="{{ asset('images/photo-3.jpg')}}"></div>
+                        <div class="question col-md-10"><p> i need help could you please help me i cant get off the bed aaa iam so stuck in this shit</p></div>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="consultation col-md-10 col-md-offset-1">   
+                        <div class="cons_picture col-md-3">
+                            <img class="cons_img" src="{{ asset('images/photo-3.jpg')}}"></div>
+                        <div class="question col-md-10"><p> i need help could you please help me i cant get off the bed aaa iam so stuck in this shit</p></div>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="consultation col-md-10 col-md-offset-1">   
+                        <div class="cons_picture col-md-3">
+                            <img class="cons_img" src="{{ asset('images/photo-3.jpg')}}"></div>
+                        <div class="question col-md-10"><p> i need help could you please help me i cant get off the bed aaa iam so stuck in this shit</p></div>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="consultation col-md-10 col-md-offset-1">   
+                        <div class="cons_picture col-md-3">
+                            <img class="cons_img" src="{{ asset('images/photo-3.jpg')}}"></div>
+                        <div class="question col-md-10"><p> i need help could you please help me i cant get off the bed aaa iam so stuck in this shit</p></div>
+                    </div>
+                </div>
             </div>
             
             
