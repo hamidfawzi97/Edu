@@ -87,7 +87,7 @@ class consultationController extends Controller
     {
         $consultation = consultation::all();
 
-        return view('consultation')->with('consult',$consultation);
+        return view('user/Consultations/consultation')->with('consult',$consultation);
     }
 
     // public function allMyConsultation()

@@ -31,16 +31,15 @@
             
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-nav pull-right mainNav">
-                    <li id="Home"><a href={{ url('/') }}>Home</a></li>
-                    <li id="About"><a href={{ url('/about') }}>About</a></li>
-                    <li id="Courses"><a href={{ url('/courses') }}>Courses</a></li>
-                    <li id="Consultations"><a href={{ url('/consultation') }}>Consultations</a></li>
-                    <li id="MyConsultations"><a href={{ url('/myconsultation') }}>My Consultations</a></li>
-                    <li id="mycourses"><a href={{ url('/mycourses') }}>My Courses</a></li>
-                    <li id="Contact"><a href={{ url('/contact') }}>Contact</a></li>
+                    <li id="Home"><a href="{{ url('/') }}">Home</a></li>
+                    <!-- <li id="About"><a href={{ url('/about') }}>About</a></li> -->
+                    <li id="Courses"><a href="{{ url('/courses') }}">Courses</a></li>
+                    <li id="Consultations"><a href="{{ url('/consultation') }}">Consultations</a></li>
+                    <li id="MyConsultations"><a href="{{ url('/myconsultation') }}">My Consultations</a></li>
+                    <!-- <li id="Contact"><a href={{ url('/contact') }}>Contact</a></li> -->
 <!--
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropsdown">Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="sidebar-right.html">Right Sidebar</a></li>
                             <li><a href="#">Dummy Link1</a></li>

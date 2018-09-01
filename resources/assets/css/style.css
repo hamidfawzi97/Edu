@@ -1011,6 +1011,12 @@ list-style: none;
 	}
 }
 
-
-
+.category_head {
+	text-align: center;
+    background-color: #3d84e6;
+    color: white;
+    min-height: 50px;
+    border-radius: 10px 10px 0 0;
+    font-size: 18px;
+}
 /* Style of Admin*/

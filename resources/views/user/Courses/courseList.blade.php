@@ -1,9 +1,4 @@
-<!--
-Author: WebThemez
-Author URL: http://webthemez.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,13 +23,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body>
 	<!-- Fixed navbar -->
-	   @include('nav-bar')
+	   @include('user/nav-bar')
 	<!-- /.navbar -->
 
     <header id="head" class="secondary">
         <div class="container">
-            <h1>Video Name</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing eliras scele!</p>
+            <h1> {{ $course['CourseName'] }}</h1>
         </div>
     </header>
 
@@ -97,15 +91,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="row">
 
             <div class="col-md-9 col-md-offset-2">
-                <div class="commentsDiv" style="padding:10px;">
-                    <a href="#">
-                        <img src="{{ asset('images/1.jpg') }}" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
-                        <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
-                    </a>
-                    <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">Comments is here</div>
+                <!-- Comments to view -->
+                <div id="comments">
+
                 </div>
-                <textarea  style="margin-top: 20px;" class="form-control col-md-6" placeholder="Write your comment"></textarea>
-                <input type="submit" name="submit" value="Send" class="btn btn-primary col-md-2" style="margin: 20px; float: right;"/>
+                <!-- Comment add -->
+
+                        <textarea id="textarea" style="margin-top: 20px;" class="form-control col-md-6" name="comment" placeholder="Write your comment"></textarea>
+                        <button id="submit" class="btb btn-primary">Send</button>
+
             </div>
         </div>
 
@@ -256,12 +250,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- End Footer -->
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-    <script>
-        var node = document.getElementById("Contact");
-        node.setAttribute("class", "active");
-    </script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="assets/js/custom.js"></script>
+<script>
+   $(document).ready(function(){
+    $("#submit").click(function(){
+        var text = $('#textarea').val();
+        $.ajax({
+            url:"/addcomment",
+            type:"POST",
+            data:{_token : '<?php echo csrf_token() ?>', comment:text},
+            success:function (data) {
+                  $("#comments").html(data);
+            }
+        })
+    });
+});
+</script>
 </body>
 </html>

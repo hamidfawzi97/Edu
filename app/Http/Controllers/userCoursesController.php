@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\user_courses;
 use App\courses;
 use Illuminate\Http\Request;
-
+use App\Users;
 class userCoursesController extends Controller
 {
     /**
@@ -44,10 +44,19 @@ class userCoursesController extends Controller
      *
      * @param  \App\user_courses  $user_courses
      * @return \Illuminate\Http\Response
+     $flight = App\Flight::where('active', 1)->first();
      */
-    public function show(user_courses $user_courses)
+    public function show($c_id)
     {
-        //
+        $users = array();
+        $course = user_courses::where('Courses_id', $c_id)->first();
+        if(!$course == ''){
+            $users = Users::where('ID',$course->User_id)->get();
+        }else{
+            $users = '';
+        }
+
+      return view('admin/Courses/RegisteredUser')->with('users',$users);
     }
 
     /**
@@ -87,9 +96,9 @@ class userCoursesController extends Controller
      public function userCourse($userid)
     {
       
-        $user = user_courses::where('User_id', $userid)->get();
+        $user = user_courses::where('User_id', $userid)->first();
         foreach ($user as $value) {
-        $courses[] = courses::where('ID',$value['Courses_id'])->first();            
+            $courses[] = courses::where('ID',$value['Courses_id'])->get();            
        }
       
         return view('userCourses')->with('courses', $courses);

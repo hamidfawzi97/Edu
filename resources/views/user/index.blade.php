@@ -28,7 +28,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<!-- Fixed navbar -->
 	
-        @include('nav-bar')
+        @include('user/nav-bar')
     
 	<!-- /.navbar -->
 
