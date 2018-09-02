@@ -102,22 +102,28 @@
     });
 
      $(document).on('click', '.delete', function() { 
-            var com_id = $(this).attr('id');
-            $.ajax({
-            url:"/deletecomment",
-            type:"GET",
-            data:{_token : '<?php echo csrf_token() ?>', comment:com_id},
-            success:function (data) {
 
-                   $("#comments").html(data);
+            var com_id = $(this).attr('id');
+            var confir = confirm('Ary you sure you want delete this comment?');
+            if(confir){
+                      $.ajax({
+                      url:"/deletecomment",
+                     type:"GET",
+                      data:{_token : '<?php echo csrf_token() ?>', comment:com_id},
+                      success:function (data) {
+
+                             $("#comments").html(data);
+                             }
+                     })
+            }else{
+                
             }
-        })
     });
 
     $(document).on('click', '.edit', function() { 
             var com_id = $(this).attr('id');
             var val = $(this).siblings('.com').val();
-            $(this).parent().append('<input type="text" value="'+val+'" class="edt"> <button class="btn btn-primary save" id="'+com_id+'" ">Save</button>');
+            $(this).parent().append('<input type="text" value="'+val+'" class="form-control edt"> <button class="btn btn-primary save" id="'+com_id+'" ">Save</button>');
 
           
     });
