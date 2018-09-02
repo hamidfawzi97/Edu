@@ -14,7 +14,7 @@ class commentController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -49,6 +49,9 @@ class commentController extends Controller
                         <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                     </a>
                     <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$value["Comment"].'</div>
+                    <input type="hidden" class="com" value="'.$value["Comment"].'">
+                    <button id="'.$value['ID'].'" class="btn btn-danger delete">Delete</button>
+                    <button id="'.$value['ID'].'" class="btn btn-success edit">Edit</button>
                 </div>
 
 
@@ -67,7 +70,7 @@ class commentController extends Controller
      */
     public function show(comment $comment)
     {
-        //
+        
     }
 
     /**
@@ -88,9 +91,35 @@ class commentController extends Controller
      * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comment $comment)
+    public function update(Request $request)
     {
-        //
+        $com_id = $request['id'];
+        $com_val = $request['comment'];
+        $com = comment::find($com_id);
+        $com->Comment = $com_val;
+        $com->save();
+        $coms = comment::all();
+        $output = '';
+        foreach ($coms as $value) {
+                $output .= '
+
+                        <div class="commentsDiv" style="padding:10px;">
+                            <a href="#">
+                                <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
+                                <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
+                            </a>
+                            <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$value["Comment"].'</div>
+                            <input type="hidden" class="com" value="'.$value["Comment"].'">
+                             <input type="text" style="display:none;">
+                            <button id="'.$value['ID'].'" class="btn btn-danger delete">Delete</button>
+                            <button id="'.$value['ID'].'" class="btn btn-success edit">Edit</button>
+                        </div>
+
+                        ';
+
+               }
+               
+        return $output;
     }
 
     /**
@@ -99,8 +128,59 @@ class commentController extends Controller
      * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comment $comment)
-    {
-        //
+    public function destroy(Request $request)
+    {       
+        $id = $request['comment'];
+        $comm = comment::find($id);
+        if(!is_null($comm)){
+                $comm->delete();
+                $output = '';
+                $coms = comment::all();
+                foreach ($coms as $value) {
+                   $output .= '
+
+                  <div class="commentsDiv" style="padding:10px;">
+                            <a href="#">
+                                <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
+                                <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
+                            </a>
+                            <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$value["Comment"].'</div>
+                             <input type="text" style="display:none;">
+                             <input type="hidden" class="com" value="'.$value["Comment"].'">
+                            <button id="'.$value['ID'].'" class="btn btn-danger delete">Delete</button>
+                            <button id="'.$value['ID'].'" class="btn btn-success edit">Edit</button>
+                        </div>
+
+
+                        ';
+
+               }
+               
+               return $output;
+        }else{
+            $coms = comment::all();
+                foreach ($coms as $value) {
+                   $output .= '
+
+                  <div class="commentsDiv" style="padding:10px;">
+                            <a href="#">
+                                <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
+                                <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
+                            </a>
+                            <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$value["Comment"].'</div>
+                            <input type="hidden" class="com" value="'.$value["Comment"].'">
+                            <input type="text" style="display:none;">
+                            <button id="'.$value['ID'].'" class="btn btn-danger delete">Delete</button>
+                            <button id="'.$value['ID'].'" class="btn btn-success edit">Edit</button>
+                        </div>
+
+
+                        ';
+
+               }
+               
+               return $output;
+        }
+
     }
 }

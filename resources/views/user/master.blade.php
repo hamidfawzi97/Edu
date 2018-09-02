@@ -186,7 +186,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-   
+   @yield('js')
 	
 </body>
 </html>

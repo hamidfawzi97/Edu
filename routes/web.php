@@ -34,7 +34,15 @@ Route::get('/enroll', function(){
 
 
 
+
+
+
+
+
+
+
 //  ----------------------------- Start Of Courses -------------------------------------------=
+
 
 
 Route::get('/courses',"coursesController@allCourses");
@@ -62,6 +70,11 @@ Route::get('/enroll', function(){
 
 
 
+
+
+
+
+
 //  ----------------------------- Start Of Consultations -------------------------------------=
 Route::get('/consultation',"consultationController@allConsultation");
 
@@ -73,12 +86,25 @@ Route::get('/myconsultation', function () {
 
 
 
+
+
+
+
+
+
+
+
+
+//  ------------------------------- Comments -------------------------------------------------=
+
+
 Route::post('/addcomment' , 'commentController@store');
 
 
+Route::get('/deletecomment', 'commentController@destroy');
 
 
-
+Route::get('/editcomment', 'commentController@update');
 
 
 
@@ -118,12 +144,59 @@ Route::get('/admin-addfield', function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //  ----------------------------- Start Of Consultations -------------------------------------=
 
 Route::get('/admin-consultant', function(){
     return view('/admin/Consultations/consultant');
 });
 //  ------------------------------- End Of Consultations -------------------------------------=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -162,13 +235,15 @@ Route::resource('/Reg-User', 'userCoursesController');
 
 
 
+
+
+
+
+
+
+
+
 //  ----------------------------------------------------------------------------------------------------------------------------------=
 //  ----------------------------------------------- End of Admin --------------------------------------------------------------------
 //  ----------------------------------------------------------------------------------------------------------------------------------=
 
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

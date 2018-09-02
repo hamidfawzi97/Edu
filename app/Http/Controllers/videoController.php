@@ -14,7 +14,7 @@ class videoController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
