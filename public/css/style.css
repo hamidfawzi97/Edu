@@ -1205,13 +1205,17 @@ HEAD
     outline: none;
 }
 .singCourse_price{
-    border-bottom: 1px solid #efefef;
-    padding-bottom: 10px;
+
 }
 .singCourse_price > span {
     font-weight: bold;
     font-size: 18px;
 }
+
+.singCourse_price > p {
+    margin: 0px 0px;
+}
+
 .singCourse_author {
     border-top: 1px solid #efefef;
     display: inline;
@@ -1297,10 +1301,79 @@ HEAD
     background-color: #3d84e6;
     color: white;
     min-height: 50px;
-    border-radius: 10px 10px 0 0;
     font-size: 22px;
     font-family: 'Oswald', sans-serif;
+}
+.category_head h3{
+  position: relative;
+  margin: 10px 0px 0px 0px; 
+  top: 10px;
 }
 .categories{
     border: 1px solid #DDD;
 }
+.singCourse_desc{
+    border-bottom: 1px solid #efefef;
+}
+.category{
+    padding: 0px 0px;
+}
+  input[type=text]{
+    width:100%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+  
+  input[type=text]:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+  }
+  
+  .inputWithIcon input[type=text]{
+    padding-left:40px;
+  }
+  
+  .inputWithIcon{
+    position:relative;
+  }
+  
+
+  
+
+  .inputWithIcon button{
+    position: absolute;
+    left: 0;
+    top: 4px;
+    padding: 9px 8px;
+    color: #aaa;
+    transition: .3s;
+    margin-top: 6px;
+    margin-left: 2px;
+    height: 28px;
+    background-color: white;
+    border: none;
+  }
+
+  .inputWithIcon button:hover{
+    color:dodgerBlue;    
+  }
+  .inputWithIcon input[type=text]:focus + i {
+    color:dodgerBlue;
+  }
+  
+  .inputWithIcon.inputIconBg i{
+    background-color:#aaa;
+    color:#fff;
+    padding:9px 4px;
+    border-radius:4px 0 0 4px;
+  }
+  
+  .inputWithIcon.inputIconBg input[type=text]:focus + i{
+    color:#fff;
+    background-color:dodgerBlue;
+  }

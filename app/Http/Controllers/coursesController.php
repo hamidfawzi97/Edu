@@ -223,8 +223,8 @@ public function searchCourse($course)
     public function allCourses()
     {
         $courses = courses::all();
-
-        return view('user/Courses/courses')->with('courses',$courses);
+        $count = count($courses);
+        return view('user/Courses/courses')->with('courses',$courses)->with('count',$count);
     }
     
 
