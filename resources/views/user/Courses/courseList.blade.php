@@ -124,8 +124,7 @@
             var com_id = $(this).attr('id');
             var val = $(this).siblings('.com').val();
             $(this).parent().append('<input type="text" value="'+val+'" class="form-control edt"> <button class="btn btn-primary save" id="'+com_id+'" ">Save</button>');
-
-          
+            
     });
 
      $(document).on('click', '.save', function() { 

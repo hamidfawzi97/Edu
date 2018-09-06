@@ -178,7 +178,7 @@ class commentController extends Controller
                         ';
 
                }
-               
+
                return $output;
         }
 

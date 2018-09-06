@@ -48,10 +48,10 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="courses">
                     @if(!$courses == '')
                     @foreach($courses as $cour)
-                      <tr id="course-{{ $cour['ID'] }}"> 
+                      <tr id="{{ $cour['ID'] }}"> 
                         <td scope="row"><input type="checkbox" class="check" /></td>
                         <td><a href="{{ action('userCoursesController@show',$cour['ID']) }}">{{ $cour['CourseName'] }}</a></td>
                         <td>{{ $cour['Description'] }}</td>
@@ -111,26 +111,23 @@
             $(".check").prop('checked', $(this).prop('checked'));
         });
 
-       
-         $(".delete").click(function(ev) {
-                var id = $(this).attr('id');
-                var check = confirm("Are You sure You want to permanently delete this course?");
-                if(check){
-                    $.ajax({
-                        url:"{{ route('courses.deleteCourse') }}",
-                        type:"post",
-                        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                        data:{id:id,"_token": "{{ csrf_token() }}"},
-                        success:function (data) {
-                            alert(data);
-                            $('#bootstrap-data-table').DataTable().ajax.reload();
+
+        $(document).on('click', '.delete', function() { 
+
+            var cor_id = $(this).attr('id');
+            var confir = confirm('Ary you sure you want delete this course?');
+            if(confir){
+                      $.ajax({
+                      url:"/deletecourse",
+                      type:"GET",
+                      data:{_token : '<?php echo csrf_token() ?>', course:cor_id},
+                      success:function (data) {
+                             $("#courses").html(data);
                         }
-
-                    });
-                }else{
-                    return false;
-                }
-
-         });
+                     })
+            }else{
+                
+            }
+    });
     </script>
 @endsection

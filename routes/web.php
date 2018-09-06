@@ -56,10 +56,15 @@ Route::get('/download/{arg}','coursesController@donwloadPDF');
 
 Route::get('/mycourses/{id}','userCoursesController@usercourse');
 
+Route::get('/deletecourse','coursesController@deleteCourse');
+
+Route::get('/searchcourse','coursesController@searchCourse');
 
 Route::get('/enroll', function(){
     return view('enrollment');
 });
+
+
 
 
 //  ------------------------------- End Of Courses -------------------------------------------=

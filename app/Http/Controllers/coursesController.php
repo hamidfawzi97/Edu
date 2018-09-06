@@ -212,10 +212,42 @@ class coursesController extends Controller
     }
 
 
-public function searchCourse($course)
+public function searchCourse(Request $request)
     {
-       $courses =  courses::where('CourseName','LIKE','%'.$course.'%')->get();
-       return view('courses')->with('courses',$courses);
+       $query = $request['query'];
+       $courses =  courses::where('CourseName','LIKE','%'.$query.'%')->get();
+       $output = '';
+       $counter = 0;
+       foreach ($courses as $course) {
+           $counter++;
+           $output .='
+                           <div class="col-md-4 col-xs-12">
+                      <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="singCourse_imgarea">
+                          <img src="'.asset('images/'.$course['CourseImg']).'" height="167px">
+                          <div class="mask">                         
+                            <a href="'.action('coursesController@show',$course->ID).'" class="course_more">View Course</a>
+                          </div>
+                        </div>
+                        <div class="singCourse_content">
+                        <h3 class="singCourse_title"><a href="'.action('coursesController@show',$course->ID).'">'.$course["CourseName"].'</a></h3>
+                        <p class="singCourse_desc">'.$course["Description"].'</p>
+                        <p class="singCourse_price" style="margin: 0px 0px;"><span>$'.$course["Price"].'</span></p>
+                        </div>
+                        <div class="singCourse_author">
+                          <img src="'.asset('images/'.$course['InstructorPhoto']).'" alt="img">
+                          <p>'.$course["InstructorName"].'</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    ';
+       }
+
+       $output .=' 
+                    <input type="hidden" value='.$counter.' id="count">
+       ';
+       return $output;
     }
 
     
@@ -236,11 +268,31 @@ public function searchCourse($course)
     }
 
     public function deleteCourse(Request $request){
+        echo $request['course'];
+        $course = courses::find($request['course']);
+        $course->delete();
+        $output = '';
+        $corses = courses::all();
+        foreach ($corses as $cour) {
+            $output .=' 
+                        <tr id="'.$cour["ID"].'"> 
+                        <td scope="row"><input type="checkbox" class="check" /></td>
+                        <td><a href="'.action("userCoursesController@show",$cour["ID"]).'">'.$cour['CourseName'].'</a></td>
+                        <td>'.$cour['Description'].'</td>
+                        <td>'.$cour['Rate'].'</td>
+                        <td>'.$cour['VideoInduction'].'</td>
+                        <td>'.$cour['Certificate'].'</td>
+                        <td>'.$cour['InstructorName'].'</td>
+                        <td>'.$cour['Pdf'].'</td>
+                        <td>
+                            <a href = "#" id="'.$cour['ID'].'" class="ti-trash delete" title="Delete"></a>
+                            <a class="ti-pencil" title="Edit" href="'.action('coursesController@edit',$cour['ID']).'"></a>
+                        </td>
+                      </tr>
 
-        $course = courses::find($request->get('id'));
-        if($course->delete()){
-            return json_encode("Data Deleted");
+                      ';
         }
+        return $output;
     }
 
      public function donwloadPDF($coursepdf)
