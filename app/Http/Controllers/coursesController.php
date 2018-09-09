@@ -307,12 +307,16 @@ public function searchCourse(Request $request)
     public function getCourseByCategory(Request $request)
     {
         $category = $request['category'];
-        $courses = courses::all()->where('Category',$category);
+        $courses = courses::all();
         $counter = 0;
         $output = '';
         foreach ($courses as $course) {
-           $counter++;
-           $output .='
+
+         for ($i=0; $i < sizeof($category); $i++) { 
+             if($course['Category'] == $category[$i]){
+
+                $counter++;
+                $output .='
                            <div class="col-md-4 col-xs-12">
                       <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                         <div class="singCourse_imgarea">
@@ -334,11 +338,15 @@ public function searchCourse(Request $request)
                     </div>
 
                     ';
+             }
+         }
+           
        }
-
        $output .=' 
                     <input type="hidden" value='.$counter.' id="count">
        ';
+       
+
        return $output;
 
     }

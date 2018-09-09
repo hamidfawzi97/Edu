@@ -26,12 +26,35 @@
                     <div class="category_head"><h3>Categories</h3></div>
                     <div class="categories">
                         <ul class="">
-                        <li><input type="checkbox" name="information technology" id="check1"> Information Technology</li>
-                        <li><input type="checkbox" name="project management" id="check2"> Project Management</li>
-                        <li><input type="checkbox" name="management" id="check3"> Management</li>
-                        <li><input type="checkbox" name="human resources" id="check4"> Human Resources</li>
+                        <li>
+                            <label class="checkboxcontainer">Information Technology
+                            <input type="checkbox"  name="information technology" id="check1">
+                            <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkboxcontainer">Project Management
+                            <input type="checkbox"  name="information technology" id="check2">
+                            <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+
+                            <label class="checkboxcontainer">Management
+                            <input type="checkbox"  name="information technology" id="check3">
+                            <span class="checkmark"></span>
+                            </label>
+
+                        </li>
+                        <li>
+                            <label class="checkboxcontainer">Human Resources
+                            <input type="checkbox"  name="information technology" id="check4">
+                            <span class="checkmark"></span>
+                            </label>
+                        </li>
                     </ul>
                     </div>
+                    <button class="buton col-md-3 col-md-offset-9 col-xs-6 col-xs-offset-3" id="cheek">Apply</button>
                 </div>
 
                 <div class="col-md-9 coursesContainer" id="courses">
@@ -61,7 +84,6 @@
                   @endforeach
                 </div>
              </div>
-             <button id="cheek">adada</button>
             </div>
 @endsection
 @section('js')
@@ -80,8 +102,7 @@
                   if ($('#check'+i).is(':checked')) {
                     arr.push($('#check'+i).attr('name'));
                   }
-                }
-                // if(arr.length == 1){
+                }if(arr.length > 0){
                   $.ajax({
                     url:"/getcoursebycategory",
                     type:"GET",
@@ -91,23 +112,21 @@
                        $("#counter").html("<h1> Viewing "+$("#count").val()+" results matching</h1>"); 
                     }
                   });
-                // }
-                // else if(arr.length > 1){
-                //   var out = '';
-                //   for (var i = arr.length - 1; i >= 0; i--) {
-                //         $.ajax({
-                //         url:"/getcoursebycategory",
-                //         type:"GET",
-                //         data:{_token: '<?php echo csrf_token() ?>',category:arr[i]},
-                //         success:function (data){
-                //            out =' '+data+out;
-                //            cont+=$("#count").val();
-                //         }
-                //       });
-                //   }
-                //   $("#courses").html(out);
-                //   // $("#counter").html("<h1> Viewing "++" results matching</h1>");
-                // }
+                }else{
+                  var arr2 = new Array();
+                  for (var i = 0; i <= 4; i++) {
+                    arr2.push($('#check'+i).attr('name'));
+                  }
+                  $.ajax({
+                    url:"/getcoursebycategory",
+                    type:"GET",
+                    data:{_token: '<?php echo csrf_token() ?>',category:arr2},
+                    success:function (data) {
+                       $("#courses").html(data);
+                       $("#counter").html("<h1> Viewing "+$("#count").val()+" results matching</h1>"); 
+                    }
+                  });
+                }
              });
             $(document).on('click', '.search', function() { 
             var query = $("#query").val();
