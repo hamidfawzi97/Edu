@@ -21,6 +21,19 @@ Route::get('/login', function () {
     return view('auth/login');
 })->name('login');
 
+Route::get('/password_reset',function ()
+{
+    return view('auth/passwords/reset');   
+})->name('password.request');
+
+Route::get('/password_email',function(){
+    return view('auth/passwords/email'); 
+})->name('password.email');
+
+Route::get('/register',function (){
+    return view('auth/register');
+})->name('register');
+
 Route::get('/about', function () {
     return view('user/about');
 });
@@ -63,6 +76,8 @@ Route::get('/mycourses/{id}','userCoursesController@usercourse');
 Route::get('/deletecourse','coursesController@deleteCourse');
 
 Route::get('/searchcourse','coursesController@searchCourse');
+
+Route::get('/getcoursebycategory','coursesController@getCourseByCategory');
 
 Route::get('/enroll', function(){
     return view('enrollment');

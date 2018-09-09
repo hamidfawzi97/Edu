@@ -303,6 +303,46 @@ public function searchCourse(Request $request)
 
         return response()->download($file_path);
     }
+
+    public function getCourseByCategory(Request $request)
+    {
+        $category = $request['category'];
+        $courses = courses::all()->where('Category',$category);
+        $counter = 0;
+        $output = '';
+        foreach ($courses as $course) {
+           $counter++;
+           $output .='
+                           <div class="col-md-4 col-xs-12">
+                      <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="singCourse_imgarea">
+                          <img src="'.asset('images/'.$course['CourseImg']).'" height="167px">
+                          <div class="mask">                         
+                            <a href="'.action('coursesController@show',$course->ID).'" class="course_more">View Course</a>
+                          </div>
+                        </div>
+                        <div class="singCourse_content">
+                        <h3 class="singCourse_title"><a href="'.action('coursesController@show',$course->ID).'">'.$course["CourseName"].'</a></h3>
+                        <p class="singCourse_desc">'.$course["Description"].'</p>
+                        <p class="singCourse_price" style="margin: 0px 0px;"><span>$'.$course["Price"].'</span></p>
+                        </div>
+                        <div class="singCourse_author">
+                          <img src="'.asset('images/'.$course['InstructorPhoto']).'" alt="img">
+                          <p>'.$course["InstructorName"].'</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    ';
+       }
+
+       $output .=' 
+                    <input type="hidden" value='.$counter.' id="count">
+       ';
+       return $output;
+
+    }
+
     public function viewCourse($c_id)
     {
            $course = Courses::find($c_id);

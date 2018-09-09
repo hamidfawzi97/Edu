@@ -1346,22 +1346,19 @@ HEAD
   
 
   .inputWithIcon button{
-    position: absolute;
+     position: absolute;
     left: 0;
     top: 4px;
     padding: 9px 8px;
-    color: #aaa;
+    color: #fff;
     transition: .3s;
     margin-top: 6px;
     margin-left: 2px;
-    height: 28px;
-    background-color: white;
+    height: 36px;
+    background-color: #3d84e6;
     border: none;
   }
 
-  .inputWithIcon button:hover{
-    color:dodgerBlue;    
-  }
   .inputWithIcon input[type=text]:focus + i {
     color:dodgerBlue;
   }

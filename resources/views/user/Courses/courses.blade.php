@@ -26,10 +26,10 @@
                     <div class="category_head"><h3>Categories</h3></div>
                     <div class="categories">
                         <ul class="">
-                        <li><input type="checkbox" name="Information Technology"> Information Technology</li>
-                        <li><input type="checkbox" name="Project Management"> Project Management</li>
-                        <li><input type="checkbox" name="Management"> Management</li>
-                        <li><input type="checkbox" name="Human Resources"> Human Resources</li>
+                        <li><input type="checkbox" name="information technology" id="check1"> Information Technology</li>
+                        <li><input type="checkbox" name="project management" id="check2"> Project Management</li>
+                        <li><input type="checkbox" name="management" id="check3"> Management</li>
+                        <li><input type="checkbox" name="human resources" id="check4"> Human Resources</li>
                     </ul>
                     </div>
                 </div>
@@ -61,6 +61,7 @@
                   @endforeach
                 </div>
              </div>
+             <button id="cheek">adada</button>
             </div>
 @endsection
 @section('js')
@@ -72,7 +73,42 @@
             var node = document.getElementById("Courses");
             node.setAttribute("class", "active");
 
-
+             $(document).on('click', '#cheek', function() {
+                var arr = new Array(); 
+                var cont = 0;
+                for (var i = 1; i <= 4; i++) {
+                  if ($('#check'+i).is(':checked')) {
+                    arr.push($('#check'+i).attr('name'));
+                  }
+                }
+                // if(arr.length == 1){
+                  $.ajax({
+                    url:"/getcoursebycategory",
+                    type:"GET",
+                    data:{_token: '<?php echo csrf_token() ?>',category:arr},
+                    success:function (data) {
+                       $("#courses").html(data);
+                       $("#counter").html("<h1> Viewing "+$("#count").val()+" results matching</h1>"); 
+                    }
+                  });
+                // }
+                // else if(arr.length > 1){
+                //   var out = '';
+                //   for (var i = arr.length - 1; i >= 0; i--) {
+                //         $.ajax({
+                //         url:"/getcoursebycategory",
+                //         type:"GET",
+                //         data:{_token: '<?php echo csrf_token() ?>',category:arr[i]},
+                //         success:function (data){
+                //            out =' '+data+out;
+                //            cont+=$("#count").val();
+                //         }
+                //       });
+                //   }
+                //   $("#courses").html(out);
+                //   // $("#counter").html("<h1> Viewing "++" results matching</h1>");
+                // }
+             });
             $(document).on('click', '.search', function() { 
             var query = $("#query").val();
             if(query != ''){
