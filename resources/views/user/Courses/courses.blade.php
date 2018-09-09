@@ -129,19 +129,40 @@
                 }
              });
             $(document).on('click', '.search', function() { 
-            var query = $("#query").val();
-            if(query != ''){
-                      $.ajax({
-                      url:"/searchcourse",
-                      type:"GET",
-                      data:{_token : '<?php echo csrf_token() ?>', query:query},
-                      success:function (data) {
-                          $("#courses").html(data);
-                          $("#counter").html("<h1> Viewing "+$("#count").val()+" results matching</h1>");
-                      }
-                     })
-            } 
+              var query = $("#query").val();
+              if(query != ''){
+                        $.ajax({
+                        url:"/searchcourse",
+                        type:"GET",
+                        data:{_token : '<?php echo csrf_token() ?>', query:query},
+                        success:function (data) {
+                            $("#courses").html(data);
+                            $("#counter").html("<h1> Viewing "+$("#count").val()+" results matching</h1>");
+                        }
+                       })
+              } 
              });
+
+            $('#query').bind("enterKey",function(e){
+              var query = $("#query").val();
+              if(query != ''){
+                        $.ajax({
+                        url:"/searchcourse",
+                        type:"GET",
+                        data:{_token : '<?php echo csrf_token() ?>', query:query},
+                        success:function (data) {
+                            $("#courses").html(data);
+                            $("#counter").html("<h1> Viewing "+$("#count").val()+" results matching</h1>");
+                        }
+                       })
+              } 
+            });
+            $('#query').keyup(function(e){
+                if(e.keyCode == 13)
+                {
+                    $(this).trigger("enterKey");
+                }
+            });            
 
         </script>
 @endsection
