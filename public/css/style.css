@@ -1259,8 +1259,9 @@ HEAD
 }
 
 .commentsDiv{
-    border: 1px solid black;
-    box-shadow:0 0 5px 1px rgba(0,0,0,.8);
+    margin: 10px 0px 10px 0px;
+    min-height: 150px;
+    box-shadow:0 0 5px 1px rgba(0,0,0,.5);
 }
 
 .courseQuizAside{

@@ -44,14 +44,23 @@ class commentController extends Controller
           $output .= '
 
           <div class="commentsDiv" style="padding:10px;">
+                    <div class = "btn-group" style="float:right;">
+                     <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
+                            <span class = "fa fa-ellipsis-h"></span>
+                            </button>
+                         <ul class = "dropdown-menu" role = "menu" style="min-width: 93px;">
+                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
+                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit">Edit</a></li>
+                         </ul>
+                     </div>
                     <a href="#">
                         <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                         <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                     </a>
                     <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$value["Comment"].'</div>
                     <input type="hidden" class="com" value="'.$value["Comment"].'">
-                    <button id="'.$value['ID'].'" class="btn btn-danger delete">Delete</button>
-                    <button id="'.$value['ID'].'" class="btn btn-success edit">Edit</button>
+                    
+                    
                 </div>
 
 
