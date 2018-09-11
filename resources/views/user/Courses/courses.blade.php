@@ -34,21 +34,21 @@
                         </li>
                         <li>
                             <label class="checkboxcontainer">Project Management
-                            <input type="checkbox"  name="project management" id="check2">
+                            <input type="checkbox"  name="information technology" id="check2">
                             <span class="checkmark"></span>
                             </label>
                         </li>
                         <li>
 
                             <label class="checkboxcontainer">Management
-                            <input type="checkbox"  name="management" id="check3">
+                            <input type="checkbox"  name="information technology" id="check3">
                             <span class="checkmark"></span>
                             </label>
 
                         </li>
                         <li>
                             <label class="checkboxcontainer">Human Resources
-                            <input type="checkbox"  name="human resources" id="check4">
+                            <input type="checkbox"  name="information technology" id="check4">
                             <span class="checkmark"></span>
                             </label>
                         </li>
@@ -90,7 +90,7 @@
             <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/custom.js')}}"></script>
+    <script src="assets/js/custom.js"></script>
         <script type="text/javascript">
             var node = document.getElementById("Courses");
             node.setAttribute("class", "active");
