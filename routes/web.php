@@ -17,23 +17,6 @@ Route::get('/', function () {
     return view('user/index');
 });
 
-Route::get('/login', function () {
-    return view('auth/login');
-})->name('login');
-
-Route::get('/password_reset',function ()
-{
-    return view('auth/passwords/reset');   
-})->name('password.request');
-
-Route::get('/password_email',function(){
-    return view('auth/passwords/email'); 
-})->name('password.email');
-
-Route::get('/register',function (){
-    return view('auth/register');
-})->name('register');
-
 Route::get('/about', function () {
     return view('user/about');
 });
@@ -271,3 +254,7 @@ Route::resource('/Reg-User', 'userCoursesController');
 //  ----------------------------------------------- End of Admin --------------------------------------------------------------------
 //  ----------------------------------------------------------------------------------------------------------------------------------=
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
