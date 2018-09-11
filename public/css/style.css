@@ -1320,7 +1320,7 @@ HEAD
 .category{
     padding: 0px 0px;
 }
-/*  input[type=text]{
+  .searchInput{
     width:100%;
     border:2px solid #aaa;
     border-radius:4px;
@@ -1330,7 +1330,7 @@ HEAD
     box-sizing:border-box;
     transition:.3s;
   }
-*/  
+  
   input[type=text]:focus{
     border-color:dodgerBlue;
     box-shadow:0 0 8px 0 dodgerBlue;

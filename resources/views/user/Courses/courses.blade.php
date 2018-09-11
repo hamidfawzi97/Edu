@@ -10,7 +10,7 @@
                                   <label>Search:</label>
                                   <div class="input-group col-md-12 col-xs-12">
                                     <div class="inputWithIcon dam">
-                                        <input type="text" placeholder="Search" id="query">
+                                        <input type="text" placeholder="Search" id="query" class="searchInput">
                                         <button class="search">
                                             <i class="fa fa-search fa-lg fa-fw" aria-hidden="true"></i>
                                         </button>
