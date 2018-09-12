@@ -281,6 +281,7 @@
             <p>{{$message}}</p>
         </div>
         @endif
+        <div id="itfieldsSpan"></div>
 
         <div class="content mt-3">
             <div class="animated fadeIn">
@@ -294,28 +295,25 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                              <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                              <table id="it_fields" class="table table-striped table-bordered">
                                 <thead>
                                     <th style="text-align: center;">Field Name</th>
                                     <th style="text-align: center;">Features</th>
                                     <th style="text-align: center;">Edit / Delete</th>
                                 </thead>
                                 <tbody>
+                                    @if(!$itField == '')
                                     @foreach($itField as $it)
                                     <tr>
                                         <td style="text-align: center;">{{$it['Category']}}</td>
                                         <td style="text-align: center; white-space: pre;">{{$it['Feutures']}}</td>
                                         <td style="text-align: center;">
                                             <a href="{{action('itFieldController@edit', $it['ID'])}}" class="btn btn-success" style="border-radius: 5px;">Edit</a>
-
-                                            <form method="post" class="delete_form" action="{{ action('itFieldController@destroy', $it['ID'])}}" style="display: inline;">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <input type="submit" value="Delete" class="btn btn-danger" style="border-radius: 5px;">
-                                            </form>
+                                            <a id="{{ $it['ID'] }}" class="ti-trash delete" title="Delete"></a>
                                         </td>
                                     </tr>
                                     @endforeach
+                                    @endif
                                 </tbody>
                               </table>
                             </div>
@@ -349,16 +347,38 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".delete_form").on('submit' , function() {
-                var con = confirm("Do You Want To Delete This Field ?");
-                if(con){
-                    return true;
-                }else{
-                    return false;
-                }
-            });
-            $('#bootstrap-data-table-export').DataTable();
+            // $(".delete_form").on('submit' , function() {
+            //     var con = confirm("Do You Want To Delete This Field ?");
+            //     if(con){
+            //         return true;
+            //     }else{
+            //         return false;
+            //     }
+            // });
+            table = $('#it_fields').DataTable();
+        
+
+        $('.delete').on('click', function() { 
+
+            var it_id = $(this).attr('id');
+            var confir = confirm('Ary you sure you want delete this IT Field?');
+            if(confir){
+                      $.ajax({
+                      url:"/deleteitfield",
+                      type:"GET",
+                      data:{_token : '{{ csrf_token() }}', it_id: it_id},
+                      success:function (data) {
+                            $("#itfieldsSpan").append(data);
+                            // table.destroy();
+                            // table = $('#it_fields').DataTable();
+                            table.ajax.reload();
+                        }
+                     })
+            }else{
+                
+            }
         });
+    });
     </script>
 
 

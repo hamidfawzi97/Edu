@@ -113,23 +113,10 @@ Route::get('/admin-adduser', function () {
 })->middleware('auth');
 
 
-<<<<<<< HEAD
-Route::resource('it_fields', 'itFieldController');
-=======
 
-Route::get('/admin-it-fields', function () {
-    return view('/admin/IT_Fields/it_fields');
-})->middleware('auth');
+Route::resource('it_fields', 'itFieldController')->middleware('auth');
 
-Route::get('/admin-addfield', function () {
-    return view('/admin/IT_Fields/addfield');
-})->middleware('auth');
-
->>>>>>> 5f8a47d65b3d51ca2fca39848099493ae5e9466c
-
-
-
-
+Route::get('/deleteitfield','itFieldController@destroy');
 
 
 //  ----------------------------- Start Of Consultations -------------------------------------=

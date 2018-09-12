@@ -104,10 +104,14 @@ class itFieldController extends Controller
      * @param  \App\itfield  $itfield
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $id = $request['it_id'];
+        
         $it = itfield::Where('ID',$id)->delete();
         
-        return redirect()->route('it_fields.index')->with('success', 'Deleted Successfully !!');
+        // return redirect()->route('it_fields.index')->with('success', 'Deleted Successfully !!');
+        $output = '<span class="alert alert-success">Deleted Successfully !!</span>';
+        return $output;
     }
 }
