@@ -14,7 +14,9 @@ class itFieldController extends Controller
      */
     public function index()
     {
-        //
+        $itField = itfield::all();
+
+        return view('admin/IT_Fields/index', compact('itField'));
     }
 
     /**
@@ -24,7 +26,7 @@ class itFieldController extends Controller
      */
     public function create()
     {
-        //
+        return view('/admin/IT_Fields/addfield');
     }
 
     /**
@@ -35,7 +37,19 @@ class itFieldController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request , [
+            'fieldname' => 'required',
+            'features'  => 'required'
+        ]);
+
+        $it = new itfield([
+            'Category' => $request->get('fieldname'),
+            'Feutures' => $request->get('features')
+        ]);
+        
+        $it->save();
+
+        return redirect()->route('it_fields.index')->with('success', 'IT Field Added !!');
     }
 
     /**
@@ -55,9 +69,11 @@ class itFieldController extends Controller
      * @param  \App\itfield  $itfield
      * @return \Illuminate\Http\Response
      */
-    public function edit(itfield $itfield)
+    public function edit($id)
     {
-        //
+        $it = itfield::find($id);
+
+        return view('admin/IT_Fields/editfield', compact('it'));
     }
 
     /**
@@ -67,9 +83,19 @@ class itFieldController extends Controller
      * @param  \App\itfield  $itfield
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, itfield $itfield)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request , [
+            'fieldname' => 'required',
+            'features'  => 'required'
+        ]);
+
+        $it = itfield::where('ID', $id)->update([
+            'Category' => $request->get('fieldname'),
+            'Feutures' => $request->get('features')
+        ]);
+
+        return redirect()->route('it_fields.index')->with('success', 'IT Field Edited !!');
     }
 
     /**
@@ -78,8 +104,10 @@ class itFieldController extends Controller
      * @param  \App\itfield  $itfield
      * @return \Illuminate\Http\Response
      */
-    public function destroy(itfield $itfield)
+    public function destroy($id)
     {
-        //
+        $it = itfield::Where('ID',$id)->delete();
+        
+        return redirect()->route('it_fields.index')->with('success', 'Deleted Successfully !!');
     }
 }

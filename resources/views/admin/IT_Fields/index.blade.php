@@ -6,21 +6,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>IT Fields</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="{{ asset('admin/css/normalize.css')}}"> 
-    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/lib/datatable/dataTables.bootstrap.min.css')}}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="{{ asset('admin/scss/style.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/scss/style.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -28,6 +29,7 @@
 
 </head>
 <body>
+        
         <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
@@ -37,8 +39,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="{{ asset('images/logo.png')}}" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="{{ asset('images/logo2.png')}}" alt="Logo"></a>
+                <a class="navbar-brand" href="#"><img src="{{ asset('images/logo.png')}}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="#"><img src="{{ asset('images/logo2.png')}}" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -63,14 +65,14 @@
                             <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children dropdown">
+                    <li class="menu-item-has-children active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children active dropdown">
+                    <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
@@ -250,7 +252,8 @@
                 </div>
             </div>
 
-        </header><!-- /header -->
+        </header>
+        <!-- /header -->
         <!-- Header-->
 
         <div class="breadcrumbs">
@@ -265,59 +268,98 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                             <li><a href="#">Dashboard</a></li>
-                            <li href="">IT Field</li>
-                            <li class="active">Add IT Field</li>
+                            <li><a href="#">Dashboard</a></li>
+                            <li class="active">IT Field Table</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
 
+        @if($message = Session::get('success'))
+        <div class="col-sm-12 alert alert-success" style="margin: auto;">
+            <p>{{$message}}</p>
+        </div>
+        @endif
+
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-                  <div class="col-lg-12" style="margin: auto;">
-                    <div class="card">
-                      <div class="card-header">Add IT Field</div>
-                      <div class="card-body card-block">
-                        <form action="{{ action('itFieldController@store')}}" method="post">
-                            {{csrf_field()}}
-                          <div class="form-group">
-                            <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                              <input type="text" id="fieldname" name="fieldname" required="" placeholder="Field Name" class="form-control">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">IT Field Table</strong>
+                                <div style="float: right;">
+                                <a class="btn btn-primary" href="{{ route('it_fields.create')}}" style="border-radius: 5px;"> Add Field</a>
+                                </div>
                             </div>
-                          </div>
+                            <div class="card-body">
+                              <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <thead>
+                                    <th style="text-align: center;">Field Name</th>
+                                    <th style="text-align: center;">Features</th>
+                                    <th style="text-align: center;">Edit / Delete</th>
+                                </thead>
+                                <tbody>
+                                    @foreach($itField as $it)
+                                    <tr>
+                                        <td style="text-align: center;">{{$it['Category']}}</td>
+                                        <td style="text-align: center; white-space: pre;">{{$it['Feutures']}}</td>
+                                        <td style="text-align: center;">
+                                            <a href="{{action('itFieldController@edit', $it['ID'])}}" class="btn btn-success" style="border-radius: 5px;">Edit</a>
 
-                          <div class="form-group">
-                            <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                              <textarea id="features" name="features" placeholder="Features" required="" class="form-control" rows="4" style="resize: none;"></textarea>
+                                            <form method="post" class="delete_form" action="{{ action('itFieldController@destroy', $it['ID'])}}" style="display: inline;">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <input type="submit" value="Delete" class="btn btn-danger" style="border-radius: 5px;">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                              </table>
                             </div>
-                          </div>
-                          
-                          <div class="form-actions form-group">
-                            <input type="submit" name="submit" class="btn btn-success btn-sm" value="Add" style="font-size: 20px;float: right;padding-left: 25px;padding-right: 25px;border-radius: 5px;">
-                          </div>
-                        </form>
-                      </div>
+                        </div>
                     </div>
-                  </div>
                 </div> <!-- row -->
             </div><!-- .animated -->
         </div><!-- .content -->
 
 
-    </div><!-- /#right-panel -->
-
-    <!-- Right Panel -->
+    </div> <!-- Right Panel -->
 
 
-    <script src="{{ asset('admin/js/vendor/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{ asset('admin/js/vendor/jquery-2.1.4.min.js')}}"></script> 
     <script src="{{ asset('admin/js/popper.min.js')}}"></script>
     <script src="{{ asset('admin/js/plugins.js')}}"></script>
     <script src="{{ asset('admin/js/main.js')}}"></script>
+
+
+    <script src="{{ asset('admin/js/lib/data-table/datatables.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/jszip.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/pdfmake.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/vfs_fonts.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/buttons.html5.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/buttons.print.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/buttons.colVis.min.js')}}"></script>
+    <script src="{{ asset('admin/js/lib/data-table/datatables-init.js')}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".delete_form").on('submit' , function() {
+                var con = confirm("Do You Want To Delete This Field ?");
+                if(con){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+            $('#bootstrap-data-table-export').DataTable();
+        });
+    </script>
 
 
 </body>

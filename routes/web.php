@@ -113,15 +113,7 @@ Route::get('/admin-adduser', function () {
 });
 
 
-
-Route::get('/admin-it-fields', function () {
-    return view('/admin/IT_Fields/it_fields');
-});
-
-Route::get('/admin-addfield', function () {
-    return view('/admin/IT_Fields/addfield');
-});
-
+Route::resource('it_fields', 'itFieldController');
 
 
 
