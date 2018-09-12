@@ -38,16 +38,16 @@ Route::get('/enroll', function(){
 //  ----------------------------- Start Of Courses -------------------------------------------=
 
 
-Route::get('/courses',"coursesController@allCourses");
+Route::get('/courses',"coursesController@allCourses")->middleware('auth');
 
 // Route::get('/course/{id}'
 
-Route::get('/courseList/{course_id}','coursesController@viewCourse');
+Route::get('/courseList/{course_id}','coursesController@viewCourse')->middleware('auth');
 
 Route::get('/download/{arg}','coursesController@donwloadPDF');
 
 
-Route::get('/mycourses/{id}','userCoursesController@usercourse');
+Route::get('/mycourses/{id}','userCoursesController@usercourse')->middleware('auth');
 
 Route::get('/deletecourse','coursesController@deleteCourse');
 
@@ -67,12 +67,12 @@ Route::get('/enroll', function(){
 
 
 //  ----------------------------- Start Of Consultations -------------------------------------=
-Route::get('/consultation',"consultationController@allConsultation");
+Route::get('/consultation',"consultationController@allConsultation")->middleware('auth');
 
 
 Route::get('/myconsultation', function () {
     return view('user/Consultations/myconsultation');
-});
+})->middleware('auth');
 //  ------------------------------- End Of Consultations -------------------------------------=
 
 
@@ -101,26 +101,26 @@ Route::get('/editcomment', 'commentController@update');
 //  ------------------------------------------------------------------------------------------=
 Route::get('/admi', function () {
     return view('/admin/admin');
-});
+})->middleware('auth');
 
 
 Route::get('/admin-user', function () {
     return view('/admin/Adminstration/user');
-});
+})->middleware('auth');
 
 Route::get('/admin-adduser', function () {
     return view('/admin/Adminstration/adduser');
-});
+})->middleware('auth');
 
 
 
 Route::get('/admin-it-fields', function () {
     return view('/admin/IT_Fields/it_fields');
-});
+})->middleware('auth');
 
 Route::get('/admin-addfield', function () {
     return view('/admin/IT_Fields/addfield');
-});
+})->middleware('auth');
 
 
 
@@ -132,7 +132,7 @@ Route::get('/admin-addfield', function () {
 
 Route::get('/admin-consultant', function(){
     return view('/admin/Consultations/consultant');
-});
+})->middleware('auth');
 //  ------------------------------- End Of Consultations -------------------------------------=
 
 
@@ -141,13 +141,13 @@ Route::get('/admin-consultant', function(){
 
 Route::get('/admin-addcourse', function(){
     return view('/admin/Courses/addcourse');
-});
+})->middleware('auth');
 
 Route::resource('admin/Courses','coursesController');
 
 Route::get('/admin-course', function () {
     return view('/admin/course');
-});
+})->middleware('auth');
 
 Route::post('/admin-course', 'coursesController@addCourse');
 
