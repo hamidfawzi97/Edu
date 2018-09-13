@@ -27,28 +27,28 @@
                     <div class="categories">
                         <ul class="">
                         <li>
-                            <label class="checkboxcontainer">Information Technology
-                            <input type="checkbox"  name="information technology" id="check1">
+                            <label class="checkboxcontainer">Computer Science
+                            <input type="checkbox"  name="computer science" id="check1">
                             <span class="checkmark"></span>
                             </label>
                         </li>
                         <li>
                             <label class="checkboxcontainer">Project Management
-                            <input type="checkbox"  name="information technology" id="check2">
+                            <input type="checkbox"  name="project management" id="check2">
                             <span class="checkmark"></span>
                             </label>
                         </li>
                         <li>
 
                             <label class="checkboxcontainer">Management
-                            <input type="checkbox"  name="information technology" id="check3">
+                            <input type="checkbox"  name="management" id="check3">
                             <span class="checkmark"></span>
                             </label>
 
                         </li>
                         <li>
                             <label class="checkboxcontainer">Human Resources
-                            <input type="checkbox"  name="information technology" id="check4">
+                            <input type="checkbox"  name="human resources" id="check4">
                             <span class="checkmark"></span>
                             </label>
                         </li>

@@ -35,6 +35,13 @@
                                 {{ csrf_field() }}
                                 <input type="text" name="c_name" placeholder="Course Name" class="form-control col-md-4" required="" /><br>
                                 <textarea rows="4" name="c_description" placeholder="Description" class="form-control col-md-4" style="resize:none;" required=""></textarea><br>
+                                <label>Category</label>
+                                <select name="category" class="form-control col-md-4">
+                                  <option value="computer science">Computer Science</option>
+                                  <option value="project management">Project Management</option>
+                                  <option value="management">Management</option>
+                                  <option value="human resources">Human Resources</option>
+                                </select><br>
                                 <input type="text" name="inst_name" placeholder="Instructor Name" class="form-control col-md-4" required="" /><br>
                                 <input type="number" name="price" placeholder="Price" class="form-control col-md-4" required="" /><br>  
                                 <label for="c_demoVideo">Demo Video</label>

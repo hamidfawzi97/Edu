@@ -47,6 +47,7 @@ class coursesController extends Controller
         $ins_img = $request->file('ins_img');
         $price = $request->input('price');
         $c_img = $request->file('c_img');
+        $c_category = $request->get('category');
 
         if($request->filled('c_name') && $request->filled('c_description') && $request->filled('inst_name') && $c_video && $certificate && $c_pdf){
 
@@ -70,6 +71,7 @@ class coursesController extends Controller
                     $course->CourseName = $c_name;
                     $course->Description = $c_desc;
                     $course->InstructorName = $inst_name;
+                    $course->Category = $c_category;
                     $course->Price = $price;
                     $course->CourseImg = $cours_img;
                     $c_img->move('images' , $cours_img);
@@ -132,6 +134,7 @@ class coursesController extends Controller
 
         $c_name = $request->input('c_name');
         $c_desc = $request->input('c_description');
+        $c_category = $request->get('category');
         $inst_name = $request->input('inst_name');
         $c_video = $request->file('c_demoVideo');
         $certificate = $request->file('certificate');
@@ -162,6 +165,7 @@ class coursesController extends Controller
 
                     $course = Courses::find($course_id);
                     $course->CourseName = $c_name;
+                    $course->Category = $c_category;
                     $course->Description = $c_desc;
                     $course->InstructorName = $inst_name;
                     $course->Price = $price;
