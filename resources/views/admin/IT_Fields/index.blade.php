@@ -301,7 +301,7 @@
                                     <th style="text-align: center;">Features</th>
                                     <th style="text-align: center;">Edit / Delete</th>
                                 </thead>
-                                <tbody>
+                                <tbody id="fields">
                                     @if(!$itField == '')
                                     @foreach($itField as $it)
                                     <tr>
@@ -368,10 +368,11 @@
                       type:"GET",
                       data:{_token : '{{ csrf_token() }}', it_id: it_id},
                       success:function (data) {
-                            $("#itfieldsSpan").append(data);
+                            $('#fields').html(data);
+                            //$("#itfieldsSpan").append(data);
                             // table.destroy();
                             // table = $('#it_fields').DataTable();
-                            table.ajax.reload();
+                            //table.ajax.reload();
                         }
                      })
             }else{

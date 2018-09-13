@@ -107,11 +107,43 @@ class itFieldController extends Controller
     public function destroy(Request $request)
     {
         $id = $request['it_id'];
-        
-        $it = itfield::Where('ID',$id)->delete();
-        
-        // return redirect()->route('it_fields.index')->with('success', 'Deleted Successfully !!');
-        $output = '<span class="alert alert-success">Deleted Successfully !!</span>';
-        return $output;
+        $output = '';
+        $it = itfield::find($id);
+        if(!is_null($it)){
+                $it->delete();
+                $fields = itfield::all();
+                foreach ($fields as $value) {
+                   $output .= '
+                                    <tr>
+                                        <td style="text-align: center;">'.$it['Category'].'</td>
+                                        <td style="text-align: center; white-space: pre;">'.$it['Feutures'].'</td>
+                                        <td style="text-align: center;">
+                                            <a href="'.action('itFieldController@edit', $it['ID']).'" class="btn btn-success" style="border-radius: 5px;">Edit</a>
+                                            <a id="'. $it['ID'].'" class="ti-trash delete" title="Delete"></a>
+                                        </td>
+                                    </tr>
+                        ';
+
+               }
+               
+               return $output;
+        }else{
+            $fields = itfield::all();
+                foreach ($fields as $value) {
+                   $output .= '
+                                   <tr>
+                                        <td style="text-align: center;">'.$it['Category'].'</td>
+                                        <td style="text-align: center; white-space: pre;">'.$it['Feutures'].'</td>
+                                        <td style="text-align: center;">
+                                            <a href="'.action('itFieldController@edit', $it['ID']).'" class="btn btn-success" style="border-radius: 5px;">Edit</a>
+                                            <a id="'. $it['ID'].'" class="ti-trash delete" title="Delete"></a>
+                                        </td>
+                                    </tr>
+                        ';
+
+               }
+
+               return $output;
+        }
     }
 }

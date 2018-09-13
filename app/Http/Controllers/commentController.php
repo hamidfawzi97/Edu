@@ -140,10 +140,11 @@ class commentController extends Controller
     public function destroy(Request $request)
     {       
         $id = $request['comment'];
+        $output = '';
         $comm = comment::find($id);
         if(!is_null($comm)){
                 $comm->delete();
-                $output = '';
+
                 $coms = comment::all();
                 foreach ($coms as $value) {
                    $output .= '
