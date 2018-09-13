@@ -14,8 +14,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Table</a></li>
-                            <li class="active">Data table</li>
+                            <li class="active">Courses</li>
                         </ol>
                     </div>
                 </div>
@@ -31,36 +30,36 @@
                         <div class="card-header">
                             <strong class="card-title">Courses Table</strong>
                             <label><input type="checkbox" class="check" id="checkAll"> Check All </label> |
-                            <a href="{{ url('/admin-addcourse') }}" class="col-md-2 col-md-offset-10">Add Course</a>
+                            <a href="{{ url('/admin-addcourse') }}" class="btn btn-primary col-md-1" style="float: right; border-radius: 5px">Add Course</a>
                         </div>
                         <div class="card-body">
                   <table id="bootstrap-data-table" class="table table-striped table-bordered coursesTable">
                     <thead>
                       <tr>
                         <th scope="col-md-1">#</th>
-                        <th>Name</th>
-                        <th>Descreption</th>
-                        <th>Rate</th>
-                        <th>Demo video</th>
-                        <th>Certificate</th>
-                        <th>Instructor Name</th>
-                        <th>PDF</th>
-                        <th>Action</th>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">Descreption</th>
+                        <th style="text-align: center;">Rate</th>
+                        <th style="text-align: center;">Demo video</th>
+                        <th style="text-align: center;">Certificate</th>
+                        <th style="text-align: center;">Instructor Name</th>
+                        <th style="text-align: center;">PDF</th>
+                        <th style="text-align: center;">Delete | Edit</th>
                       </tr>
                     </thead>
                     <tbody id="courses">
                     @if(!$courses == '')
                     @foreach($courses as $cour)
                       <tr id="{{ $cour['ID'] }}"> 
-                        <td scope="row"><input type="checkbox" class="check" /></td>
-                        <td><a href="{{ action('userCoursesController@show',$cour['ID']) }}">{{ $cour['CourseName'] }}</a></td>
-                        <td>{{ $cour['Description'] }}</td>
-                        <td>{{ $cour['Rate'] }}</td>
-                        <td>{{ $cour['VideoInduction'] }}</td>
-                        <td>{{ $cour['Certificate'] }}</td>
-                        <td>{{ $cour['InstructorName'] }}</td>
-                        <td>{{ $cour['Pdf'] }}</td>
-                        <td>
+                        <td style="text-align: center;" scope="row"><input type="checkbox" class="check" /></td>
+                        <td style="text-align: center;"><a href="{{ action('userCoursesController@show',$cour['ID']) }}">{{ $cour['CourseName'] }}</a></td>
+                        <td style="text-align: center;">{{ $cour['Description'] }}</td>
+                        <td style="text-align: center;">{{ $cour['Rate'] }}</td>
+                        <td style="text-align: center;">{{ $cour['VideoInduction'] }}</td>
+                        <td style="text-align: center;">{{ $cour['Certificate'] }}</td>
+                        <td style="text-align: center;">{{ $cour['InstructorName'] }}</td>
+                        <td style="text-align: center;">{{ $cour['Pdf'] }}</td>
+                        <td style="text-align: center;">
                             <a href = "#" id="{{ $cour['ID'] }}" class="ti-trash delete" title="Delete"></a>
                             <a class="ti-pencil" title="Edit" href="{{ action('coursesController@edit',$cour['ID']) }}"></a>
                         </td>

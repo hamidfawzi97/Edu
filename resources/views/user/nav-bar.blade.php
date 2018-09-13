@@ -33,9 +33,10 @@
                 <ul class="nav navbar-nav pull-right mainNav">
                     <li id="Home"><a href="{{ url('/') }}">Home</a></li>
                     <!-- <li id="About"><a href={{ url('/about') }}>About</a></li> -->
-                    @if(Auth::check())
+
                     <li id="Courses"><a href="{{ url('/courses') }}">Courses</a></li>
                     <li id="Consultations"><a href="{{ url('/consultation') }}">Consultations</a></li>
+                    @if(Auth::check())
                     <li id="MyConsultations"><a href="{{ url('/myconsultation') }}">My Consultations</a></li>
                     @endif
                     <!-- Authentication Links -->

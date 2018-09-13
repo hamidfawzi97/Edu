@@ -1458,3 +1458,9 @@ HEAD
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+.centered thead th{
+    text-align: center;
+}
+.centered tbody tr{
+    text-align: center;
+}

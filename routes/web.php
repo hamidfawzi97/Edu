@@ -38,7 +38,7 @@ Route::get('/enroll', function(){
 //  ----------------------------- Start Of Courses -------------------------------------------=
 
 
-Route::get('/courses',"coursesController@allCourses")->middleware('auth');
+Route::get('/courses',"coursesController@allCourses");
 
 // Route::get('/course/{id}'
 
@@ -67,7 +67,7 @@ Route::get('/enroll', function(){
 
 
 //  ----------------------------- Start Of Consultations -------------------------------------=
-Route::get('/consultation',"consultationController@allConsultation")->middleware('auth');
+Route::get('/consultation',"consultationController@allConsultation");
 
 
 Route::get('/myconsultation', function () {
