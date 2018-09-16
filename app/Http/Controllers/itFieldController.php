@@ -58,7 +58,7 @@ class itFieldController extends Controller
      * @param  \App\itfield  $itfield
      * @return \Illuminate\Http\Response
      */
-    public function show(itfield $itfield)
+    public function show($id)
     {
         //
     }
@@ -145,5 +145,12 @@ class itFieldController extends Controller
 
                return $output;
         }
+    }
+    
+    public function allitfields()
+    {
+        $itField = itfield::all();
+        $count = count($itField);
+        return view('user/ITFields/index', compact('itField','count'));
     }
 }
