@@ -30,7 +30,7 @@
                         <div class="card-header">
                             <strong class="card-title">Courses Table</strong>
                             <label><input type="checkbox" class="check" id="checkAll"> Check All </label> |
-                            <a href="{{ url('/admin-addcourse') }}" class="btn btn-primary col-md-1" style="float: right; border-radius: 5px">Add Course</a>
+                            <a href="{{ url('/admin-addcourse') }}" class="btn btn-primary" style="float: right; border-radius: 5px;">Add Course</a>
                         </div>
                         <div class="card-body">
                   <table id="bootstrap-data-table" class="table table-striped table-bordered coursesTable">
@@ -44,6 +44,7 @@
                         <th style="text-align: center;">Certificate</th>
                         <th style="text-align: center;">Instructor Name</th>
                         <th style="text-align: center;">PDF</th>
+                        <th style="text-align: center;">Add Content</th>
                         <th style="text-align: center;">Delete | Edit</th>
                       </tr>
                     </thead>
@@ -52,13 +53,20 @@
                     @foreach($courses as $cour)
                       <tr id="{{ $cour['ID'] }}"> 
                         <td style="text-align: center;" scope="row"><input type="checkbox" class="check" /></td>
-                        <td style="text-align: center;"><a href="{{ action('userCoursesController@show',$cour['ID']) }}">{{ $cour['CourseName'] }}</a></td>
+                        <td style="text-align: center;">
+                            <a href="{{ action('userCoursesController@show',$cour['ID']) }}">
+                                {{ $cour['CourseName'] }}
+                            </a>
+                        </td>
                         <td style="text-align: center;">{{ $cour['Description'] }}</td>
                         <td style="text-align: center;">{{ $cour['Rate'] }}</td>
                         <td style="text-align: center;">{{ $cour['VideoInduction'] }}</td>
                         <td style="text-align: center;">{{ $cour['Certificate'] }}</td>
                         <td style="text-align: center;">{{ $cour['InstructorName'] }}</td>
                         <td style="text-align: center;">{{ $cour['Pdf'] }}</td>
+                        <td style="text-align: center;">
+                            <a class="btn btn-success" href="{{ action('coursesController@add_content',$cour['ID']) }}" style=" border-radius: 5px;">Add</a>
+                        </td>
                         <td style="text-align: center;">
                             <a href = "#" id="{{ $cour['ID'] }}" class="ti-trash delete" title="Delete"></a>
                             <a class="ti-pencil" title="Edit" href="{{ action('coursesController@edit',$cour['ID']) }}"></a>

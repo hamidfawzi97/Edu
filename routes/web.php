@@ -156,6 +156,12 @@ Route::post('/admin-course', 'coursesController@addCourse');
 
 Route::get('/admin-course', 'coursesController@allCoursesAdmin');
 
+
+Route::post('/admin-course', 'coursesController@storeContent');
+
+Route::get('/addcontent/{id}', 'coursesController@add_content')->middleware('auth');
+
+
 Route::post('/courses/deleteCourse', 'coursesController@deleteCourse')->name('courses.deleteCourse');
 
 

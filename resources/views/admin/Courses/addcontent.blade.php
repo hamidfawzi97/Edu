@@ -14,7 +14,7 @@
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
                             <li><a href="{{ url('/admin-course')}}">Courses</a></li>
-                            <li class="active">Add Course</li>
+                            <li class="active">Add Content</li>
                         </ol>
                     </div>
                 </div>
@@ -28,32 +28,15 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Add Course</strong>
+                            <strong class="card-title">Add Content</strong>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ action('coursesController@store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ action('coursesController@storeContent') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
-                                <input type="text" name="c_name" placeholder="Course Name" class="form-control col-md-4" required="" /><br>
-                                <textarea rows="4" name="c_description" placeholder="Description" class="form-control col-md-4" style="resize:none;" required=""></textarea><br>
-                                <label>Category</label>
-                                <select name="category" class="form-control col-md-4">
-                                  <option value="computer science">Computer Science</option>
-                                  <option value="project management">Project Management</option>
-                                  <option value="management">Management</option>
-                                  <option value="human resources">Human Resources</option>
-                                </select><br>
-                                <input type="text" name="inst_name" placeholder="Instructor Name" class="form-control col-md-4" required="" /><br>
-                                <input type="number" name="price" placeholder="Price" class="form-control col-md-4" required="" /><br>  
-                                <label for="c_demoVideo">Demo Video</label>
-                                <input type="file" name="c_demoVideo" placeholder="Demo Video" class="form-control col-md-4" required="" /><br>
-                                <label for="certificate">Certificate</label>
-                                <input type="file" name="certificate" placeholder="Certificate" class="form-control col-md-4" required="" /><br>
-                                <label for="c_pdf">PDF</label>
-                                <input type="file" name="c_pdf" placeholder="Pdf" class="form-control col-md-4" required="" /><br>
-                                <label for="c_img">Course Image</label>
-                                <input type="file" name="c_img" placeholder="Course Image" class="form-control col-md-4" required="" /><br>
-                                <label for="ins_img">Instructor Image</label>
-                                <input type="file" name="ins_img" placeholder="Instructor Image" class="form-control col-md-4" required="" /><br>
+                                <input type="HIDDEN" name="course_id" value="{{$course['ID']}}">
+                                <label for="VideoLabel">Content Video</label>
+                                <input type="file" name="Video" placeholder="Video" class="form-control col-md-4" required="" />
+                                <br>
                                 <input type="submit" name="submit" value="Add" class="col-md-1 btn btn-success"/>
                             </form>
                         </div>

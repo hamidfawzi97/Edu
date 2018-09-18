@@ -72,3 +72,13 @@
   </div>
 </div>
 @endsection
+@section('js')
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/custom.js"></script>
+<script type="text/javascript">
+  var node = document.getElementById("IT_Field");
+  node.setAttribute("class", "active");
+</script>
+@endsection
