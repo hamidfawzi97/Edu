@@ -45,6 +45,7 @@
                         <th style="text-align: center;">Instructor Name</th>
                         <th style="text-align: center;">PDF</th>
                         <th style="text-align: center;">Add Content</th>
+                        <th style="text-align: center;">Show Content</th>
                         <th style="text-align: center;">Delete | Edit</th>
                       </tr>
                     </thead>
@@ -65,7 +66,10 @@
                         <td style="text-align: center;">{{ $cour['InstructorName'] }}</td>
                         <td style="text-align: center;">{{ $cour['Pdf'] }}</td>
                         <td style="text-align: center;">
-                            <a class="btn btn-success" href="{{ action('coursesController@add_content',$cour['ID']) }}" style=" border-radius: 5px;">Add</a>
+                            <a class="btn btn-success" href="{{ action('videoController@add_content',$cour['ID']) }}" style=" border-radius: 5px;">Add</a>
+                        </td>
+                        <td style="text-align: center;">
+                            <a class="btn btn-primary" href="{{ action('videoController@show',$cour['ID']) }}" style=" border-radius: 5px;">Show</a>
                         </td>
                         <td style="text-align: center;">
                             <a href = "#" id="{{ $cour['ID'] }}" class="ti-trash delete" title="Delete"></a>

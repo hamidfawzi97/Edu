@@ -361,39 +361,4 @@ class coursesController extends Controller
 
         return view('user/Courses/courseList')->with('course',$course);
     }
-
-    public function add_content($id)
-    {
-        $course = Courses::find($id);
-
-        return view('admin/Courses/addcontent')->with('course',$course);
-    }
-
-    public function storeContent(Request $Request)
-    {
-        $this->validate($Request , [
-            'course_id' => 'required',
-            'Video'     => 'mimetypes:video/avi,video/mpeg,video/mp4'
-        ]);
-        
-        $video = new Video([
-          'Courses_id' => $Request->get('course_id')
-        ]);
-
-        if($Request->file('Video') != ''){
-
-            $vid = $Request->file('Video');
-
-            $vidname = $vid->getClientOriginalName();
-
-            $vid->move('video/'. $Request->get('course_id'), $vidname);
-            
-            $video->Name = $vidname;
-            $video->VideoPath = 'video/'.$video->Courses_id;
-        }
-
-        $video->save();
-
-         return redirect('/admin-course');   
-    }
 }

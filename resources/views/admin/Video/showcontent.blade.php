@@ -1,4 +1,4 @@
-@extends('admin.admin_master')
+@extends('admin/admin_master')
 @section('content')
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -14,7 +14,7 @@
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
                             <li><a href="{{ url('/admin-course')}}">Courses</a></li>
-                            <li class="active">Add Content</li>
+                            <li class="active">Course Content</li>
                         </ol>
                     </div>
                 </div>
@@ -28,17 +28,36 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Add Content</strong>
+                            <strong class="card-title">Course Content</strong>
+                            <!-- <label><input type="checkbox" class="check" id="checkAll"> Check All</label> |
+
+                            <a href="#" class="col-md-2 col-md-offset-10">Delete </a> -->
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ action('coursesController@storeContent') }}" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <input type="HIDDEN" name="course_id" value="{{$course['ID']}}">
-                                <label for="VideoLabel">Content Video</label>
-                                <input type="file" name="Video" placeholder="Video" class="form-control col-md-4" required="" />
-                                <br>
-                                <input type="submit" name="submit" value="Add" class="col-md-1 btn btn-success"/>
-                            </form>
+                          <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                <th scope="col-md-1">#</th>
+                                <th scope="col-md-11">Name</th>
+                                <th scope="col-md-11">video</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @if(!$Videos == '')
+                              @foreach($Videos as $vid)   
+                              <tr>
+                                <td width="10%" scope="row"><input type="checkbox" class="check" /></td>
+                                <td>{{ $vid['Name'] }}</td>
+                                <td width="30%">
+                                    <video class="embed-responsive-item" width="250" height="200" controls>
+                                        <source src="{{ asset($vid['VideoPath'] .'/'. $vid['Name']) }}" type="video/mp4">
+                                    </video>
+                                </td>
+                              </tr>
+                              @endforeach
+                              @endif
+                            </tbody>
+                          </table>
                         </div>
                     </div>
                 </div>

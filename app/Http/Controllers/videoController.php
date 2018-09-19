@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\video;
+use App\courses;
 use Illuminate\Http\Request;
 
 class videoController extends Controller
@@ -24,7 +25,7 @@ class videoController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +36,30 @@ class videoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request , [
+            'course_id' => 'required',
+            'Video'     => 'mimetypes:video/avi,video/mpeg,video/mp4'
+        ]);
+        
+        $video = new Video([
+          'Courses_id' => $request->get('course_id')
+        ]);
+
+        if($request->file('Video') != ''){
+
+            $vid = $request->file('Video');
+
+            $vidname = $vid->getClientOriginalName();
+
+            $vid->move('video/'. $request->get('course_id'), $vidname);
+            
+            $video->Name = $vidname;
+            $video->VideoPath = 'video/'.$video->Courses_id;
+        }
+
+        $video->save();
+
+         return redirect('/admin-course'); 
     }
 
     /**
@@ -44,9 +68,11 @@ class videoController extends Controller
      * @param  \App\video  $video
      * @return \Illuminate\Http\Response
      */
-    public function show(video $video)
+    public function show($id)
     {
-        //
+        $videos = video::where('Courses_id', $id)->get();
+
+        return view('admin/Video/showcontent')->with('Videos',$videos);
     }
 
     /**
@@ -81,5 +107,12 @@ class videoController extends Controller
     public function destroy(video $video)
     {
         //
+    }
+
+    public function add_content($id)
+    {
+        $course = Courses::find($id);
+
+        return view('admin/Video/addcontent')->with('course',$course);
     }
 }
