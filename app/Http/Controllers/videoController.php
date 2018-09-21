@@ -81,7 +81,7 @@ class videoController extends Controller
      * @param  \App\video  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(video $video)
+    public function edit($id)
     {
         //
     }
@@ -104,9 +104,15 @@ class videoController extends Controller
      * @param  \App\video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(video $video)
+    public function destroy($id, $cour_id)
     {
-        //
+        // $video = Video::find($id);
+
+        // unlink('video/'. $video->Courses_id .'/'. $video->Name);
+        
+        // $video = Video::destroy($id);
+
+        // return redirect()->action('videoController@show', ['id' => $cour_id]);
     }
 
     public function add_content($id)

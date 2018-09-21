@@ -20,7 +20,15 @@
                 </div>
             </div>
         </div>
-
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
