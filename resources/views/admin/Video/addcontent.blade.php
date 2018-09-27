@@ -32,7 +32,6 @@
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ action('videoController@store') }}" enctype="multipart/form-data">
-                                {{ csrf_field() }}
                                 <input type="HIDDEN" name="course_id" value="{{$course['ID']}}">
                                 <label for="VideoLabel">Add Video to Course {{$course['CourseName']}}</label>
                                 <input type="file" name="Video" placeholder="Video" class="form-control col-md-4" required="" />

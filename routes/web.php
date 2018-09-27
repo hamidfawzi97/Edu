@@ -80,9 +80,7 @@ Route::get('/myconsultation', function () {
 Route::get('/itfield',"itFieldController@allitfields");
 
 
-Route::get('/myconsultation', function () {
-    return view('user/Consultations/myconsultation');
-})->middleware('auth');
+
 //  ------------------------------ End Of IT Fields ------------------------------------------=
 
 
