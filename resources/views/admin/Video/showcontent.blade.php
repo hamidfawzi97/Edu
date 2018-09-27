@@ -37,9 +37,10 @@
                           <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col-md-1">#</th>
-                                <th scope="col-md-11">Name</th>
-                                <th scope="col-md-11">video</th>
+                                <th style="text-align: center;">#</th>
+                                <th style="text-align: center;">Name</th>
+                                <th style="text-align: center;">video</th>
+                                <th style="text-align: center;">Delete</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -47,11 +48,22 @@
                               @foreach($Videos as $vid)   
                               <tr>
                                 <td width="10%" scope="row"><input type="checkbox" class="check" /></td>
-                                <td>{{ $vid['Name'] }}</td>
-                                <td width="30%">
-                                    <video class="embed-responsive-item" width="250" height="200" controls>
-                                        <source src="{{ asset($vid['VideoPath'] .'/'. $vid['Name']) }}" type="video/mp4">
-                                    </video>
+                                <td style="text-align: center;">{{ $vid['Name'] }}</td>
+                                <td width="10%">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" style="border-radius: 5px;">Play Video</button>
+
+                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                          <video class="embed-responsive-item" width="250" height="150" controls style="margin: auto;">
+                                            <source src="{{ asset($vid['VideoPath'] .'/'. $vid['Name']) }}" type="video/mp4">
+                                          </video>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </td>
+                                <td width="10%">
+                                    <a href = "{{ action('videoController@destroy',$vid['ID'],$vid['Courses_id']) }}" class="btn btn-danger" style="border-radius: 5px;">Delete</a>
                                 </td>
                               </tr>
                               @endforeach
