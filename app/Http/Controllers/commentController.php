@@ -46,9 +46,9 @@ class commentController extends Controller
        $coms = comment::all();
        $replys = comment_reply::all();
 
-
+        foreach ($coms as $value) {
             $output .= '
-            
+
                 <div class="commentsDiv" style="padding:10px;">
                     <div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
@@ -74,22 +74,87 @@ class commentController extends Controller
             if($replys){
                 foreach ($replys as $reply) {
                     if($reply['Comment_id'] == $value['ID']){
-                        $output .= '
+                        $output .= '<div id="realReply'.$reply["ID"].'">
                                 <div class = "btn-group" style="float:right;">
                                     <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                                         <span class = "fa fa-ellipsis-h"></span>
                                     </button>
                                     <ul class = "dropdown-menu" role = "menu" style="min-width: 93px;">
-                                        <li style="cursor:pointer;"><a id="rep'.$reply["ID"].'" class="delete">Delete</a></li>
-                                        <li style="cursor:pointer;"><a id="rep'.$reply["ID"].'" class="edit" name=" " >Edit</a></li>
+                                        <li style="cursor:pointer;"><a id="repDel'.$reply["ID"].'" >Delete</a></li>
+                                        <li style="cursor:pointer;"><a id="repEdit'.$reply["ID"].'" name=" ">Edit</a></li>
                                     </ul>
+                                    <script>
+                                        $("#repDel'.$reply["ID"].'").on("click", function() { 
+                                            var replyID = '.$reply["ID"].';
+                                            var confir = confirm(\'Ary you sure you want delete this reply?\');
+                                            if(confir){
+                                                $.ajax({
+                                                    url:"/deletereply",
+                                                    type:"GET",
+                                                    data:{_token : "'.csrf_token().'", reply:replyID},
+                                                    success:function (data) {
+
+                                                        $("#comments").html(data);
+                                                    }
+                                                });
+                                            }
+                                        });
+
+                                        $("#repEdit'.$reply["ID"].'").on("click", function(){
+                                            var replyID = '.$reply["ID"].';
+
+                                            $("#repText'.$reply["ID"].'").css("display", "none");
+                                            
+
+                                            if($(this).attr("name") == " "){
+                                                $(this).attr("name","clicked");
+
+                                                $("#realReply'.$reply["ID"].'").append("\
+                                                    <div id=\"editing'.$reply["ID"].'\">\
+                                                        <textarea class=\"form-control\" id=\"editArea'.$reply["ID"].'\" style=\"resize:none;\"></textarea>\
+                                                        <button class=\"btn btn-primary\" id=\"editBtn'.$reply["ID"].'\">Save</button>\
+                                                        <button class=\"btn btn-danger\" id=\"cancelBtn'.$reply["ID"].'\">Cancel</button>\
+                                                    </div>\
+                                                    \
+                                                    <script>\
+                                                        var replytext = $(\"#rep'.$reply["ID"].'\").val();\
+                                                        $(\"#editArea'.$reply["ID"].'\").val(replytext);\
+                                                        \
+                                                        $(\"#cancelBtn'.$reply["ID"].'\").on(\"click\", function(){\
+                                                            $(\"#editing'.$reply["ID"].'\").remove();\
+                                                            $(\"#repText'.$reply["ID"].'\").css(\"display\", \"block\");\
+                                                            $(\"#repEdit'.$reply["ID"].'\").attr(\"name\",\" \");\
+                                                        });\
+                                                        \
+                                                        $(\"#editBtn'.$reply["ID"].'\").on(\"click\", function(){\
+                                                            var reply = $(\"#editArea'.$reply["ID"].'\").val();\
+                                                            \
+                                                            $.ajax({\
+                                                                url:\"/editreply\",\
+                                                                type:\"GET\",\
+                                                                data:{_token : \"'.csrf_token().'\", reply:reply , replyID:'.$reply["ID"].'},\
+                                                                success:function (data) {\
+                                                                      $(\"#comments\").html(data);\
+                                                                      $(\"#editing'.$reply["ID"].'\").remove();\
+                                                                      $(\"#repEdit'.$reply["ID"].'\").attr(\"name\",\" \");\
+                                                                }\
+                                                            });\
+                                                        });\
+                                                    <\/script>\
+                                                    ");
+                                            }
+                                            
+
+                                        });
+                                    </script>
                                 </div>
                                 <a href="#">
                                     <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                                     <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                                 </a>
-                                <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$reply["Reply"].'</div>
-                                <input type="hidden" class="com" value="'.$reply["Reply"].'">
+                                <div id="repText'.$reply["ID"].'" style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$reply["Reply"].'</div>
+                                <input type="hidden" id="rep'.$reply["ID"].'" value="'.$reply["Reply"].'">
+                            </div>
                         ';
                     }
                 }
@@ -99,7 +164,7 @@ class commentController extends Controller
  
                         </div>
 
-                        <button id="replyBtn'.$value['ID'].'" class="btn btn-default">Reply</button>
+                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info">Reply</button>
                         <script>
                             $(document).ready(function(){
                                 $("#replyBtn'.$value['ID'].'").on("click", function(){
