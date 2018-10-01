@@ -148,5 +148,46 @@
           
     });
 
+    // $(document).ready(function(){
+
+    //     $(".replyBtn").on("click", function(){
+
+    //         var commID = $(this).attr("id");
+
+    //         $(".replyBtn").css("display", "none");
+
+    //         $("#replyDiv").append('\
+    //             <div id="replyForm">\
+    //                 <form method="POST">\
+    //                     {{ csrf_field() }}\
+    //                     <textarea id="replyText" style="resize:none;" name="replyText"></textarea>\
+    //                     <input id="'+commID+'" type="submit" class="btn btn-success submit" value="Reply"/>\
+    //                     <button id="cancel" class="btn btn-danger">Cancel</button>\
+    //                 </form>\
+    //             </div>\
+    //         ');
+    //     });    
+    //     $("#cancel").on("click", function(){
+    //         $("#replyForm").remove();
+    //         $(".replyBtn").css("display", "block");
+    //     });
+
+    //     $(".submit").on("click", function(){
+
+    //         var reply = $(this).siblings('#replyText').val();
+    //         var commentID = $(this).attr("id");
+
+    //         $.ajax({
+    //             url:"/addreply",
+    //             type:"POST",
+    //             data:{_token : "<?php echo csrf_token(); ?>", reply:reply, commentID:commentID},
+    //             success:function (data) {
+    //                   $("#viewReply").append(data);
+    //             }
+    //         });
+    //     });
+    // });
+
 </script>
+
 @endsection

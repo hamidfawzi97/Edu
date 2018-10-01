@@ -1,11 +1,8 @@
 @extends('user/master')
 
 @section('content')
-	
+	<div class="col-md-12" style="border-bottom: 1px solid #3d84e6; margin-bottom: 15px;"></div>
 	<div class="container">
-            <div class="col-md-offset-5">
-                <h1>Add Consultation</h1> 
-            </div>
 		<div class="col-md-8 col-md-offset-2" style="margin-top: 40px">
 			<form method="POST" action="{{ action('consultationController@store') }}">
 				@csrf
@@ -16,7 +13,7 @@
 					<option value="management">Management</option>
 					<option value="human resources">Human Resources</option>
 				</select>
-				<input type="submit" name="submit" class="btn btn-primary col-md-2 col-md-offset-5" value="Post" style=" margin-top: 20px;font-family: 'Oswald', sans-serif;">
+				<input type="submit" name="submit" class="buton col-md-2 col-md-offset-5" value="Post" style=" margin-top: 20px;font-family: 'Oswald', sans-serif;">
 			</form>
 		</div>
 	</div>
