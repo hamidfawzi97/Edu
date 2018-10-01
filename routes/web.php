@@ -108,6 +108,15 @@ Route::get('/editcomment', 'commentController@update');
 
 
 
+Route::post('/addreply' , 'commentReplyController@store');
+
+
+Route::get('/deletereply', 'commentReplyController@destroy');
+
+
+Route::get('/editreply', 'commentReplyController@update');
+
+
 //  ------------------------------------------------------------------------------------------=
 //  --------------------------------------------------End of User-----------------------------=
 //  ------------------------------------------------------------------------------------------=
