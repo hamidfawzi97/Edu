@@ -1,4 +1,4 @@
-@extends('admin/admin_master')
+@extends('admin.admin_master')
 @section('content')
         <div class="breadcrumbs">
             <div class="col-sm-4">
@@ -14,13 +14,21 @@
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
                             <li><a href="{{ url('/admin-course')}}">Courses</a></li>
-                            <li class="active">Course Content</li>
+                            <li class="active">Add Content</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
@@ -28,46 +36,22 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Course Content</strong>
-                            <!-- <label><input type="checkbox" class="check" id="checkAll"> Check All</label> |
-
-                            <a href="#" class="col-md-2 col-md-offset-10">Delete </a> -->
+                            <strong class="card-title">Add Content</strong>
                         </div>
                         <div class="card-body">
-                          <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                <th style="text-align: center;">#</th>
-                                <th style="text-align: center;">Name</th>
-                                <th style="text-align: center;">video</th>
-                                <th style="text-align: center;">Edit</th>
-                                <th style="text-align: center;">Delete</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              @if(!$Videos == '')
-                              @foreach($Videos as $vid)   
-                              <tr>
-                                <td width="5%" scope="row" style="text-align: center;">{{ $vid['Order'] }}</td>
-                                <td style="text-align: center;">{{ $vid['Name'] }}</td>
-                                <td width="10%">
-                                    <a href="{{ $vid['Link']}}" target="_blank" type="button" class="btn btn-primary" style="border-radius: 5px;">Play Video</a>
-                                </td>
-                                <td width="10%">
-                                    <a href="{{ action('videoController@edit',$vid['ID']) }}" class="btn btn-success" style="border-radius: 5px;">Edit</a>
-                                </td>
-                                <td width="10%">
-                                    <form method="post" action="{{action('videoController@destroy', $vid['ID'])}}" class="delete_form"  style="display: inline;">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <input type="submit" value="Delete" class="btn btn-danger" style="border-radius: 5px;">            
-                                    </form>
-                                </td>
-                              </tr>
-                              @endforeach
-                              @endif
-                            </tbody>
-                          </table>
+                            <form method="POST" action="{{ action('videoController@update', $video['ID']) }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                {{ method_field('PATCH') }}
+                                <input type="HIDDEN" name="course_id" value="{{$video['Courses_id']}}">
+                                <label for="VideoLabel">Edit Content</label>
+                                <input type="number" name="Order" value="{{$video['Order']}}" class="form-control col-md-4" required="">
+                                <br>
+                                <input type="text" name="Name" value="{{$video['Name']}}" class="form-control col-md-4" required="" />
+                                <br>
+                                <input type="text" name="Link" value="{{$video['Link']}}" class="form-control col-md-4" required="">
+                                <br>
+                                <input type="submit" name="submit" value="Edit" class="col-md-1 btn btn-success"/>
+                            </form>
                         </div>
                     </div>
                 </div>

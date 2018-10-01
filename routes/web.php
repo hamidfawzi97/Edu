@@ -165,7 +165,7 @@ Route::resource('admin/Courses','coursesController');
 
 Route::get('/admin-course', function () {
     return view('/admin/course');
-})->middleware('auth');
+})->name('admincourse')->middleware('auth');
 
 Route::post('/admin-course', 'coursesController@addCourse');
 
@@ -177,6 +177,10 @@ Route::get('/admin-course', 'coursesController@allCoursesAdmin');
 // Route::get('/addcontent/{id}', 'coursesController@add_content')->middleware('auth');
 
 Route::resource('admin/Video','videoController');
+
+
+// Route::post('/course-store', 'videoController@store')->middleware('auth');
+
 Route::get('/addcontent/{id}', 'videoController@add_content')->middleware('auth');
 
 Route::post('/courses/deleteCourse', 'coursesController@deleteCourse')->name('courses.deleteCourse');
