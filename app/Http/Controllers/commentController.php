@@ -50,7 +50,7 @@ class commentController extends Controller
                             </button>
                          <ul class = "dropdown-menu" role = "menu" style="min-width: 93px;">
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
-                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit">Edit</a></li>
+                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" " >Edit</a></li>
                          </ul>
                      </div>
                     <a href="#">
@@ -112,14 +112,14 @@ class commentController extends Controller
         foreach ($coms as $value) {
                 $output .= '
 
-                        div class="commentsDiv" style="padding:10px;">
+                        <div class="commentsDiv" style="padding:10px;">
                     <div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
                             </button>
                          <ul class = "dropdown-menu" role = "menu" style="min-width: 93px;">
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
-                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit">Edit</a></li>
+                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" ">Edit</a></li>
                          </ul>
                      </div>
                     <a href="#">
@@ -157,14 +157,14 @@ class commentController extends Controller
                 foreach ($coms as $value) {
                    $output .= '
 
-                  div class="commentsDiv" style="padding:10px;">
+                  <div class="commentsDiv" style="padding:10px;">
                     <div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
                             </button>
                          <ul class = "dropdown-menu" role = "menu" style="min-width: 93px;">
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
-                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit">Edit</a></li>
+                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" ">Edit</a></li>
                          </ul>
                      </div>
                     <a href="#">
@@ -176,6 +176,7 @@ class commentController extends Controller
                     
                     
                 </div>
+
 
                         ';
 
@@ -187,14 +188,14 @@ class commentController extends Controller
                 foreach ($coms as $value) {
                    $output .= '
 
-                  div class="commentsDiv" style="padding:10px;">
+                 <div class="commentsDiv" style="padding:10px;">
                     <div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
                             </button>
                          <ul class = "dropdown-menu" role = "menu" style="min-width: 93px;">
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
-                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit">Edit</a></li>
+                            <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" ">Edit</a></li>
                          </ul>
                      </div>
                     <a href="#">
@@ -206,6 +207,7 @@ class commentController extends Controller
                     
                     
                 </div>
+
 
                         ';
 

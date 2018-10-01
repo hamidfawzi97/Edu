@@ -123,8 +123,12 @@
     $(document).on('click', '.edit', function() { 
             var com_id = $(this).attr('id');
             var val = $(this).parents('.commentsDiv').children('.com').val();
-            $(this).parents('.commentsDiv').append('<input type="text" value="'+val+'" class="form-control edt"> <button class="btn btn-primary save" id="'+com_id+'" ">Save</button>');
-            
+            var node = document.getElementById(com_id);
+            if($(this).attr('name') == " "){
+                $(this).parents('.commentsDiv').append('<input type="text" value="'+val+'" class="form-control edt"> <button class="btn btn-primary save" id="'+com_id+'" ">Save</button>');
+          
+            }
+            $(this).attr("name","clicked");
     });
 
      $(document).on('click', '.save', function() { 
@@ -138,6 +142,7 @@
                   $("#comments").html(data);
                   $(".save").remove();
                   $(".edt").remove();
+                  $('#'+com_id).attr('name'," ");
             }
         })
           
