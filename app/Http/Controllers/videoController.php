@@ -47,7 +47,9 @@ class videoController extends Controller
         $video->Courses_id = $request->get('course_id');
         $video->Name       = $request->get('Name');
         $video->Link       = $request->get('Link');
-        $video->Order      = $request->get('Order');
+
+        $video->Ord        = $request->get('Order');
+
 
         // if($request->file('Video') != ''){
 
@@ -113,7 +115,9 @@ class videoController extends Controller
         $video->Courses_id = $request->get('course_id');
         $video->Name       = $request->get('Name');
         $video->Link       = $request->get('Link');
-        $video->Order      = $request->get('Order');
+
+        $video->Ord      = $request->get('Order');
+
 
         $video->save();
 

@@ -44,7 +44,9 @@
                                 {{ method_field('PATCH') }}
                                 <input type="HIDDEN" name="course_id" value="{{$video['Courses_id']}}">
                                 <label for="VideoLabel">Edit Content</label>
-                                <input type="number" name="Order" value="{{$video['Order']}}" class="form-control col-md-4" required="">
+
+                                <input type="number" name="Order" value="{{$video['Ord']}}" class="form-control col-md-4" required="">
+
                                 <br>
                                 <input type="text" name="Name" value="{{$video['Name']}}" class="form-control col-md-4" required="" />
                                 <br>
@@ -95,6 +97,7 @@
                     return false;
                 }
             });
+
           $('#bootstrap-data-table-export').DataTable();
         } );
 

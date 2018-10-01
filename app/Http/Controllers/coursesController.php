@@ -359,6 +359,10 @@ class coursesController extends Controller
     {
         $course = Courses::find($c_id);
 
-        return view('user/Courses/courseList')->with('course',$course);
+        $videos = Video::where('Courses_id', $c_id)
+                        ->orderBy('Ord', 'asc')
+                        ->get();
+
+        return view('user/Courses/courseList')->with('course',$course)->with('videos',$videos);
     }
 }

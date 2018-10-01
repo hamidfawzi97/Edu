@@ -48,7 +48,8 @@
                               @if(!$Videos == '')
                               @foreach($Videos as $vid)   
                               <tr>
-                                <td width="5%" scope="row" style="text-align: center;">{{ $vid['Order'] }}</td>
+
+                                <td width="5%" scope="row" style="text-align: center;">{{ $vid['Ord'] }}</td>
                                 <td style="text-align: center;">{{ $vid['Name'] }}</td>
                                 <td width="10%">
                                     <a href="{{ $vid['Link']}}" target="_blank" type="button" class="btn btn-primary" style="border-radius: 5px;">Play Video</a>
