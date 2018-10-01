@@ -10,51 +10,21 @@
 
     <div class="row">
         <div class="row" style="margin-bottom:50px;">
+
             <aside class="col-md-2" style="padding-right:1px;">
+                @foreach($videos as $vid)
                 <div class="col-md-12 courseVideoAside">
-                    <h2 style="margin:10px;">Video 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
+                    <h2 style="margin:10px;">Video {{$vid['Ord']}}<span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
                 </div>
+                @endforeach
+                <!-- 
                 <div class="col-md-12 courseQuizAside">
                     <h2 style="margin:10px;">Quiz 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseVideoAside">
-                    <h2 style="margin:10px;">Video 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseQuizAside">
-                    <h2 style="margin:10px;">Quiz 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseVideoAside">
-                    <h2 style="margin:10px;">Video 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseQuizAside">
-                    <h2 style="margin:10px;">Quiz 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseVideoAside">
-                    <h2 style="margin:10px;">Video 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseQuizAside">
-                    <h2 style="margin:10px;">Quiz 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseVideoAside">
-                    <h2 style="margin:10px;">Video 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseQuizAside">
-                    <h2 style="margin:10px;">Quiz 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseVideoAside">
-                    <h2 style="margin:10px;">Video 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseQuizAside">
-                    <h2 style="margin:10px;">Quiz 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseVideoAside">
-                    <h2 style="margin:10px;">Video 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
-                <div class="col-md-12 courseQuizAside">
-                    <h2 style="margin:10px;">Quiz 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div>
+                </div> -->
                 <button class="btn btn-success" style="width:100%; margin-top:1px;">Done</button>
             </aside>
+
+
             <div align="center" class="embed-responsive embed-responsive-16by9 col-md-8 col-md-offset-1" style="margin-top: 10px;">
                 <video class="embed-responsive-item" controls>
                     <source src="small.mp4" type="video/mp4">
