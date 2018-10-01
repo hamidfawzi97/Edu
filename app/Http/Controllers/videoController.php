@@ -38,28 +38,33 @@ class videoController extends Controller
     {
         $this->validate($request , [
             'course_id' => 'required',
-            'Video'     => 'mimetypes:video/avi,video/mpeg,video/mp4'
+            'Name'      => 'required',
+            'Link'      => 'required',
+            'Order'     => 'required'
         ]);
         
-        $video = new Video([
-          'Courses_id' => $request->get('course_id')
-        ]);
+        $video = new Video();
+        $video->Courses_id = $request->get('course_id');
+        $video->Name       = $request->get('Name');
+        $video->Link       = $request->get('Link');
+        $video->Order      = $request->get('Order');
 
-        if($request->file('Video') != ''){
+        // if($request->file('Video') != ''){
 
-            $vid = $request->file('Video');
+        //     $vid = $request->file('Video');
 
-            $vidname = $vid->getClientOriginalName();
+        //     $vidname = $vid->getClientOriginalName();
 
-            $vid->move('video/'. $request->get('course_id'), $vidname);
+        //     $vid->move('video/'. $request->get('course_id'), $vidname);
             
-            $video->Name = $vidname;
-            $video->VideoPath = 'video/'.$video->Courses_id;
-        }
+        //     $video->Name = $vidname;
+        //     $video->VideoPath = 'video/'.$video->Courses_id;
+        // }
 
         $video->save();
 
-         return redirect('/admin-course'); 
+        return redirect('/admin-course');
+        //return redirect()->route('admincourse'); 
     }
 
     /**
@@ -83,7 +88,9 @@ class videoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $video = Video::find($id);
+
+        return view('admin/Video/editcontent')->with('video',$video);
     }
 
     /**
@@ -93,9 +100,24 @@ class videoController extends Controller
      * @param  \App\video  $video
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, video $video)
+    public function update(Request $request, $id)
     {
-        //
+         $this->validate($request , [
+            'course_id' => 'required',
+            'Name'      => 'required',
+            'Link'      => 'required',
+            'Order'     => 'required'
+        ]);
+        
+        $video = Video::find($id);
+        $video->Courses_id = $request->get('course_id');
+        $video->Name       = $request->get('Name');
+        $video->Link       = $request->get('Link');
+        $video->Order      = $request->get('Order');
+
+        $video->save();
+
+        return redirect()->action('videoController@show', ['id' => $request->get('course_id')]);
     }
 
     /**
@@ -104,15 +126,16 @@ class videoController extends Controller
      * @param  \App\video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $cour_id)
+    public function destroy($id)
     {
-        // $video = Video::find($id);
+        $video = Video::find($id);
 
-        // unlink('video/'. $video->Courses_id .'/'. $video->Name);
-        
+        $cour_id = $video->Courses_id;
+
+        $video->delete();
         // $video = Video::destroy($id);
 
-        // return redirect()->action('videoController@show', ['id' => $cour_id]);
+        return redirect()->action('videoController@show', ['id' => $cour_id]);
     }
 
     public function add_content($id)
