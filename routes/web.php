@@ -65,12 +65,20 @@ Route::get('/enroll', function(){
 
 
 //  ----------------------------- Start Of Consultations -------------------------------------=
-Route::get('/consultation',"consultationController@allConsultation");
+Route::get('/consultation',"consultationController@allConsultation")->name('consultation');
 
 
-Route::get('/myconsultation', function () {
-    return view('user/Consultations/myconsultation');
-})->middleware('auth');
+Route::get('/myconsultation/{id}','consultationController@allMyConsultation')->middleware('auth');
+
+Route::get('/ask',function (){
+    return view('user/Consultations/addConsultation');
+})->name('addConsultation');
+
+Route::post('/addconsultation',"consultationController@store");
+
+Route::get('/deleteconsultation',"consultationController@destroy");
+
+Route::get('/answerconsultation/{id}',"consultationController@show");
 //  ------------------------------- End Of Consultations -------------------------------------=
 
 

@@ -38,7 +38,11 @@
                     <li id="IT_Field"><a href="{{ url('/itfield') }}">IT Fields</a></li>
                     <li id="Consultations"><a href="{{ url('/consultation') }}">Consultations</a></li>
                     @if(Auth::check())
-                    <li id="MyConsultations"><a href="{{ url('/myconsultation/1') }}">My Consultations</a></li>
+                    <?php 
+                        $user = Auth::user();
+                        $id = $user->id;
+                         ?>
+                    <li id="MyConsultations"><a href='{{ url("/myconsultation/$id") }}' >My Consultations</a></li>
                     @endif
                     <!-- Authentication Links -->
                     @guest
