@@ -1,8 +1,9 @@
 @extends('user/master')
 
 @section('content')
-            <div class="container">
 
+            <div class="container">
+               <div class="col-md-12" style="border-bottom: 1px solid #3d84e6; margin-bottom: 15px;"></div>
                               <div class="row form-group">
 
                                 <div class="col-md-5" id="counter"><h1> Viewing {{$count}} results matching</h1></div>
@@ -20,7 +21,7 @@
                               </div>
 
   
-                <div class="col-md-12" style="border-bottom: 1px solid #efefef; margin-bottom: 15px;"></div>
+                <div class="col-md-12" style="border-bottom: 1px solid #3d84e6; margin-bottom: 15px;"></div>
                 <div class="col-md-12">
                 <div class="col-md-3 category">
                     <div class="category_head"><h3>Categories</h3></div>

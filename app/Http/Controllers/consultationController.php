@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\consultation;
 use Illuminate\Http\Request;
 
@@ -35,8 +35,15 @@ class consultationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        $cons = new Consultation();
+        $cons->Question = $request->get('question');
+        $cons->Category = $request->get('category');
+        $cons->User_id  = $user->id;
+        $cons->save();
+        return redirect('consultation');
     }
+
 
     /**
      * Display the specified resource.
@@ -46,7 +53,8 @@ class consultationController extends Controller
      */
     public function show(consultation $consultation)
     {
-        //
+        
+        return view('user/Consultations/view')->with('cons',$consultation);
     }
 
     /**
@@ -78,9 +86,62 @@ class consultationController extends Controller
      * @param  \App\consultation  $consultation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(consultation $consultation)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request['cons'];
+        $user = Auth::user();
+        $output = '';
+        $cons = consultation::find($id);
+        if(!is_null($cons)){
+                $cons->delete();
+
+                $conses = consultation::all();
+                foreach ($conses as $value) {
+                    $output .= '
+
+                 <div class="consultations col-md-12">
+                    <div class="row">
+                        <div class="consultation col-md-10 col-md-offset-1">   
+                            <div class="cons_picture col-md-3">
+                                <img class="cons_img" src="' .asset('images/photo-3.jpg'). '"></div>
+                            <div class="question col-md-10"><p>'.$value->Question.'</p></div>
+                        </div>
+                        @if('.$value->User_id == $user->ID.')
+                    <button id="'. $value->ID .'" class="col-md-2 btn btn-danger delete">Delete</button>
+                    @endif
+                    <button id="'. $value->ID .'" class="col-md-2 btn btn-success answer">answer</button>
+                </div>
+
+                        ';
+
+
+               }
+               
+               return $output;
+        }else{
+            $conses = consultation::all();
+                foreach ($conses as $value) {
+                   $output .= '
+
+                 <div class="consultations col-md-12">
+                    <div class="row">
+                        <div class="consultation col-md-10 col-md-offset-1">   
+                            <div class="cons_picture col-md-3">
+                                <img class="cons_img" src="' .asset('images/photo-3.jpg'). '"></div>
+                            <div class="question col-md-10"><p>'.$value->Question.'</p></div>
+                        </div>
+                     @if('.$value->User_id == $user->ID.')
+                    <button id="'. $value->ID .'" class="col-md-2 btn btn-danger delete">Delete</button>
+                    @endif
+                    <button id="'. $value->ID .'" class="col-md-2 btn btn-success answer">answer</button>
+                </div>
+
+                        ';
+
+               }
+
+               return $output;
+        }
     }
 
     public function allConsultation()
@@ -90,10 +151,10 @@ class consultationController extends Controller
         return view('user/Consultations/consultation')->with('consult',$consultation);
     }
 
-    // public function allMyConsultation()
-    // {
-    //     $mycons = consultation::all();
-
-    //     return view('consultation')->with('consultation',$consultation);
-    // }
+    public function allMyConsultation($id)
+    {
+        $mycons = consultation::where('User_id' , $id)->get();
+    
+       return view('user/Consultations/myconsultation')->with('consult' , $mycons);
+    }
 }

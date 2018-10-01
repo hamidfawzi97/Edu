@@ -169,15 +169,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</p>
 						</div>
 					</div>
-
-					<div class="col-md-6 panel">
-						<div class="panel-body">
-							<p class="text-right">
-								Copyright &copy; 2014. Template by <a href="http://webthemez.com/" rel="develop">WebThemez.com</a>
-							</p>
-						</div>
-					</div>
-
 				</div>
 				<!-- /row of panels -->
 			</div>
