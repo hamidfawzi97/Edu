@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\comment;
+use App\comment_reply;
 use Illuminate\Http\Request;
 
 class commentController extends Controller
@@ -35,15 +36,20 @@ class commentController extends Controller
      */
     public function store(Request $request)
     {
+
+       $userID = \Auth::user()->id;
+
        $com = new comment();
        $com->Comment = $request['comment'];
        $com->save();
        $output = '';
        $coms = comment::all();
-       foreach ($coms as $value) {
-          $output .= '
+       $replys = comment_reply::all();
 
-          <div class="commentsDiv" style="padding:10px;">
+       foreach ($coms as $value) {
+            $output .= '
+
+                <div class="commentsDiv" style="padding:10px;">
                     <div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
@@ -59,12 +65,86 @@ class commentController extends Controller
                     </a>
                     <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$value["Comment"].'</div>
                     <input type="hidden" class="com" value="'.$value["Comment"].'">
-                    
-                    
-                </div>
 
+                
+                    <div id="replyDiv'.$value['ID'].'" style="margin-left:50px;">
+                        <div id="viewReply'.$value['ID'].'">
+            ';
 
-                ';
+            if($replys){
+                foreach ($replys as $reply) {
+                    if($reply['Comment_id'] == $value['ID']){
+                        $output .= '
+                                <div class = "btn-group" style="float:right;">
+                                    <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
+                                        <span class = "fa fa-ellipsis-h"></span>
+                                    </button>
+                                    <ul class = "dropdown-menu" role = "menu" style="min-width: 93px;">
+                                        <li style="cursor:pointer;"><a id="rep'.$reply["ID"].'" class="delete">Delete</a></li>
+                                        <li style="cursor:pointer;"><a id="rep'.$reply["ID"].'" class="edit" name=" " >Edit</a></li>
+                                    </ul>
+                                </div>
+                                <a href="#">
+                                    <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
+                                    <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
+                                </a>
+                                <div style="margin:-28px 0 20px 75px; width:88%; overflow-wrap:break-word; color:black; white-space:pre;">'.$reply["Reply"].'</div>
+                                <input type="hidden" class="com" value="'.$reply["Reply"].'">
+                        ';
+                    }
+                }
+            }
+
+            $output .= '
+ 
+                        </div>
+
+                        <button id="replyBtn'.$value['ID'].'" class="btn btn-default">Reply</button>
+                        <script>
+                            $(document).ready(function(){
+                                $("#replyBtn'.$value['ID'].'").on("click", function(){
+
+                                    $("#replyBtn'.$value['ID'].'").css("display", "none");
+
+                                    $("#replyDiv'.$value['ID'].'").append("\
+                                        <div id=\"replyForm'.$value['ID'].'\">\
+                                            <form method=\"POST\" action=\"\">\
+                                                \
+                                                <textarea class=\"form-control\" id=\"replyText'.$value['ID'].'\" style=\"resize:none;\" name=\"replyText'.$value['ID'].'\" required=\"\"></textarea>\
+                                                <input id=\"submit'.$value['ID'].'\" type=\"submit\" class=\"btn btn-success\" value=\"Reply\"/>\
+                                                <button id=\"cancel'.$value['ID'].'\" class=\"btn btn-danger\">Cancel</button>\
+                                            </form>\
+                                        </div>\
+                                        <script>\
+                                            $(\"#cancel'.$value['ID'].'\").on(\"click\", function(){\
+                                                $(\"#replyForm'.$value['ID'].'\").remove();\
+                                                $(\"#replyBtn'.$value['ID'].'\").css(\"display\", \"block\");\
+                                            });\
+    \
+                                            $(\"#submit'.$value['ID'].'\").on(\"click\", function(e){\
+                                                e.preventDefault();\
+                                                var reply = $(\"#replyText'.$value['ID'].'\").val();\
+                                                var commentID = '.$value['ID'].';\
+    \
+                                                $.ajax({\
+                                                    url:\"/addreply\",\
+                                                    type:\"POST\",\
+                                                    data:{_token : \"'. csrf_token() .'\", reply:reply, commentID:commentID},\
+                                                    success:function (data) {\
+                                                          $(\"#viewReply'.$value['ID'].'\").append(data);\
+                                                          $(\"#replyForm'.$value['ID'].'\").remove();\
+                                                          $(\"#replyBtn'.$value['ID'].'\").css(\"display\", \"block\");\
+                                                    }\
+                                                });\
+                                            });\
+                                        <\/script>\
+                                    ");
+                                });    
+                            });
+                        </script>
+                    </div>
+                </div>';
+
 
        }
        

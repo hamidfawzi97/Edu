@@ -42,7 +42,7 @@
                     </div>
                 <!-- Comment add -->
 
-                        <textarea id="textarea" style="margin-top: 20px;" class="form-control col-md-6" name="comment" placeholder="Write your comment"></textarea>
+                        <textarea id="textarea" style="margin-top: 20px; resize: none;" class="form-control col-md-6" name="comment" placeholder="Write your comment"></textarea>
                         <button id="submit" class="btn btn-primary col-md-2" style="margin-top: 10px; float: right;">Send</button>
 
             </div>
@@ -118,5 +118,7 @@
           
     });
 
+
 </script>
+
 @endsection
