@@ -157,4 +157,38 @@ class consultationController extends Controller
     
        return view('user/Consultations/myconsultation')->with('consult' , $mycons);
     }
+
+    public function getConsByCategory(Request $request)
+    {
+        $category = $request['category'];
+        $consultations = consultation::all();
+        $counter = 0;
+        $output = '';
+        foreach ($consultations as $consultation) {
+
+         for ($i=0; $i < sizeof($category); $i++) { 
+             if($consultation['Category'] == $category[$i]){
+
+                $counter++;
+                $output .='
+                           <div class="consultation" style="margin-bottom: 30px;">
+                    <div class="col-md-12 consultation_content">
+                        <img src="'. asset('images/question.png').'" class="cons_picture">
+                        <p>'.$consultation["Question"].'</p>
+                    </div>
+                    <div class="col-md-10" style="border-bottom: 1px solid #3d84e6; margin-bottom: 9px;"></div>    
+                    <div class="col-md-10" class="cons_ans"><span class="cons_ans">10 Answers</span>
+                        <a href="'. action('consultationController@show',$consultation) .'" class="col-md-2 buton2" style="float: right;">View</a>
+                    </div>
+                </div>
+                    ';
+             }
+         }
+           
+       }
+       
+
+       return $output;
+
+    }
 }

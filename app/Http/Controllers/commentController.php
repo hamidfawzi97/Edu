@@ -46,9 +46,9 @@ class commentController extends Controller
        $coms = comment::all();
        $replys = comment_reply::all();
 
-       foreach ($coms as $value) {
-            $output .= '
 
+            $output .= '
+            
                 <div class="commentsDiv" style="padding:10px;">
                     <div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">

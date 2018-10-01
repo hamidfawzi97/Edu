@@ -79,6 +79,8 @@ Route::post('/addconsultation',"consultationController@store");
 Route::get('/deleteconsultation',"consultationController@destroy");
 
 Route::get('/answerconsultation/{id}',"consultationController@show");
+
+Route::get('/getconsbycategory',"consultationController@getConsByCategory");
 //  ------------------------------- End Of Consultations -------------------------------------=
 
 

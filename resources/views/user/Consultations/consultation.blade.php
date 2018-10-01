@@ -1,10 +1,46 @@
 @extends('user/master')
 
 @section('content')
-    <div class="col-md-12" style="border-bottom: 1px solid #3d84e6; margin-bottom: 15px;"></div>
+
+
     <div class="container" style="min-height: 504px">
-            <a href ="{{ route('addConsultation') }}" class="buton2 col-md-2">Add Question</a>
-        <div class="consultations col-md-8 col-md-offset-4">
+            <div class="col-md-12 col-xs-12" style="border-bottom: 1px solid #3d84e6; margin-bottom: 15px;"></div>
+            <div class="col-md-3 category">
+                    <div class="category_head"><h3>Categories</h3></div>
+                    <div class="categories">
+                        <ul class="">
+                        <li>
+                            <label class="checkboxcontainer">Computer Science
+                            <input type="checkbox"  name="computer science" id="check1">
+                            <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkboxcontainer">Project Management
+                            <input type="checkbox"  name="project management" id="check2">
+                            <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+
+                            <label class="checkboxcontainer">Management
+                            <input type="checkbox"  name="management" id="check3">
+                            <span class="checkmark"></span>
+                            </label>
+
+                        </li>
+                        <li>
+                            <label class="checkboxcontainer">Human Resources
+                            <input type="checkbox"  name="human resources" id="check4">
+                            <span class="checkmark"></span>
+                            </label>
+                        </li>
+                    </ul>
+                    </div>
+                    <a href ="{{ route('addConsultation') }}" class="buton2 col-md-7 col-xs-12" style="margin-top: 10px; padding-bottom: 9px;padding-top: 10px">Add Question</a>
+                    <button class="buton col-md-3 col-xs-6 col-md-offset-2 col-xs-12" id="cheek">Apply</button>
+                </div>
+        <div class="consultations col-md-8 col-md-offset-1 col-xs-12">
                 @foreach($consult as $cons)
                 <div class="consultation" style="margin-bottom: 30px;">
                     <div class="col-md-12 consultation_content">

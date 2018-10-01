@@ -48,6 +48,7 @@
                               @if(!$Videos == '')
                               @foreach($Videos as $vid)   
                               <tr>
+
                                 <td width="5%" scope="row" style="text-align: center;">{{ $vid['Ord'] }}</td>
                                 <td style="text-align: center;">{{ $vid['Name'] }}</td>
                                 <td width="10%">
