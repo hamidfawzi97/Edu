@@ -29,7 +29,7 @@
                         <div class="card-header">
                             <strong class="card-title">Data Table</strong>
                             <label>Check All</label><input type="checkbox" id="checkAll">
-                      <button class="btn btn-primary col-md-1" style="float: right; border-radius: 5px;"> Add User</button>
+                      <a href="{{ url('/admin-adduser') }}" class="btn btn-primary col-md-1" style="float: right; border-radius: 5px;color: white;"> Add User</a>
                       |
                       <a href="" class="col-md-2 col-md-offset-10"> Delete</a>
                         </div>
@@ -39,21 +39,34 @@
                       
                     <thead>
                       <tr>
-                        <th scope="col-md-1">#</th>
-                        <th>Username</th>
-                        <th>Name</th>
-                        <th>LastName</th>
-                        <th>Role</th>
+                        <th scope="col-md-1" style="text-align: center;">#</th>
+                        <th style="text-align: center;">Username</th>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">LastName</th>
+                        <th style="text-align: center;">Role</th>
+                        <th style="text-align: center;">Email</th>
+                        <th style="text-align: center;">Delete | Edit</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="users">
+                     @foreach($users as $user)
                       <tr>
-                        <td><input type="checkbox" class="check" ></td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>$320,800</td>
+                       
+                        <td style="text-align: center;"><input type="checkbox" class="check" ></td>
+                        <td style="text-align: center;">{{$user->name}}</td>
+                        <td style="text-align: center;">{{$user->first_name}}</td>
+                        <td style="text-align: center;">{{$user->last_name}}</td>
+                        @if($user->role == 2)
+                        <td style="text-align: center;">Consultant</td>
+                        @endif
+                        @if($user->role == 1)
+                        <td style="text-align: center;">User</td>
+                        @endif
+                        <td style="text-align: center;">{{$user->email}}</td>
+                        <td style="text-align: center;"><a href = "#" id="{{ $user->id }}" class="ti-trash delete" title="Delete"></a>
+                            <a class="ti-pencil" title="Edit" href="{{ action('usersController@edit',$user->id) }}"></td>
                       </tr>
+                     @endforeach
                     </tbody>
                   </table>
                         </div>
@@ -98,7 +111,23 @@
             $(".check").prop('checked', $(this).prop('checked'));
         });
 
-        
+        $(document).on('click', '.delete', function() { 
+
+            var user_id = $(this).attr('id');
+            var confir = confirm('Ary you sure you want delete this User/Consultant?');
+            if(confir){
+                      $.ajax({
+                      url:"/deleteuser",
+                      type:"GET",
+                      data:{_token : '<?php echo csrf_token() ?>', user:user_id},
+                      success:function (data) {
+                             $("#users").html(data);
+                        }
+                     })
+            }else{
+                
+            }
+    });
         
     </script>
 @endsection

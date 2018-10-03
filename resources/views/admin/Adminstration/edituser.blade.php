@@ -1,7 +1,6 @@
 @extends('admin.admin_master')
 
 @section('content')
-
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
@@ -16,7 +15,7 @@
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
                             <li><a href="#">Users</a></li>
-                            <li class="active">Add User</li>
+                            <li class="active">Edit User {{ $user->name }}</li>
                         </ol>
                     </div>
                 </div>
@@ -32,34 +31,29 @@
                       <div class="card-body card-block">
                         <form action="{{ url('/adduser') }}" method="post">
                           {{ csrf_field() }}
+                          {{ method_field('PATCH')}}
                           <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                              <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+                              <input type="text" value="{{ $user->name }}" id="username" name="username" placeholder="Username" class="form-control">
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                              <input type="text" id="firstname" name="firstname" placeholder="Firstname" class="form-control">
+                              <input type="text" value="{{ $user->first_name }}" id="firstname" name="firstname" placeholder="Firstname" class="form-control">
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                              <input type="text" id="lastname" name="lastname" placeholder="Lastname" class="form-control">
+                              <input type="text" value="{{ $user->last_name }}" id="lastname" name="lastname" placeholder="Lastname" class="form-control">
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                              <input type="email" id="email" name="email" placeholder="Email" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="input-group">
-                              <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
-                              <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                              <input type="email" value="{{ $user->email }}" id="email" name="email" placeholder="Email" class="form-control">
                             </div>
                           </div>
                               <select class="form-control" name="role">

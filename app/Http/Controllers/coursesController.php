@@ -272,7 +272,6 @@ class coursesController extends Controller
     }
 
     public function deleteCourse(Request $request){
-        echo $request['course'];
         $course = courses::find($request['course']);
         $course->delete();
         $output = '';

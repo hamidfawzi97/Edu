@@ -88,7 +88,7 @@
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function() {  
             $(".delete_form").on('submit' , function() {
                 var con = confirm("Do you want to delete this content ?!");
                 if(con){
