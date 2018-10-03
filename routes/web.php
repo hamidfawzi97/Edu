@@ -132,16 +132,22 @@ Route::get('/admi', function () {
     return view('/admin/admin');
 })->middleware('auth');
 
+Route::get('/admin-adduser',function (){
+    return view('/admin/Adminstration/adduser');
+})->name('adduser');
 
-Route::get('/admin-user', function () {
-    return view('/admin/Adminstration/user');
-})->middleware('auth');
+
+Route::resource('admin/Adminstration','usersController');
+
+Route::get('/admin-user','usersController@index')->name('adminuser');
+
+Route::post('/adduser','usersController@store');
 
 Route::get('/admin-adduser', function () {
     return view('/admin/Adminstration/adduser');
 })->middleware('auth');
 
-
+Route::get('/deleteuser','usersController@destroy');
 
 Route::resource('it_fields', 'itFieldController')->middleware('auth');
 
