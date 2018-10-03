@@ -139,7 +139,7 @@
         e.preventDefault();
 
         // $('#videoo').hide();
-        // $('.commDiv').hide();
+        $('.commDiv').hide();
         // $('#quizz').show();
 
         var vid_id = $(this).attr('id');

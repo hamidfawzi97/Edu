@@ -380,11 +380,13 @@ class coursesController extends Controller
       $i=1;
       foreach ($quizes as $quiz) {
           $output .= '<div id="questions">
-                        <span id="correctOrNot'.$i.'"><span><h3>'.$quiz->question.'</h3>
-                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch1.'" />'.$quiz->ch1.'<br/>
-                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch2.'" />'.$quiz->ch2.'<br/>
-                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch3.'" />'.$quiz->ch3.'<br/>
-                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch4.'" />'.$quiz->ch4.'<br/>
+                        <span id="correctOrNot'.$i.'"></span><h3 style="margin:5px 0 10px 10px; display:inline;">'.$quiz->question.'</h3><br/>
+                        <div style="margin:10px 0 30px 30px;">
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch1.'" style="margin-right:5px;"/>'.$quiz->ch1.'<br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch2.'" style="margin-right:5px;"/>'.$quiz->ch2.'<br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch3.'" style="margin-right:5px;"/>'.$quiz->ch3.'<br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch4.'" style="margin-right:5px;"/>'.$quiz->ch4.'<br/>
+                        </div>
                     </div>
                     <script>
                         $("#answerBtn").on("click", function(e){
@@ -393,10 +395,12 @@ class coursesController extends Controller
                             if($("input[name=\"answer'.$i.'\"]:checked").val() == "'.$quiz->answer.'"){
 
                               $("#correctOrNot'.$i.'").attr("class", "fa fa-check");
+                              $("#correctOrNot'.$i.'").css("color", "green");
 
                             }else{
 
                               $("#correctOrNot'.$i.'").attr("class", "fa fa-close");
+                              $("#correctOrNot'.$i.'").css("color", "red");
 
                             }
 
