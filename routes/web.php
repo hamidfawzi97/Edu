@@ -180,6 +180,15 @@ Route::get('/admin-course', 'coursesController@allCoursesAdmin');
 
 Route::resource('admin/Video','videoController');
 
+Route::resource('admin/quiz','quizController');
+
+Route::get('/deleteQuizQuestion','quizController@destroy');
+
+Route::get('/editQuizQuestion', 'quizController@update');
+
+Route::get('/addquiz/{id}', 'quizController@add_quiz')->middleware('auth');
+
+Route::get('/getQuizByVideo', 'coursesController@getQuizByVideo');
 
 // Route::post('/course-store', 'videoController@store')->middleware('auth');
 

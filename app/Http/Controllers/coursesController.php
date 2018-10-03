@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\courses;
 use App\video;
+use App\quiz;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -363,6 +364,53 @@ class coursesController extends Controller
                         ->orderBy('Ord', 'asc')
                         ->get();
 
-        return view('user/Courses/courseList')->with('course',$course)->with('videos',$videos);
+        $quizz = quiz::all();
+
+        $quizes = json_encode($quizz);
+
+        return view('user/Courses/courseList')->with('course',$course)->with('videos',$videos)->with('quizz',$quizz)->with('quizes',$quizes);
+    }
+
+    public function getQuizByVideo(Request $request){
+
+      $videoID = $request->get('videoID');
+
+      $quizes = quiz::where('Video_id', $videoID)->get();
+
+      $output = '';
+      $i=1;
+      foreach ($quizes as $quiz) {
+          $output .= '<div id="questions">
+                        <span id="correctOrNot'.$i.'"><span><h3>'.$quiz->question.'</h3>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch1.'" />'.$quiz->ch1.'<br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch2.'" />'.$quiz->ch2.'<br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch3.'" />'.$quiz->ch3.'<br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch4.'" />'.$quiz->ch4.'<br/>
+                    </div>
+                    <script>
+                        $("#answerBtn").on("click", function(e){
+                            e.preventDefault();
+
+                            if($("input[name=\"answer'.$i.'\"]:checked").val() == "'.$quiz->answer.'"){
+
+                              $("#correctOrNot'.$i.'").attr("class", "fa fa-check");
+
+                            }else{
+
+                              $("#correctOrNot'.$i.'").attr("class", "fa fa-close");
+
+                            }
+
+                        });
+                    </script>
+
+                    ';
+          $i++;
+      }
+
+      $output .= '<input id="answerBtn" type="button" value="Answer" class="btn btn-success"/>';
+
+      return $output;
+
     }
 }

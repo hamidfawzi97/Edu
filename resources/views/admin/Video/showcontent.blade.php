@@ -42,6 +42,8 @@
                                 <th style="text-align: center;">video</th>
                                 <th style="text-align: center;">Edit</th>
                                 <th style="text-align: center;">Delete</th>
+                                <th style="text-align: center;">Show Quizes</th>
+                                <th style="text-align: center;">Add Quiz</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -63,6 +65,12 @@
                                         {{ method_field('DELETE') }}
                                         <input type="submit" value="Delete" class="btn btn-danger" style="border-radius: 5px;">            
                                     </form>
+                                </td>
+                                <td width="10%">
+                                    <a href="{{ action('quizController@show',$vid['ID']) }}" class="btn btn-primary" style="border-radius: 5px;">Show</a>
+                                </td>
+                                <td width="10%">
+                                    <a href="{{ action('quizController@add_quiz',$vid['ID']) }}" class="btn btn-primary" style="border-radius: 5px;">Add</a>
                                 </td>
                               </tr>
                               @endforeach

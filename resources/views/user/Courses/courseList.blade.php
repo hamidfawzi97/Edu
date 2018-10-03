@@ -1,6 +1,11 @@
 @extends('user/master')
 
 @section('content')
+    <style type="text/css">
+        .glyphicon:hover{
+            cursor: pointer;
+        }
+    </style>
     <header id="head" class="secondary">
         <div class="container">
             <h1> {{ $course['CourseName'] }}</h1>
@@ -16,26 +21,35 @@
                 <div class="col-md-12 courseVideoAside">
                     <h2 style="margin:10px;">
                         Video {{$vid['Ord']}}
-                        <button onclick="getElementById('videoo').innerHTML= '{{ $vid['Link'] }}' ">
-                            <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span>
-                        </button>
+                        <span id="videoSpan" class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"  onclick="getElementById('videoo').innerHTML= '{{ $vid['Link'] }}' "></span>
                     </h2>
                 </div>
+                <?php $count = 0; ?>
+                @foreach($quizz as $quiz)
+                @if($quiz['Video_id'] == $vid['ID'])
+                <?php $count++; ?>
+                @endif
                 @endforeach
-                <!-- 
+                @if($count > 0)
                 <div class="col-md-12 courseQuizAside">
-                    <h2 style="margin:10px;">Quiz 1 <span class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"></span> </h2>
-                </div> -->
+                    <h2 style="margin:10px;">
+                        Quiz {{$vid['Ord']}}
+                        <span class="glyphicon glyphicon-plus quizspan" style="float:right; font-weight:bolder" id="{{$vid['ID']}}"></span>
+                    </h2>
+                </div>
+                @endif
+                @endforeach
+                
             </aside>
 
             
-            <div align="center" id="videoo" class="" style="margin-top: 10px;">
+            <div class="col-md-10" id="videoo" style="margin-top: 10px;">
                 
             </div>
         </div>
 
         
-        <div class="row">
+        <div class="row commDiv">
 
             <div class="col-md-9 col-md-offset-2">
                 <!-- Comments to view -->
@@ -119,6 +133,33 @@
         })
           
     });
+
+
+    $(document).on('click', '.quizspan', function(e){
+        e.preventDefault();
+
+        // $('#videoo').hide();
+        // $('.commDiv').hide();
+        // $('#quizz').show();
+
+        var vid_id = $(this).attr('id');
+
+        $.ajax({
+            url:'/getQuizByVideo',
+            type:'GET',
+            data:{_token: "<?= csrf_token(); ?>" ,videoID: vid_id},
+            success:function(data){
+                $('#videoo').html(data);
+            }
+        });
+    });
+
+    // $('#videoSpan').on('click', function(){
+    //     $('#quizz').hide();
+    //     $('#videoo').show();
+    //     $('.commDiv').show();
+    // });
+
 </script>
 
 @endsection
