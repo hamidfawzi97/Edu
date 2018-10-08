@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\consultation;
 use Illuminate\Http\Request;
+use App\Users;
+use App\answer;
 
 class consultationController extends Controller
 {
@@ -51,10 +53,15 @@ class consultationController extends Controller
      * @param  \App\consultation  $consultation
      * @return \Illuminate\Http\Response
      */
-    public function show(consultation $consultation)
+    public function show($id)
     {
+        $consultation = consultation::find($id);
         
-        return view('user/Consultations/view')->with('cons',$consultation);
+        $user = Users::find($consultation->User_id);
+        
+        $answers = answer::Where('Consultation_id', $consultation->ID)->get();
+
+        return view('user/Consultations/view')->with('cons',$consultation)->with('user',$user)->with('answers', $answers);
     }
 
     /**

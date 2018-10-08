@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-md-10" style="border-bottom: 1px solid #3d84e6; margin-bottom: 9px;"></div>    
                     <div class="col-md-10" class="cons_ans"><span class="cons_ans">10 Answers</span>
-                        <a href="{{ action('consultationController@show',$cons) }}" class="col-md-2 buton2" style="float: right;">View</a>
+                        <a href="{{ action('consultationController@show',$cons['ID']) }}" class="col-md-2 buton2" style="float: right;">View</a>
                     </div>
                 </div>
                 @endforeach
