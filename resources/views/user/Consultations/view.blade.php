@@ -78,6 +78,8 @@
                       success:function (data) {
                       			if (data != '') {
                       				$("#answers").html(data);
+                            	}else{
+                            		$("#answers").html('');
                             	}
                              	
                             }
