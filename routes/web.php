@@ -95,7 +95,7 @@ Route::get('/editanswer', 'answerController@update');
 
 
 //  ----------------------------- Start Of IT Fields -----------------------------------------=
-Route::get('/itfield',"itFieldController@allitfields");
+// Route::get('/itfield',"itFieldController@allitfields");
 
 
 

@@ -35,7 +35,7 @@
                     <!-- <li id="About"><a href={{ url('/about') }}>About</a></li> -->
 
                     <li id="Courses"><a href="{{ url('/courses') }}">Courses</a></li>
-                    <li id="IT_Field"><a href="{{ url('/itfield') }}">IT Fields</a></li>
+                   <!--  <li id="IT_Field"><a href="{{ url('/itfield') }}">IT Fields</a></li> -->
                     <li id="Consultations"><a href="{{ url('/consultation') }}">Consultations</a></li>
                     @if(Auth::check())
                     <?php 

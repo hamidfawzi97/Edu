@@ -76,12 +76,7 @@
                      type:"GET",
                       data:{_token : '<?php echo csrf_token() ?>', answer:ansID},
                       success:function (data) {
-                      			if (data != '') {
-                      				$("#answers").html(data);
-                            	}else{
-                            		$("#answers").html('');
-                            	}
-                             	
+                      				$("#answers").html(data);	
                             }
                      })
             }else{
