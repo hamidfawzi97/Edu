@@ -140,12 +140,11 @@ class answerController extends Controller
         $ans = answer::find($request['answer']);
         $cons_id = $ans->Consultation_id;
         $output = '';
+        $ans->delete();
+        $anss = answer::where('Consultation_id', $cons_id)->get();
 
-        if(!is_null($ans)){
-            $ans->delete();
-
-            $anss = answer::where('Consultation_id', $cons_id)->get();
-
+        if($anss->count()){
+            
             foreach ($anss as $value) {
                 $output .= '<div class="col-md-10 consultation" style="margin-bottom: 30px;">
                                 <div class="btn-group" style="float:right;margin-top: 10px;">
