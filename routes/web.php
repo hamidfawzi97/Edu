@@ -108,6 +108,8 @@ Route::get('/editanswer', 'answerController@update');
 //  ------------------------------- Comments -------------------------------------------------=
 
 
+Route::get('/getCommentsByVid','commentController@getCommentsByVideo');
+
 Route::post('/addcomment' , 'commentController@store');
 
 

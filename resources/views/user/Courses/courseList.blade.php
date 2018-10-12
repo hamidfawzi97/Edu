@@ -16,12 +16,11 @@
     <div class="row">
         <div class="row" style="margin-bottom:50px;">
 
-            <aside class="col-md-2" style="padding-right:1px;margin-top: 10px;">
+            <aside class="col-md-2" style="padding: 0px 0px;margin-top: 10px;height: 820px; background-color: black;overflow-y: scroll;">
                 @foreach($videos as $vid)
-                <div class="col-md-12 courseVideoAside">
-                    <h2 style="margin:10px;">
-                        Video {{$vid['Ord']}}
-                        <span id="videoSpan" class="glyphicon glyphicon-plus" style="float:right; font-weight:bolder;"  onclick="getElementById('videoo').innerHTML= '{{ $vid['Link'] }}' "></span>
+                <div class="col-md-10 col-md-offset-1 courseVideoAside">
+                    <h2 class="lesson" id="{{ $vid['ID'] }}" style="margin:10px; cursor: pointer;" onclick="getElementById('videoo').innerHTML= '{{ $vid['Link'] }}' ">
+                        Lesson {{$vid['Ord']}}
                     </h2>
                 </div>
                 <?php $count = 0; ?>
@@ -31,8 +30,8 @@
                 @endif
                 @endforeach
                 @if($count > 0)
-                <div class="col-md-12 courseQuizAside">
-                    <h2 style="margin:10px;">
+                <div class="col-md-10 col-md-offset-1 courseQuizAside">
+                    <h2 style="margin:10px;" onclick="">
                         Quiz {{$vid['Ord']}}
                         <span class="glyphicon glyphicon-plus quizspan" style="float:right; font-weight:bolder" id="{{$vid['ID']}}"></span>
                     </h2>
@@ -43,7 +42,7 @@
             </aside>
 
             
-            <div class="col-md-10" id="videoo" style="margin-top: 10px;">
+            <div class="col-md-10" id="videoo" style="margin-top: 10px; height: 820px; background-color: #333333">
                 
             </div>
         </div>
@@ -55,7 +54,7 @@
                 <!-- Comments to view -->
                     <div id="comments">
                         
-                    </div>
+                    </div >
                 <!-- Comment add -->
 
                         <textarea id="textarea" style="margin-top: 20px; resize: none;" class="form-control col-md-6" name="comment" placeholder="Write your comment"></textarea>
@@ -74,13 +73,14 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
+    $('.commDiv').hide();
+    var currentVideo;
     $("#submit").click(function(){
         var text = $('#textarea').val();
         $.ajax({
             url:"/addcomment",
             type:"POST",
-            data:{_token : '<?php echo csrf_token() ?>', comment:text},
+            data:{_token : '<?php echo csrf_token() ?>', comment:text ,VideoID : currentVideo},
             success:function (data) {
                   $("#comments").html(data);
             }
@@ -95,7 +95,7 @@
                       $.ajax({
                       url:"/deletecomment",
                      type:"GET",
-                      data:{_token : '<?php echo csrf_token() ?>', comment:com_id},
+                      data:{_token : '<?php echo csrf_token() ?>', comment:com_id,videoID: currentVideo},
                       success:function (data) {
 
                              $("#comments").html(data);
@@ -123,7 +123,7 @@
             $.ajax({
             url:"/editcomment",
             type:"GET",
-            data:{_token : '<?php echo csrf_token() ?>', comment:val , id:com_id},
+            data:{_token : '<?php echo csrf_token() ?>', comment:val , id:com_id,videoID: currentVideo},
             success:function (data) {
                   $("#comments").html(data);
                   $(".save").remove();
@@ -154,6 +154,18 @@
         });
     });
 
+     $(document).on('click', '.lesson', function(e){
+        $('.commDiv').show();
+        currentVideo = $(this).attr('id');
+         $.ajax({
+            url:'/getCommentsByVid',
+            type:'GET',
+            data:{_token: "<?= csrf_token(); ?>" ,videoID: currentVideo},
+            success:function(data){
+                $("#comments").html(data);
+            }
+        });
+    });
     // $('#videoSpan').on('click', function(){
     //     $('#quizz').hide();
     //     $('#videoo').show();
