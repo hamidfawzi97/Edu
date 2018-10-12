@@ -154,15 +154,22 @@ class consultationController extends Controller
     public function allConsultation()
     {
         $consultation = consultation::all();
+        $ans = array();
+        foreach ($consultation as $value) {
+            $ans[] = count(answer::where('Consultation_id',$value['ID'])->get());
+        }
 
-        return view('user/Consultations/consultation')->with('consult',$consultation);
+        return view('user/Consultations/consultation')->with('consult',$consultation)->with('ans',$ans);
     }
 
     public function allMyConsultation($id)
     {
         $mycons = consultation::where('User_id' , $id)->get();
-    
-       return view('user/Consultations/myconsultation')->with('consult' , $mycons);
+        $ans = array();
+        foreach ($mycons as $value) {
+            $ans[] = count(answer::where('Consultation_id',$value['ID'])->get());
+        }
+       return view('user/Consultations/myconsultation')->with('consult' , $mycons)->with('ans',$ans);
     }
 
     public function getConsByCategory(Request $request)

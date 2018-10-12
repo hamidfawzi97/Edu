@@ -41,17 +41,19 @@
                     <button class="buton col-md-3 col-xs-6 col-md-offset-2 col-xs-12" id="cheek">Apply</button>
                 </div>
         <div class="consultations col-md-8 col-md-offset-1 col-xs-12">
+                <?php $i = 0;?>
                 @foreach($consult as $cons)
-                <div class="consultation col-xs-12" style="margin-bottom: 30px;">
-                    <div class="col-md-12 co consultation_content">
+                <div class="consultation" style="margin-bottom: 30px;">
+                    <div class="col-md-12 consultation_content">
                         <img src="{{ asset('images/question.png')}}" class="cons_picture">
                         <p>{{$cons->Question}}</p>
                     </div>
                     <div class="col-md-10" style="border-bottom: 1px solid #3d84e6; margin-bottom: 9px;"></div>    
-                    <div class="col-md-10" class="cons_ans"><span class="cons_ans">10 Answers</span>
-                        <a href="{{ action('consultationController@show',$cons) }}" class="col-md-2 buton2" style="float: right;">View</a>
+                    <div class="col-md-10" class="cons_ans"><span class="cons_ans">{{ $ans[$i] }} Answers</span>
+                        <a href="{{ action('consultationController@show',$cons['ID']) }}" class="col-md-2 buton2" style="float: right;">View</a>
                     </div>
                 </div>
+                <?php $i++;?>
                 @endforeach
         </div>            
 
