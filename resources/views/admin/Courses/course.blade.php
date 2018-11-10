@@ -59,7 +59,17 @@
                                 {{ $cour['CourseName'] }}
                             </a>
                         </td>
-                        <td style="text-align: center;">{{ $cour['Description'] }}</td>
+                        <td style="text-align: center;"><div style="max-width: 300px;">
+                                    @if(strlen($cour['Description']) > 88)
+                                            {{ substr($cour['Description'], 0 , 87) }}
+                                            <?php echo"...."?>
+
+                                    @else
+                                            {{ $cour['Description'] }}
+                                    @endif
+                                </div></td>
+
+
                         <td style="text-align: center;">{{ $cour['Rate'] }}</td>
                         <td style="text-align: center;">{{ $cour['VideoInduction'] }}</td>
                         <td style="text-align: center;">{{ $cour['Certificate'] }}</td>

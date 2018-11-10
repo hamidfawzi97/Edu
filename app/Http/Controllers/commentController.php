@@ -38,10 +38,11 @@ class commentController extends Controller
     {
 
        $userID = \Auth::user()->id;
-
+       $role = \Auth::user()->role;
        $com = new comment();
        $com->Comment = $request['comment'];
        $com->Video_id = $request['VideoID'];
+       $com->User_id = $userID;
        $com->save();
        $output = '';
        $coms = comment::where('Video_id',$request['VideoID'])->get();
@@ -50,8 +51,9 @@ class commentController extends Controller
         foreach ($coms as $value) {
             $output .= '
 
-                <div class="commentsDiv" style="padding:10px;">
-                    <div class = "btn-group" style="float:right;">
+                <div class="commentsDiv" style="padding:10px;">';
+                if($value['User_id'] == $userID || $role == 3){
+                    $output .='<div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
                             </button>
@@ -59,8 +61,9 @@ class commentController extends Controller
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" " >Edit</a></li>
                          </ul>
-                     </div>
-                    <a href="#">
+                     </div>';
+                   }
+                    $output .='<a href="#">
                         <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                         <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                     </a>
@@ -75,8 +78,9 @@ class commentController extends Controller
             if($replys){
                 foreach ($replys as $reply) {
                     if($reply['Comment_id'] == $value['ID']){
-                        $output .= '<div id="realReply'.$reply["ID"].'">
-                                <div class = "btn-group" style="float:right;">
+                        $output .= '<div id="realReply'.$reply["ID"].'">';
+                            if($userID == $reply['User_id'] || $role == 3){      
+                            $output  .='<div class = "btn-group" style="float:right;">
                                     <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                                         <span class = "fa fa-ellipsis-h"></span>
                                     </button>
@@ -148,8 +152,9 @@ class commentController extends Controller
 
                                         });
                                     </script>
-                                </div>
-                                <a href="#">
+                                </div>';
+                              }
+                              $output .=' <a href="#">
                                     <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                                     <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                                 </a>
@@ -247,7 +252,10 @@ class commentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {
+    {   
+
+        $userID = \Auth::user()->id;
+        $role = \Auth::user()->role;
         $com_id = $request['id'];
         $com_val = $request['comment'];
         $com = comment::find($com_id);
@@ -259,8 +267,9 @@ class commentController extends Controller
         foreach ($coms as $value) {
             $output .= '
 
-                <div class="commentsDiv" style="padding:10px;">
-                    <div class = "btn-group" style="float:right;">
+                <div class="commentsDiv" style="padding:10px;">';
+                if($value['User_id'] == $userID || $role == 3){
+                    $output .='<div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
                             </button>
@@ -268,8 +277,9 @@ class commentController extends Controller
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" " >Edit</a></li>
                          </ul>
-                     </div>
-                    <a href="#">
+                     </div>';
+                   }
+                    $output .='<a href="#">
                         <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                         <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                     </a>
@@ -284,8 +294,9 @@ class commentController extends Controller
             if($replys){
                 foreach ($replys as $reply) {
                     if($reply['Comment_id'] == $value['ID']){
-                        $output .= '<div id="realReply'.$reply["ID"].'">
-                                <div class = "btn-group" style="float:right;">
+                        $output .= '<div id="realReply'.$reply["ID"].'">';
+                            if($userID == $reply['User_id'] || $role == 3){      
+                            $output  .='<div class = "btn-group" style="float:right;">
                                     <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                                         <span class = "fa fa-ellipsis-h"></span>
                                     </button>
@@ -357,8 +368,9 @@ class commentController extends Controller
 
                                         });
                                     </script>
-                                </div>
-                                <a href="#">
+                                </div>';
+                              }
+                              $output .=' <a href="#">
                                     <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                                     <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                                 </a>
@@ -434,7 +446,10 @@ class commentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
-    {       
+    {      
+
+        $userID = \Auth::user()->id;
+        $role = \Auth::user()->role;
         $id = $request['comment'];
         $output = '';
         $comm = comment::find($id);
@@ -449,8 +464,9 @@ class commentController extends Controller
         foreach ($coms as $value) {
             $output .= '
 
-                <div class="commentsDiv" style="padding:10px;">
-                    <div class = "btn-group" style="float:right;">
+                <div class="commentsDiv" style="padding:10px;">';
+                if($value['User_id'] == $userID || $role == 3){
+                    $output .='<div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
                             </button>
@@ -458,8 +474,9 @@ class commentController extends Controller
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" " >Edit</a></li>
                          </ul>
-                     </div>
-                    <a href="#">
+                     </div>';
+                   }
+                    $output .='<a href="#">
                         <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                         <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                     </a>
@@ -474,8 +491,9 @@ class commentController extends Controller
             if($replys){
                 foreach ($replys as $reply) {
                     if($reply['Comment_id'] == $value['ID']){
-                        $output .= '<div id="realReply'.$reply["ID"].'">
-                                <div class = "btn-group" style="float:right;">
+                        $output .= '<div id="realReply'.$reply["ID"].'">';
+                            if($userID == $reply['User_id'] || $role == 3){      
+                            $output  .='<div class = "btn-group" style="float:right;">
                                     <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                                         <span class = "fa fa-ellipsis-h"></span>
                                     </button>
@@ -547,8 +565,9 @@ class commentController extends Controller
 
                                         });
                                     </script>
-                                </div>
-                                <a href="#">
+                                </div>';
+                              }
+                              $output .=' <a href="#">
                                     <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                                     <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                                 </a>
@@ -620,8 +639,9 @@ class commentController extends Controller
         foreach ($coms as $value) {
             $output .= '
 
-                <div class="commentsDiv" style="padding:10px;">
-                    <div class = "btn-group" style="float:right;">
+                <div class="commentsDiv" style="padding:10px;">';
+                if($value['User_id'] == $userID || $role == 3){
+                    $output .='<div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
                             </button>
@@ -629,8 +649,9 @@ class commentController extends Controller
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" " >Edit</a></li>
                          </ul>
-                     </div>
-                    <a href="#">
+                     </div>';
+                   }
+                    $output .='<a href="#">
                         <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                         <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                     </a>
@@ -645,8 +666,9 @@ class commentController extends Controller
             if($replys){
                 foreach ($replys as $reply) {
                     if($reply['Comment_id'] == $value['ID']){
-                        $output .= '<div id="realReply'.$reply["ID"].'">
-                                <div class = "btn-group" style="float:right;">
+                        $output .= '<div id="realReply'.$reply["ID"].'">';
+                            if($userID == $reply['User_id'] || $role == 3){      
+                            $output  .='<div class = "btn-group" style="float:right;">
                                     <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                                         <span class = "fa fa-ellipsis-h"></span>
                                     </button>
@@ -718,8 +740,9 @@ class commentController extends Controller
 
                                         });
                                     </script>
-                                </div>
-                                <a href="#">
+                                </div>';
+                              }
+                              $output .=' <a href="#">
                                     <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                                     <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                                 </a>
@@ -791,16 +814,19 @@ class commentController extends Controller
     }
     public function getCommentsByVideo(Request $request)
     {
-
+        
+       $userID = \Auth::user()->id;
+       $role = \Auth::user()->role;
         $vid = $request['videoID'];
         $coms = comment::where('Video_id',$vid)->get();
         $replys = comment_reply::all();
         $output = ' ';
-        foreach ($coms as $value) {
+               foreach ($coms as $value) {
             $output .= '
 
-                <div class="commentsDiv" style="padding:10px;">
-                    <div class = "btn-group" style="float:right;">
+                <div class="commentsDiv" style="padding:10px;">';
+                if($value['User_id'] == $userID || $role == 3){
+                    $output .='<div class = "btn-group" style="float:right;">
                      <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                             <span class = "fa fa-ellipsis-h"></span>
                             </button>
@@ -808,8 +834,9 @@ class commentController extends Controller
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="delete">Delete</a></li>
                             <li style="cursor:pointer;"><a id="'.$value['ID'].'" class="edit" name=" " >Edit</a></li>
                          </ul>
-                     </div>
-                    <a href="#">
+                     </div>';
+                   }
+                    $output .='<a href="#">
                         <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                         <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                     </a>
@@ -824,8 +851,9 @@ class commentController extends Controller
             if($replys){
                 foreach ($replys as $reply) {
                     if($reply['Comment_id'] == $value['ID']){
-                        $output .= '<div id="realReply'.$reply["ID"].'">
-                                <div class = "btn-group" style="float:right;">
+                        $output .= '<div id="realReply'.$reply["ID"].'">';
+                            if($userID == $reply['User_id'] || $role == 3){      
+                            $output  .='<div class = "btn-group" style="float:right;">
                                     <button type = "button" class = "btn dropdown-toggle" data-toggle = "dropdown" style="border:none">
                                         <span class = "fa fa-ellipsis-h"></span>
                                     </button>
@@ -897,8 +925,9 @@ class commentController extends Controller
 
                                         });
                                     </script>
-                                </div>
-                                <a href="#">
+                                </div>';
+                              }
+                              $output .=' <a href="#">
                                     <img src="'.asset('images/1.jpg').'" alt="Profile Picture" title="Profile Picture" style="width:60px; height:60px; border-radius:50%;" />
                                     <b style="margin:5px 0 10px 5px; position:absolute; color:black;">Mary</b>
                                 </a>

@@ -1,6 +1,16 @@
 @extends('user/master')
 
 @section('content')
+<?php
+                if(!Auth::guest()){
+                    $userID = \Auth::user()->id;
+                    $userR = \Auth::user()->role;
+                }else{
+                    $userID = "Not Logged";
+                    $userR  = " ";
+                }
+
+                ?>
     <style type="text/css">
         .glyphicon:hover{
             cursor: pointer;

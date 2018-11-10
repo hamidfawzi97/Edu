@@ -82,6 +82,7 @@ Route::get('/answerconsultation/{id}',"consultationController@show");
 
 Route::get('/getconsbycategory',"consultationController@getConsByCategory");
 
+Route::get('/editconsultation',"consultationController@update");
 
 Route::post('/addanswer', "answerController@store");
 
@@ -89,6 +90,11 @@ Route::get('/deleteanswer', "answerController@destroy");
 
 Route::get('/editanswer', 'answerController@update');
 
+Route::get('/deleteconsreply','consultationReplyController@destroy');
+
+Route::get('/editconsreply','consultationReplyController@update');
+
+Route::get('/addconsreply','consultationReplyController@store');
 //  ------------------------------- End Of Consultations -------------------------------------=
 
 
@@ -138,9 +144,7 @@ Route::get('/editreply', 'commentReplyController@update');
 //  ------------------------------------------------------------------------------------------=
 //  ----------------------------------------------- Start of Admin ---------------------------=
 //  ------------------------------------------------------------------------------------------=
-Route::get('/admi', function () {
-    return view('/admin/admin');
-})->middleware('auth');
+Route::get('/admi','usersController@Admin')->middleware('auth');
 
 Route::get('/admin-adduser',function (){
     return view('/admin/Adminstration/adduser');
