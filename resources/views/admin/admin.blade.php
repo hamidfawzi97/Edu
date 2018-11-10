@@ -1,6 +1,16 @@
 @extends('admin/admin_master')
 
 @section('content')
+        <?php
+                if(!Auth::guest()){
+                    $userID = \Auth::user()->id;
+                    $userR = \Auth::user()->role;
+                }else{
+                    $userID = "Not Logged";
+                    $userR  = " ";
+                }
+
+                ?>
         <div class="content mt-3">
 
             <div class="col-sm-12">

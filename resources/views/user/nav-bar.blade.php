@@ -17,8 +17,19 @@
         <script src="assets/js/html5shiv.js"></script>
         <script src="assets/js/respond.min.js"></script>
         <![endif]-->
+        <?php
+                if(!Auth::guest()){
+                    $userID = \Auth::user()->id;
+                    $userR = \Auth::user()->role;
+                }else{
+                    $userID = "Not Logged";
+                    $userR  = " ";
+                }
+
+                ?>
     </head>
     <body>
+
             <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
@@ -32,8 +43,9 @@
             <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-nav pull-right mainNav">
                     <li id="Home"><a href="{{ url('/') }}">Home</a></li>
-                    <!-- <li id="About"><a href={{ url('/about') }}>About</a></li> -->
-
+                    @if($userR == 3)
+                    <li id="About"><a href="{{ url('/admi') }}">Control Panel</a></li>
+                    @endif
                     <li id="Courses"><a href="{{ url('/courses') }}">Courses</a></li>
                    <!--  <li id="IT_Field"><a href="{{ url('/itfield') }}">IT Fields</a></li> -->
                     <li id="Consultations"><a href="{{ url('/consultation') }}">Consultations</a></li>

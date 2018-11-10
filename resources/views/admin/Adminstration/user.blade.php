@@ -62,6 +62,9 @@
                         @if($user->role == 1)
                         <td style="text-align: center;">User</td>
                         @endif
+                        @if($user->role == 3)
+                        <td style="text-align: center;">Admin</td>
+                        @endif
                         <td style="text-align: center;">{{$user->email}}</td>
                         <td style="text-align: center;"><a href = "#" id="{{ $user->id }}" class="ti-trash delete" title="Delete"></a>
                             <a class="ti-pencil" title="Edit" href="{{ action('usersController@edit',$user->id) }}"></td>

@@ -119,4 +119,14 @@ class usersController extends Controller
         }
         return $output;
     }
+
+    public function Admin()
+    {
+        $userR = \Auth::user()->role;
+        if($userR == 3){
+            return view('/admin/admin');
+        }else{
+            return abort(404);
+        }
+    }
 }
