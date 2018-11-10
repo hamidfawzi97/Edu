@@ -56,6 +56,9 @@
                         <td style="text-align: center;">{{$user->name}}</td>
                         <td style="text-align: center;">{{$user->first_name}}</td>
                         <td style="text-align: center;">{{$user->last_name}}</td>
+                        @if($user->role == 3)
+                        <td style="text-align: center;">Admin</td>
+                        @endif
                         @if($user->role == 2)
                         <td style="text-align: center;">Consultant</td>
                         @endif
