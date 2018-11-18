@@ -138,9 +138,7 @@
     $(document).on('click', '.quizspan', function(e){
         e.preventDefault();
 
-        // $('#videoo').hide();
         $('.commDiv').hide();
-        // $('#quizz').show();
 
         var vid_id = $(this).attr('id');
 
@@ -154,11 +152,9 @@
         });
     });
 
-    // $('#videoSpan').on('click', function(){
-    //     $('#quizz').hide();
-    //     $('#videoo').show();
-    //     $('.commDiv').show();
-    // });
+    $('#videoSpan').on('click', function(){
+        $('.commDiv').show();
+    });
 
 </script>
 
