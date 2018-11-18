@@ -50,8 +50,10 @@
           								</div>
           								<input type="hidden" class="hidans" value="{{$ans['Answer']}}">
           								<div class="col-md-11" style="border-bottom: 1px solid #3d84e6;"></div>
+                          @if($userID != "Not Logged")
                           <button class="buton col-md-2 addreply" id="{{$ans['ID']}}" name=" ">Add Reply</button>
-          							</div>
+          							   @endif
+                        </div>
                         @foreach($replys as $reply)
                         @if($ans['ID'] == $reply['Answer_id'])
                         <div class="col-md-9 col-md-offset-1 consultation" style="margin-bottom: 30px;">

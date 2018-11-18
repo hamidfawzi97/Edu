@@ -48,8 +48,10 @@ class consultationReplyController extends Controller
         if($anss->count()){
             
             foreach ($anss as $value) {
-                $output .= '<div class="col-md-10 consultation" style="margin-bottom: 30px;">
-                                <div class="btn-group" style="float:right;margin-top: 10px;">
+                $output .= '<div class="col-md-10 consultation" style="margin-bottom: 30px;">';
+
+                if($value[])
+                $output .=  '<div class="btn-group" style="float:right;margin-top: 10px;">
                                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="border:none">
                                         <span class="fa fa-ellipsis-h"></span>
                                     </button>
@@ -57,8 +59,10 @@ class consultationReplyController extends Controller
                                         <li style="cursor:pointer;"><a id="'.$value["ID"].'" class="delete">Delete</a></li>
                                         <li style="cursor:pointer;"><a id="'.$value["ID"].'" class="edit" name=" ">Edit</a></li>
                                     </ul>
-                                </div>
-                                <div class="col-md-10 consultation_content">
+                                </div>';
+
+
+               $output .=      '<div class="col-md-10 consultation_content">
                                     <p>'.$value["Answer"].'</p>
                                 </div>
                                 <input type="hidden" class="hidans" value="'.$value["Answer"].'">
