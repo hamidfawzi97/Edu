@@ -26,33 +26,36 @@
     <div class="row">
         <div class="row" style="margin-bottom:50px;">
 
-            <aside class="col-md-2" style="padding: 0px 0px;margin-top: 10px;height: 820px; background-color: black;overflow-y: scroll;">
+            <aside class="col-md-1 aside" style="padding: 0px 0px;margin-top: 10px; @if($videos) @if(sizeof($videos) > 10) height: 820px; overflow-y: scroll; @endif @endif">
+                @if($videos)
                 @foreach($videos as $vid)
-                <div class="col-md-10 col-md-offset-1 courseVideoAside">
-                    <h2 class="lesson" id="{{ $vid['ID'] }}" style="margin:10px; cursor: pointer;" onclick="getElementById('videoo').innerHTML= '{{ $vid['Link'] }}' ">
-                        Lesson {{$vid['Ord']}}
+                <div class="col-md-10 col-md-offset-1 courseVideoAside lesson" id="{{ $vid['ID'] }}" onclick="getElementById('videoo').innerHTML= '{{ $vid['Link'] }}' ">
+                    <h2 style="margin:10px; cursor: pointer; font-size: 16px;" onclick="getElementById('videoo').innerHTML= '{{ $vid['Link'] }}' ">
+                        V {{$vid['Ord']}}
                     </h2>
                 </div>
                 <?php $count = 0; ?>
+                @if($quizz)
                 @foreach($quizz as $quiz)
                 @if($quiz['Video_id'] == $vid['ID'])
                 <?php $count++; ?>
                 @endif
                 @endforeach
+                @endif
                 @if($count > 0)
-                <div class="col-md-10 col-md-offset-1 courseQuizAside">
-                    <h2 style="margin:10px;" onclick="">
-                        Quiz {{$vid['Ord']}}
-                        <span class="glyphicon glyphicon-plus quizspan" style="float:right; font-weight:bolder" id="{{$vid['ID']}}"></span>
+                <div class="col-md-10 col-md-offset-1 courseQuizAside quizspan" id="{{$vid['ID']}}">
+                    <h2 style="margin:10px; cursor: pointer; font-size: 16px;">
+                        Q {{$vid['Ord']}}
                     </h2>
                 </div>
                 @endif
                 @endforeach
+                @endif
                 
             </aside>
 
             
-            <div class="col-md-10" id="videoo" style="margin-top: 10px; height: 820px; background-color: #333333">
+            <div class="col-md-10" id="videoo" style="margin-top: 10px;">
                 
             </div>
         </div>
@@ -179,6 +182,17 @@
             }
         });
     });
+
+    $('.courseVideoAside , .courseQuizAside').on('mouseenter', function(){
+        $(this).animate({
+            width:'103px'
+        });
+    }).on('mouseleave', function(){
+        $(this).animate({
+            width:'78px'
+        });
+    });
+
     // $('#videoSpan').on('click', function(){
     //     $('#quizz').hide();
     //     $('#videoo').show();

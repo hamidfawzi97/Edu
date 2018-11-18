@@ -396,13 +396,13 @@ class coursesController extends Controller
       $output = '';
       $i=1;
       foreach ($quizes as $quiz) {
-          $output .= '<div id="questions">
-                        <span id="correctOrNot'.$i.'"></span><h3 style="margin:5px 0 10px 10px; display:inline;">'.$quiz->question.'</h3><br/>
-                        <div style="margin:10px 0 30px 30px;">
-                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch1.'" style="margin-right:5px;"/>'.$quiz->ch1.'<br/>
-                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch2.'" style="margin-right:5px;"/>'.$quiz->ch2.'<br/>
-                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch3.'" style="margin-right:5px;"/>'.$quiz->ch3.'<br/>
-                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch4.'" style="margin-right:5px;"/>'.$quiz->ch4.'<br/>
+          $output .= '<div class="col-md-8 col-md-offset-3" id="questions" style="border: 1px solid; border-radius: 5px; padding: 20px; margin-bottom: 20px;">
+                        <span id="correctOrNot'.$i.'"></span><h3 style="color:black; margin:5px 0 10px 10px; display:inline;">'.$i.'. '.$quiz->question.'</h3><br/><br/>
+                        <div style="margin:10px 0 30px 30px; color:black;">
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch1.'" style="margin-right:5px;"/>'.$quiz->ch1.'<br/><br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch2.'" style="margin-right:5px;"/>'.$quiz->ch2.'<br/><br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch3.'" style="margin-right:5px;"/>'.$quiz->ch3.'<br/><br/>
+                        <input type="radio" name="answer'.$i.'" value="'.$quiz->ch4.'" style="margin-right:5px;"/>'.$quiz->ch4.'<br/><br/>
                         </div>
                     </div>
                     <script>
@@ -428,7 +428,7 @@ class coursesController extends Controller
           $i++;
       }
 
-      $output .= '<input id="answerBtn" type="button" value="Answer" class="btn btn-success"/>';
+      $output .= '<input id="answerBtn" type="button" value="Answer" class="btn btn-success col-md-offset-9"/>';
 
       return $output;
 

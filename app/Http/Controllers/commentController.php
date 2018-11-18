@@ -170,7 +170,7 @@ class commentController extends Controller
  
                         </div>
 
-                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info">Reply</button>
+                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info" style="float: right; margin-top: 20px;">Reply</button>
                         <script>
                             $(document).ready(function(){
                                 $("#replyBtn'.$value['ID'].'").on("click", function(){
@@ -386,7 +386,7 @@ class commentController extends Controller
  
                         </div>
 
-                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info">Reply</button>
+                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info" style="float: right; margin-top: 20px;">Reply</button>
                         <script>
                             $(document).ready(function(){
                                 $("#replyBtn'.$value['ID'].'").on("click", function(){
@@ -583,7 +583,7 @@ class commentController extends Controller
  
                         </div>
 
-                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info">Reply</button>
+                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info" style="float: right; margin-top: 20px;">Reply</button>
                         <script>
                             $(document).ready(function(){
                                 $("#replyBtn'.$value['ID'].'").on("click", function(){
@@ -758,7 +758,7 @@ class commentController extends Controller
  
                         </div>
 
-                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info">Reply</button>
+                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info" style="float: right; margin-top: 20px;">Reply</button>
                         <script>
                             $(document).ready(function(){
                                 $("#replyBtn'.$value['ID'].'").on("click", function(){
@@ -943,7 +943,7 @@ class commentController extends Controller
  
                         </div>
 
-                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info">Reply</button>
+                        <button id="replyBtn'.$value['ID'].'" class="btn btn-info" style="float: right; margin-top: 20px;">Reply</button>
                         <script>
                             $(document).ready(function(){
                                 $("#replyBtn'.$value['ID'].'").on("click", function(){

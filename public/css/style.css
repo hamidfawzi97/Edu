@@ -1257,8 +1257,13 @@ HEAD
 .courseVideoAside{
     background-color: #333;
     color: white;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    border-radius: 5px;
+    text-align: center;
+    width: 78px;
+    margin: auto;
+    cursor: pointer;
+    /*margin-top: 3px;*/
+    margin-bottom: 1px;
 }
 
 .commentsDiv{
@@ -1270,6 +1275,12 @@ HEAD
 .courseQuizAside{
     background-color: #3d84e6;
     color: black;
+    border-radius: 5px;
+    text-align: center;
+    width: 78px;
+    margin: auto;
+    cursor: pointer;
+    margin-bottom: 30px;
 }
 .consultations{
     /*background-color:#f7f8fa; */
