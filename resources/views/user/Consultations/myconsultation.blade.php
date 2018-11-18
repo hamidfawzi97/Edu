@@ -1,7 +1,15 @@
 @extends('user/master')
 
 @section('content')
-    
+    <?php
+    $i=0;
+                if(!Auth::guest()){
+                    $userID = \Auth::user()->id;
+                }else{
+                    $userID = "Not Logged";
+                }
+
+                ?>
 
     <div class="container" style="min-height: 504px">
         <div class="col-md-12" style="border-bottom: 1px solid #3d84e6; margin-bottom: 15px;"></div>
@@ -37,21 +45,39 @@
                         </li>
                     </ul>
                     </div>
+                    @if($userID != "Not Logged")
                     <a href ="{{ route('addConsultation') }}" class="buton2 col-md-7 col-xs-12" style="margin-top: 10px; padding-bottom: 9px;padding-top: 10px">Add Question</a>
-                    <button class="buton col-md-3 col-xs-6 col-md-offset-2 col-xs-12" id="cheek">Apply</button>
+                     <button class="buton col-md-3 col-xs-6 col-md-offset-2 col-xs-12" id="cheek">Apply</button>
+                    @else
+                    <button class="buton col-md-3 col-xs-6 col-md-offset-9 col-xs-12" id="cheek">Apply</button>
+                    @endif
                 </div>
         <div class="consultations col-md-8 col-md-offset-1 col-xs-12">
+                <?php $i = 0;?>
                 @foreach($consult as $cons)
-                <div class="consultation col-xs-12" style="margin-bottom: 30px;">
-                    <div class="col-md-12 co consultation_content">
+               <div class="consultation" style="margin-bottom: 30px;">
+                    <div class="col-md-12 consultation_content">
                         <img src="{{ asset('images/question.png')}}" class="cons_picture">
-                        <p>{{$cons->Question}}</p>
+                        <div value="{{$cons->Question}}">
+                            @if(strlen($cons->Question) > 30)
+                                            {{ substr($cons->Question, 0 ,29) }}
+                                            <?php echo"...."?>
+
+                                    @else
+                                            {{ $cons->Question }}
+                                    @endif</div>
                     </div>
-                    <div class="col-md-10" style="border-bottom: 1px solid #3d84e6; margin-bottom: 9px;"></div>    
-                    <div class="col-md-10" class="cons_ans"><span class="cons_ans">10 Answers</span>
-                        <a href="{{ action('consultationController@show',$cons) }}" class="col-md-2 buton2" style="float: right;">View</a>
+                    <div class="col-md-10 dadada" style="border-bottom: 1px solid #3d84e6; margin-bottom: 9px;"></div>    
+                    <div class="col-md-10 cons_ans"><span class="cons_ans col-md-2">{{ $ans[$i] }} Answers</span>
+                        <a href="{{ action('consultationController@show',$cons['ID']) }}" class="col-md-2 buton2" style="float: right;">View</a>
+                    @if($cons->User_id == $userID)
+                        <button class="buton2 col-md-2 del" id="{{$cons['ID']}}" style="margin-right:10px;">Delete</button>
+                        <button class="buton2 col-md-2 edt" id="{{$cons['ID']}}" name=" ">Edit</button>
+                        <input id="q" type="hidden" name="hidden" value="{{$cons->Question}}">
+                    @endif  
                     </div>
                 </div>
+                <?php $i++;?>
                 @endforeach
         </div>            
 

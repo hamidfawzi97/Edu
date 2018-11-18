@@ -56,11 +56,17 @@
                         <td style="text-align: center;">{{$user->name}}</td>
                         <td style="text-align: center;">{{$user->first_name}}</td>
                         <td style="text-align: center;">{{$user->last_name}}</td>
+                        @if($user->role == 3)
+                        <td style="text-align: center;">Admin</td>
+                        @endif
                         @if($user->role == 2)
                         <td style="text-align: center;">Consultant</td>
                         @endif
                         @if($user->role == 1)
                         <td style="text-align: center;">User</td>
+                        @endif
+                        @if($user->role == 3)
+                        <td style="text-align: center;">Admin</td>
                         @endif
                         <td style="text-align: center;">{{$user->email}}</td>
                         <td style="text-align: center;"><a href = "#" id="{{ $user->id }}" class="ti-trash delete" title="Delete"></a>

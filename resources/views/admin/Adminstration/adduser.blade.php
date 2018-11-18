@@ -30,7 +30,7 @@
                     <div class="card">
                       <div class="card-header">ِAdd User</div>
                       <div class="card-body card-block">
-                        <form action="{{ url('/adduser') }}" method="post">
+                        <form action="{{ action('usersController@store') }}" method="post">
                           {{ csrf_field() }}
                           <div class="form-group">
                             <div class="input-group">

@@ -81,13 +81,27 @@ Route::get('/deleteconsultation',"consultationController@destroy");
 Route::get('/answerconsultation/{id}',"consultationController@show");
 
 Route::get('/getconsbycategory',"consultationController@getConsByCategory");
+
+Route::get('/editconsultation',"consultationController@update");
+
+Route::post('/addanswer', "answerController@store");
+
+Route::get('/deleteanswer', "answerController@destroy");
+
+Route::get('/editanswer', 'answerController@update');
+
+Route::get('/deleteconsreply','consultationReplyController@destroy');
+
+Route::get('/editconsreply','consultationReplyController@update');
+
+Route::get('/addconsreply','consultationReplyController@store');
 //  ------------------------------- End Of Consultations -------------------------------------=
 
 
 
 
 //  ----------------------------- Start Of IT Fields -----------------------------------------=
-Route::get('/itfield',"itFieldController@allitfields");
+// Route::get('/itfield',"itFieldController@allitfields");
 
 
 
@@ -99,6 +113,8 @@ Route::get('/itfield',"itFieldController@allitfields");
 
 //  ------------------------------- Comments -------------------------------------------------=
 
+
+Route::get('/getCommentsByVid','commentController@getCommentsByVideo');
 
 Route::post('/addcomment' , 'commentController@store');
 
@@ -128,9 +144,7 @@ Route::get('/editreply', 'commentReplyController@update');
 //  ------------------------------------------------------------------------------------------=
 //  ----------------------------------------------- Start of Admin ---------------------------=
 //  ------------------------------------------------------------------------------------------=
-Route::get('/admi', function () {
-    return view('/admin/admin');
-})->middleware('auth');
+Route::get('/admi','usersController@Admin')->middleware('auth');
 
 Route::get('/admin-adduser',function (){
     return view('/admin/Adminstration/adduser');

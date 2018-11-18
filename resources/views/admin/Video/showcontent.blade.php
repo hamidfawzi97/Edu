@@ -69,7 +69,7 @@
                                 <td width="10%">
                                     <a href="{{ action('quizController@show',$vid['ID']) }}" class="btn btn-primary" style="border-radius: 5px;">Show</a>
                                 </td>
-                                <td width="10%">
+                                <td width="10%" style="text-align: center;">
                                     <a href="{{ action('quizController@add_quiz',$vid['ID']) }}" class="btn btn-primary" style="border-radius: 5px;">Add</a>
                                 </td>
                               </tr>
@@ -126,6 +126,9 @@
         $("#checkAll").click(function () {
             $(".check").prop('checked', $(this).prop('checked'));
         });
+
+
+        
 
     </script>
 

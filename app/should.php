@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class answer extends Model
+class should extends Model
 {
     //
-    protected $primaryKey = 'ID';
-    protected $table = 'answer';
+    protected $table = 'should';
     public $timestamps = false;
 }

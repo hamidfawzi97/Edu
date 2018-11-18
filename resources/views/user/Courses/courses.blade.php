@@ -72,7 +72,13 @@
                               </div>
                               <div class="singCourse_content">
                               <h3 class="singCourse_title"><a href="{{ action('coursesController@show',$course->ID) }}">{{ $course["CourseName"] }}</a></h3>
-                              <p class="singCourse_desc">{{ $course["Description"]}}</p>
+                              <p class="singCourse_desc"> @if(strlen($course['Description']) > 30)
+                                            {{ substr($course['Description'], 0 ,29) }}
+                                            <?php echo"...."?>
+
+                                    @else
+                                            {{ $course['Description'] }}
+                                    @endif</p>
                               <p class="singCourse_price" style="margin: 0px 0px;"><span>${{ $course["Price"]}}</span></p>
                               </div>
                               <div class="singCourse_author">

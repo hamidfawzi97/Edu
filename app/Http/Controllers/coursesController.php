@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\courses;
 use App\video;
 use App\quiz;
-
+use App\objective;
+use App\should;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 class coursesController extends Controller
@@ -38,7 +39,8 @@ class coursesController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $pnts = $request->input('points');
+        $objs = $request->input('objective');
         $c_name = $request->input('c_name');
         $c_desc = $request->input('c_description');
         $inst_name = $request->input('inst_name');
@@ -90,7 +92,18 @@ class coursesController extends Controller
 
                     $course->save();
 
-                    
+                    foreach ($objs as $value) {
+                        $obj = new objective;
+                        $obj->objective = $value;
+                        $obj->course_id = $course->ID;
+                        $obj->save();
+                    }
+                    foreach ($pnts as $value) {
+                        $pnt = new should;
+                        $pnt->point = $value;
+                        $pnt->course_id = $course->ID;
+                        $pnt->save();
+                    }
                 }
             }
         }
@@ -366,8 +379,12 @@ class coursesController extends Controller
         $quizz = quiz::all();
 
         $quizes = json_encode($quizz);
-
-        return view('user/Courses/courseList')->with('course',$course)->with('videos',$videos)->with('quizz',$quizz)->with('quizes',$quizes);
+        if($course){
+          return view('user/Courses/courseList')->with('course',$course)->with('videos',$videos)->with('quizz',$quizz)->with('quizes',$quizes);
+        }else{
+          return abort(404);
+        }
+        
     }
 
     public function getQuizByVideo(Request $request){

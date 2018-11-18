@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class answer extends Model
+class objective extends Model
 {
     //
-    protected $primaryKey = 'ID';
-    protected $table = 'answer';
+    protected $table = 'objectives';
     public $timestamps = false;
 }
