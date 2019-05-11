@@ -7,6 +7,7 @@ use App\video;
 use App\quiz;
 use App\objective;
 use App\should;
+use App\user_courses;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 class coursesController extends Controller
@@ -119,9 +120,17 @@ class coursesController extends Controller
      */
     public function show($course_id)
     {
-        $course = Courses::find($course_id);
+       
+    }
 
-        return view('user/Courses/course')->with('course',$course);
+
+    public function show2($course_id)
+    {
+        $course = Courses::find($course_id);
+        $obj    = Objective::where('course_id',$course->ID)->get();
+        $should = Should::where('course_id',$course->ID)->get();
+        $users  = user_courses::where('Courses_id',$course->ID)->get();
+        return view('user/Courses/course')->with('course',$course)->with('objectives',$obj)->with('shoulds',$should)->with('users',$users);
     }
 
     /**

@@ -69,25 +69,25 @@
                       <div class="col-md-4 col-xs-12">
                             <div class="single_course wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
                               <div class="singCourse_imgarea">
-                                <img src="{{ asset('images/'.$course['CourseImg']) }}" height="167px">
+                                <img src="{{ asset('images/'.$course[0]['CourseImg']) }}" height="167px">
                                 <div class="mask">                         
-                                  <a href="{{ action('coursesController@show2',$course->ID) }}" class="course_more">View Course</a>
+                                  <a href="{{ action('coursesController@show2',$course[0]['ID']) }}" class="course_more">View Course</a>
                                 </div>
                               </div>
                               <div class="singCourse_content">
-                              <h3 class="singCourse_title"><a href="{{ action('coursesController@show2',$course->ID) }}">{{ $course["CourseName"] }}</a></h3>
-                              <p class="singCourse_desc"> @if(strlen($course['Description']) > 30)
-                                            {{ substr($course['Description'], 0 ,29) }}
+                              <h3 class="singCourse_title"><a href="{{ action('coursesController@show2',$course[0]['ID']) }}">{{ $course[0]["CourseName"] }}</a></h3>
+                              <p class="singCourse_desc"> @if(strlen($course[0]['Description']) > 30)
+                                            {{ substr($course[0]['Description'], 0 ,29) }}
                                             <?php echo"...."?>
 
                                     @else
-                                            {{ $course['Description'] }}
+                                            {{ $course[0]['Description'] }}
                                     @endif</p>
-                              <p class="singCourse_price" style="margin: 0px 0px;"><span>${{ $course["Price"]}}</span></p>
+                              <p class="singCourse_price" style="margin: 0px 0px;"><span>${{ $course[0]["Price"]}}</span></p>
                               </div>
                               <div class="singCourse_author">
-                                <img src="{{ asset('images/'.$course['InstructorPhoto'])}}" alt="img">
-                                <p>{{ $course["InstructorName"]}}</p>
+                                <img src="{{ asset('images/'.$course[0]['InstructorPhoto'])}}" alt="img">
+                                <p>{{ $course[0]["InstructorName"]}}</p>
                               </div>
                             </div>
                           </div>

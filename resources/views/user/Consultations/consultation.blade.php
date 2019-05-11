@@ -11,8 +11,12 @@
                 }
 
                 ?>
-    <div class="container" style="min-height: 504px">
+    <div class="container-fluid" style="min-height: 504px">
             <div class="col-md-12 col-xs-12" style="border-bottom: 1px solid #3d84e6; margin-bottom: 15px;"></div>
+            <div class="col-md-2">
+              <img src="{{ asset('images/banner2.jpg') }}" width="300" height="900" style="">
+            </div>
+            <div class="col-md-8">
             <div class="col-md-3 category">
                     <div class="category_head"><h3>Categories</h3></div>
                     <div class="categories">
@@ -68,7 +72,7 @@
                         </div>
                     </div>
                     <div class="col-md-10 dadada" style="border-bottom: 1px solid #3d84e6; margin-bottom: 9px;"></div>    
-                    <div class="col-md-10 cons_ans"><span class="cons_ans col-md-2">{{ $ans[$i] }} Answers</span>
+                    <div class="col-md-10 cons_ans"><span class="cons_ans col-md-3">{{ $ans[$i] }} Answers</span>
                         <a href="{{ action('consultationController@show',$cons['ID']) }}" class="col-md-2 buton2" style="float: right;">View</a>
                     @if($cons->User_id == $userID)
                         <button class="buton2 col-md-2 del" id="{{$cons['ID']}}" style="margin-right:10px;">Delete</button>
@@ -80,7 +84,10 @@
                 <?php $i++;?>
                 @endforeach
         </div>            
-
+      </div>
+      <div class="col-md-2">
+        <img src="{{ asset('images/banner2.jpg') }}" width="300" height="900" style="">
+      </div>
 </div>
    @endsection
    @section('js')

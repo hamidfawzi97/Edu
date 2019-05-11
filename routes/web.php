@@ -31,7 +31,9 @@ Route::get('/sidebar-right', function () {
 Route::get('/enroll', function(){
     return view('enrollment');
 });
-
+Route::get('/log', function(){
+    return view('login');
+});
 
 
 
@@ -55,10 +57,9 @@ Route::get('/searchcourse','coursesController@searchCourse');
 
 Route::get('/getcoursebycategory','coursesController@getCourseByCategory');
 
-Route::get('/enroll', function(){
-    return view('enrollment');
-});
+Route::get('/course/{id}','coursesController@show2')->name('course');
 
+Route::get('/enroll/{id}','userCoursesController@store')->middleware('auth')->name('enroll');
 //  ------------------------------- End Of Courses -------------------------------------------=
 
 

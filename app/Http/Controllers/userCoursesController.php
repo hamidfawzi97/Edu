@@ -6,6 +6,8 @@ use App\user_courses;
 use App\courses;
 use Illuminate\Http\Request;
 use App\Users;
+use App\objective;
+use App\should;
 class userCoursesController extends Controller
 {
     /**
@@ -34,9 +36,26 @@ class userCoursesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        $userID = \Auth::user()->id;
+        $usercourse = new user_courses;
+        $usercourse->User_id = $userID;
+        $usercourse->Courses_id = $id;
+        $course = Courses::find($id);
+        $users  = user_courses::where('Courses_id',$course->ID)->get();
+        $count = 0;
+        foreach ($users as $value) {
+            if($userID == $value->User_id){
+               $count++;
+            }
+        }
+        if($count == 0){
+            $usercourse->save();
+             return redirect()->route('course', ['id' => $course->ID]);
+        }else{
+             return redirect()->route('course', ['id' => $course->ID]);
+        }
     }
 
     /**
@@ -96,12 +115,21 @@ class userCoursesController extends Controller
      public function userCourse($userid)
     {
       
-        $user = user_courses::where('User_id', $userid)->first();
+        $user = user_courses::where('User_id', $userid)->get();
         foreach ($user as $value) {
-            $courses[] = courses::where('ID',$value['Courses_id'])->get();            
-       }
-      
-        return view('userCourses')->with('courses', $courses);
+            $courses[] = courses::where('ID',$value['Courses_id'])->get();         
+            }   
+        $count = count($courses);     
+        // echo "<pre>"; 
+        // print_r($courses);
+        // print_r($user);
+        // echo "<pre>";
+        // foreach ($courses as $value) {
+        //     echo "<pre>";
+        //     echo $value[0]['ID'];
+        //     echo "<pre>";
+        // }
+        return view('user/Courses/mycourses')->with('courses', $courses)->with('count',$count);
         }
 
 }

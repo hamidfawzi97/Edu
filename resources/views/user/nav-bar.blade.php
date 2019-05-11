@@ -55,6 +55,7 @@
                         $id = $user->id;
                          ?>
                     <li id="MyConsultations"><a href='{{ url("/myconsultation/$id") }}' >My Consultations</a></li>
+                    <li id="MyCourses"><a href='{{ url("/mycourses/$id") }}' >My Courses</a></li>
                     @endif
                     <!-- Authentication Links -->
                     @guest
