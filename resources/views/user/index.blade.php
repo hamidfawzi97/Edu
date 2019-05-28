@@ -358,5 +358,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     });
       
   </script>
+  <script type='text/javascript' src="https://www.botlibre.com/scripts/sdk.js"></script>
+<script type='text/javascript'>
+SDK.applicationId = "836873719288876635";
+var sdk = new SDKConnection();
+var web = new WebAvatar();
+web.connection = sdk;
+web.avatar = "11557990";
+web.voice = "cmu-slt";
+web.voiceMod = "default";
+web.nativeVoice = true;
+web.nativeVoiceName = "Microsoft Hazel Desktop - English (Great Britain)";
+web.lang = "en-GB";x
+web.width = "500";
+web.height = "800";
+web.background = "lightgrey";
+web.createBox();
+web.addMessage("Welcome to my website", "sad", "smile", "crying");
+web.processMessages();
+</script>
 </body>
 </html>

@@ -31,6 +31,7 @@
                             <strong class="card-title">Courses Table</strong>
                             <label><input type="checkbox" class="check" id="checkAll"> Check All </label> |
                             <a href="{{ url('/admin-addcourse') }}" class="btn btn-primary" style="float: right; border-radius: 5px;">Add Course</a>
+                            <button class="btn btn-primary" id="POLICE">Get Json</button>
                         </div>
                         <div class="card-body">
                   <table id="bootstrap-data-table" class="table table-striped table-bordered coursesTable">
@@ -149,6 +150,20 @@
             }else{
                 
             }
+        $()
     });
+    $('#POLICE').on('click',function (argument) {
+        var val = $(this).attr('id');
+        $.ajax({
+            async:false,
+            url:'http://127.0.0.1:5000/dept/'+val,
+            type:'GET',
+            success:function (json) {
+                console.log(json);
+            }
+        });
+    })
+        
+    
     </script>
 @endsection
